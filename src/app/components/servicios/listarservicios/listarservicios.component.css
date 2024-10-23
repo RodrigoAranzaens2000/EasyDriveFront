@@ -1,0 +1,65 @@
+.servicios-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #2C3E50;
+}
+
+.service-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  padding: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none; 
+  -moz-user-select: none;
+}
+
+.service-card {
+  background-color: #ECF0F1;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  pointer-events: none; 
+}
+
+.service-card h3 {
+  color: #2980B9;
+  margin-top: 10px;
+}
+
+.service-card p {
+  margin: 10px 0;
+}
+
+.precio {
+  font-weight: bold;
+  color: #16A085;
+}
+
+
+.service-list::-webkit-scrollbar {
+  display: none;
+}
+.service-list {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}

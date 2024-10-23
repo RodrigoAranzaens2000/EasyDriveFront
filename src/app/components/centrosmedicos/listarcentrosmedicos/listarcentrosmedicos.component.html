@@ -1,0 +1,12 @@
+<div class="servicios-container">
+    <h2>Nuestros Servicios</h2>
+    <p>En EasyDrive ofrecemos una variedad de servicios para ayudarte a obtener tu licencia de conducir de manera rápida y segura.</p>
+  
+    <div class="service-list">
+      <div class="service-card" *ngFor="let item of items">
+        <img [src]="item.imgCentro" alt="{{ item.imgCentro }} imagen">
+        <h3>{{ item.nombre }}</h3>
+        <p>Ruc: {{ item.ruc }}</p>
+      </div>
+    </div>
+  </div>
