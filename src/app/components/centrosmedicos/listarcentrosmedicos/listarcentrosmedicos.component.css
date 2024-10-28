@@ -1,5 +1,5 @@
 .servicios-container {
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
@@ -20,6 +20,9 @@
     -webkit-user-select: none;
     -ms-user-select: none; 
     -moz-user-select: none;
+    width: 64%;    
+    margin: 0 auto;   
+    text-align: center;
   }
   
   .service-card {

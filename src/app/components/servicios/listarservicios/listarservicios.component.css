@@ -1,8 +1,9 @@
 .servicios-container {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  background-color: #e5e7e7;
 }
 
 h2 {
@@ -20,6 +21,9 @@ h2 {
   -webkit-user-select: none;
   -ms-user-select: none; 
   -moz-user-select: none;
+  width: 64%;    
+  margin: 0 auto;   
+  text-align: center;
 }
 
 .service-card {

@@ -12,4 +12,7 @@ import { CentrosmedicosComponent } from "./components/centrosmedicos/centrosmedi
 })
 export class AppComponent {
   title = 'EasyDriveFront';
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }  
 }

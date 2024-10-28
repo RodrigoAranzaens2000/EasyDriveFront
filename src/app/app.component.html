@@ -1,1 +1,44 @@
-<app-centrosmedicos></app-centrosmedicos>
+<header class="header">
+    <div class="logo-header">
+        <img src="assets/images/logo.jpg" alt="Logo Easy Drive"class="logo">
+    </div>
+    <nav class="navbar">
+      <a href="#" (click)="scrollToTop()">Inicio</a>
+      <a href="#">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#" class="btn-registrate">Sign In / LogIn</a>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Easy Drive<br />Aprende a Conducir, Confía en el Camino</h1>
+      <p>
+        En Easy Drive, estamos comprometidos con ayudarte a convertirte en un conductor
+        seguro y eficiente. Somos una escuela de manejo moderna, enfocada en brindar una
+        experiencia de aprendizaje práctica, amena y adaptada a tus necesidades. Ya sea que
+        estés comenzando desde cero o necesites perfeccionar tus habilidades para un examen,
+        tenemos el curso perfecto para ti.
+      </p>
+    </div>
+  
+    <div class="hero-image">
+        <img src="assets/images/volante.jpg" alt="Estudiantes felices con licencias">
+    </div>
+  </section>
+  <app-servicios id="servicios"></app-servicios>
+  <app-centrosmedicos></app-centrosmedicos>
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="assets/images/logo-footer.png" alt="Logo Easy Drive"class="logo">
+      <p>La mejor manera de obtener tu licencia</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">Misión</a> | <a href="#">Visión</a> | <a href="#">Historia</a> |
+      <a href="#">Términos y condiciones</a> | <a href="#">Libro de reclamaciones</a>
+    </div>
+    <div class="footer-social">
+      <a href="#"><img src="assets/facebook-icon.png" alt="Facebook" /></a>
+      <a href="#"><img src="assets/instagram-icon.png" alt="Instagram" /></a>
+    </div>
+  </footer>
