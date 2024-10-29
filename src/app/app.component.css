@@ -18,7 +18,7 @@
   }
   
   .btn-registrate {
-    background-color: #14af8d;
+    background: #FF4D32;
     color: white;
     padding: 8px 12px;
     border-radius: 5px;
@@ -31,7 +31,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 50px;
-    background-color: #14af8d;
+    background: rgb(26,91,113);
+    background: linear-gradient(90deg, rgba(26,91,113,1) 0%, rgba(0,66,87,1) 49%, rgba(0,51,68,1) 100%);
     color: white;
   }
   
@@ -64,14 +65,27 @@
     cursor: pointer;
   }
   
+  .hero-image {
+    position: relative; /* Para posicionar contenido encima si se necesita */
+    text-align: center; /* Centra la imagen */
+    margin: 20px auto; /* Añade márgenes y centra horizontalmente */
+    max-width: 80%; /* Limita el ancho de la imagen al 80% del contenedor */
+  }
+  
   .hero-image img {
-    max-width: 700px;
-    border-radius: 10px;
+    width: 100%; /* La imagen ocupará todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 15px; /* Bordes redondeados */
+    transition: transform 0.3s, box-shadow 0.3s; /* Efecto suave */
+  }
+  
+  .hero-image img:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
   }
   
   /* Footer */
   .footer {
-    background-color: #14af8d;
+    background-color: black;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -86,3 +100,24 @@
     margin: 0 5px;
     text-decoration: none;
     }
+
+    .footer-social {
+      
+      display: contents;
+      align-items: center; /* Alinea verticalmente los elementos */
+      gap: 10px; /* Espacio entre los elementos */
+      font-family: Arial, sans-serif; /* Fuente del texto */
+      font-size: 16px; /* Tamaño del texto */
+    }
+    
+    .footer-social a img {
+      margin: 0 5px;
+      width: 30px; /* Tamaño del logo */
+      height: auto; /* Mantiene la proporción */
+      transition: transform 0.3s; /* Efecto suave */
+    }
+    
+    .footer-social a img:hover {
+      transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+    }
+    
