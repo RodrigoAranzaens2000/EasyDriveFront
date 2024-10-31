@@ -1,12 +1,60 @@
-<div class="servicios-container">
-  <h2>Nuestros Servicios</h2>
-  <p>En EasyDrive ofrecemos una variedad de servicios para ayudarte a obtener tu licencia de conducir de manera rápida y segura.</p>
-  <div class="service-list" #serviceList>
-    <div class="service-card" *ngFor="let item of items">
-      <img [src]="'assets/images/' + item.imgServicio" alt="{{ item.imgServicio }} imagen">
-      <h3>{{ item.nombreServicio }}</h3>
-      <p>{{ item.descripcion }}</p>
-      <p class="precio">Precio: {{ item.precio | currency:'PEN' }}</p>
-    </div>
+<div class="container">
+  <div style="text-align: center; margin: 5%;">
+    <h1>Lista de Servicios</h1>
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Código -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+        <td mat-cell *matCellDef="let element"> {{ element.idservicio }} </td>
+      </ng-container>
+
+      <!-- Servicio -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef> Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nombreServicio }} </td>
+      </ng-container>
+
+      <!-- Descripción -->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let element"> {{ element.descripcion }} </td>
+      </ng-container>
+
+      <!-- Precio -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let element"> {{ element.precio }} </td>
+      </ng-container>
+
+      <!-- Imagen -->
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef> Imagen </th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="element.imgServicio" alt="Imagen del Servicio" style="width: 100px; height: auto;" />
+        </td>
+      </ng-container>
+
+      <!-- Acciones -->
+      <ng-container matColumnDef="accion01">
+        <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+        <td mat-cell *matCellDef="let element" (click)="eliminar(element.idservicio)">
+          <mat-icon style="color:hsl(4, 97%, 48%);">delete</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="accion02">
+        <th mat-header-cell *matHeaderCellDef> Actualizar </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['ediciones', element.idservicio]">
+          <mat-icon style="color:hsl(4, 97%, 48%);">edit</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>

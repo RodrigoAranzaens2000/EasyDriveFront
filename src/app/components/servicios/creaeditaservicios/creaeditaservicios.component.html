@@ -1,0 +1,48 @@
+<div class="container" style="text-align: center;margin:5%">
+    <div>
+        <h1>Registro de dispositivos</h1>
+    </div>
+    <div>
+        <form class="example-form" [formGroup]="form" (submit)="aceptar()">
+
+            <mat-form-field class="example-full-width" *ngIf="edicion">
+                <mat-label>Código</mat-label>
+                <input matInput formControlName="hcodigo" />
+            </mat-form-field>
+            <br />
+
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Servicio</mat-label>
+                <input matInput placeholder="hnombre" formControlName="hnombre" />
+            </mat-form-field>
+            <br />
+
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>descripcion</mat-label>
+                <input matInput placeholder="hdescripcion" formControlName="hdescripcion" />
+            </mat-form-field>
+            <br />
+
+            <mat-form-field class="example-full-width">
+                <mat-label>precio</mat-label>
+                <input matInput placeholder="hprecio" formControlName="hprecio" />
+            </mat-form-field>
+            <br />
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>imagen</mat-label>
+                <input matInput placeholder="himagen" formControlName="himagen" />
+            </mat-form-field>
+            <br />
+
+            <div>
+                <button mat-flat-button class="custom-button">Aceptar</button>
+            </div>
+        </form>
+    </div>
+</div>

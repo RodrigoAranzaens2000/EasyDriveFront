@@ -1,123 +1,57 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-  }
+.custom-toolbar {
+  background-color: #004d99;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
 
-  .logo{
-    width: 150px;
-    height: auto;
-  }
+.menu-left {
+  display: flex;
+  align-items: center;
+}
 
-  .navbar a {
-    margin-left: 15px;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .btn-registrate {
-    background: #FF4D32;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-  }
-  
-  /* Sección principal (Hero) */
-  .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    background: rgb(26,91,113);
-    background: linear-gradient(90deg, rgba(26,91,113,1) 0%, rgba(0,66,87,1) 49%, rgba(0,51,68,1) 100%);
-    color: white;
-  }
-  
-  .hero-text {
-    max-width: 50%;
-  }
-  
-  .form-container {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  form input {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #ff4b4b;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .hero-image {
-    position: relative; /* Para posicionar contenido encima si se necesita */
-    text-align: center; /* Centra la imagen */
-    margin: 20px auto; /* Añade márgenes y centra horizontalmente */
-    max-width: 80%; /* Limita el ancho de la imagen al 80% del contenedor */
-  }
-  
-  .hero-image img {
-    width: 100%; /* La imagen ocupará todo el ancho del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 15px; /* Bordes redondeados */
-    transition: transform 0.3s, box-shadow 0.3s; /* Efecto suave */
-  }
-  
-  .hero-image img:hover {
-    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
-  }
-  
-  /* Footer */
-  .footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  .footer-logo {
-    margin-bottom: 10px;
-  }
-  
-  .footer-links a {
-    color: white;
-    margin: 0 5px;
-    text-decoration: none;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF4D32; /* Fondo blanco o el color de tu elección */
+  border-radius: 12px; /* Borde redondeado del contenedor */
+  padding: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+}
+
+.logo-img {
+  height: 40px; /* Ajusta el tamaño según sea necesario */
+  width: auto;
+}
+
+
+ .custom-menu-item {    
+  color: black;   
+  &:hover {  
+   color: #FF4D32; 
     }
 
-    .footer-social {
-      
-      display: contents;
-      align-items: center; /* Alinea verticalmente los elementos */
-      gap: 10px; /* Espacio entre los elementos */
-      font-family: Arial, sans-serif; /* Fuente del texto */
-      font-size: 16px; /* Tamaño del texto */
-    }
-    
-    .footer-social a img {
-      margin: 0 5px;
-      width: 30px; /* Tamaño del logo */
-      height: auto; /* Mantiene la proporción */
-      transition: transform 0.3s; /* Efecto suave */
-    }
-    
-    .footer-social a img:hover {
-      transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
-    }
-    
+ }
+
+.mat-icon {
+  margin-right: 8px;
+}
+
+.menu-section-title {
+  font-weight: bold;
+  color: #ff4d32;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 0 20px;
+}
+
+.mat-menu-content {
+  padding: 5px 10px;
+}
+
+.custom-menu-item:hover {
+  background-color: #ff4d32 !important;
+  color: #fff !important;
+}
