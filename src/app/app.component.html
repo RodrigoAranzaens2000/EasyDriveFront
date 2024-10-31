@@ -2,7 +2,7 @@
   <!-- Menú en la izquierda -->
   <div class="menu-left">
     <button mat-button [matMenuTriggerFor]="mainMenu" style="color: #ff4d32">
-      Información del negocio
+      <mat-icon>menu</mat-icon> Información del negocio 
     </button>
   </div>
 
@@ -43,9 +43,6 @@
 <!-- Submenú Insights de Servicios -->
 <mat-menu #menuServiciosInsights="matMenu">
   <p class="menu-section-title">Insights de Servicios</p>
-  <button mat-menu-item routerLink="/servicios/reportes" class="custom-menu-item">
-    <mat-icon>assessment</mat-icon> Ver Reportes
-  </button>
   <button mat-menu-item routerLink="/servicios/queries" class="custom-menu-item">
     <mat-icon>query_stats</mat-icon> Mostrar Queries
   </button>
@@ -68,9 +65,6 @@
 <!-- Submenú Insights de Centros Médicos -->
 <mat-menu #menuCentrosInsights="matMenu">
   <p class="menu-section-title">Insights de Centros Médicos</p>
-  <button mat-menu-item routerLink="/centrosmedicos/reportes" class="custom-menu-item">
-    <mat-icon>assessment</mat-icon> Ver Reportes
-  </button>
   <button mat-menu-item routerLink="/centrosmedicos/queries" class="custom-menu-item">
     <mat-icon>query_stats</mat-icon> Mostrar Queries
 </button>
@@ -93,9 +87,6 @@
 <!-- Submenú Insights de Usuarios -->
 <mat-menu #menuUsuariosInsights="matMenu">
   <p class="menu-section-title">Insights de Usuarios</p>
-  <button mat-menu-item routerLink="/usuarios/reportes" class="custom-menu-item">
-    <mat-icon>assessment</mat-icon> Ver Reportes
-  </button>
   <button mat-menu-item routerLink="/usuarios/queries" class="custom-menu-item">
     <mat-icon>query_stats</mat-icon> Mostrar Queries
   </button>
