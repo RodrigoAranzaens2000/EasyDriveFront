@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   styleUrl: './creaeditausuarios.component.css'
 })
 export class CreaeditausuariosComponent {
+
   form: FormGroup;
   usuarios: Usuarios = new Usuarios();
   id: number = 0;
@@ -46,7 +47,8 @@ export class CreaeditausuariosComponent {
       hapellidoMaterno: ['', Validators.required],
       hcorreo: ['', [Validators.required, Validators.email]],
       hpassword: ['', Validators.required],
-      henabled: [true, Validators.required] // Valor por defecto y validación
+      henabled: [true, Validators.required],// Valor por defecto y validación
+      hfoto: ['', Validators.required]
     });
     
   }
@@ -71,7 +73,8 @@ export class CreaeditausuariosComponent {
         name: this.form.value.hname,
         apellidoMaterno: this.form.value.hapellidoMaterno,
         apellidoPaterno: this.form.value.hapellidoPaterno,
-        correo: this.form.value.hcorreo
+        correo: this.form.value.hcorreo,
+        fotoPerfil: this.form.value.hfoto
       };
 
       if (this.edicion) {
@@ -103,8 +106,10 @@ export class CreaeditausuariosComponent {
         hname: data.name,
         hapellidoMaterno: data.apellidoMaterno,
         hapellidoPaterno: data.apellidoPaterno,
-        hcorreo: data.correo
+        hcorreo: data.correo,
+        hfoto: data.fotoPerfil
       });
     });
   }
+
 }

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { CentrosmedicosComponent } from "./components/centrosmedicos/centrosmedicos.component";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +19,16 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    RouterModule],
+    RouterModule,
+  FormsModule,
+CommonModule,
+MatFormFieldModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'EasyDriveFront';
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }  
+
 }
+  
+

@@ -1,9 +1,8 @@
 <mat-toolbar class="custom-toolbar">
   <!-- Menú en la izquierda -->
   <div class="menu-left">
-   
     <button mat-button [matMenuTriggerFor]="mainMenu" style="color: #ff4d32">
-      Menú Principal
+      Información del negocio
     </button>
   </div>
 
@@ -12,6 +11,8 @@
     <img src="assets/images/logoEd.png" alt="Logo Easy Drive" class="logo-img">
   </div>
 </mat-toolbar>
+
+<!-- Menú principal -->
 <mat-menu #mainMenu="matMenu">
   <p class="menu-section-title">Módulos</p>
   <button mat-menu-item [matMenuTriggerFor]="menuServicios" class="custom-menu-item">
@@ -25,6 +26,7 @@
   </button>
 </mat-menu>
 
+<!-- Submenú Servicios -->
 <mat-menu #menuServicios="matMenu">
   <p class="menu-section-title">Servicios</p>
   <button mat-menu-item routerLink="/servicios" class="custom-menu-item">
@@ -33,8 +35,23 @@
   <button mat-menu-item routerLink="/servicios/nuevo" class="custom-menu-item">
     <mat-icon>add_circle</mat-icon> Registrar Servicio
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuServiciosInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
 </mat-menu>
 
+<!-- Submenú Insights de Servicios -->
+<mat-menu #menuServiciosInsights="matMenu">
+  <p class="menu-section-title">Insights de Servicios</p>
+  <button mat-menu-item routerLink="/servicios/reportes" class="custom-menu-item">
+    <mat-icon>assessment</mat-icon> Ver Reportes
+  </button>
+  <button mat-menu-item routerLink="/servicios/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
+
+<!-- Submenú Centros Médicos -->
 <mat-menu #menuCentros="matMenu">
   <p class="menu-section-title">Centros Médicos</p>
   <button mat-menu-item routerLink="/centrosmedicos" class="custom-menu-item">
@@ -43,8 +60,23 @@
   <button mat-menu-item routerLink="/centrosmedicos/nuevo" class="custom-menu-item">
     <mat-icon>add_circle</mat-icon> Registrar Centro Médico
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
 </mat-menu>
 
+<!-- Submenú Insights de Centros Médicos -->
+<mat-menu #menuCentrosInsights="matMenu">
+  <p class="menu-section-title">Insights de Centros Médicos</p>
+  <button mat-menu-item routerLink="/centrosmedicos/reportes" class="custom-menu-item">
+    <mat-icon>assessment</mat-icon> Ver Reportes
+  </button>
+  <button mat-menu-item routerLink="/centrosmedicos/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+</button>
+</mat-menu>
+
+<!-- Submenú Usuarios -->
 <mat-menu #menuUsuarios="matMenu">
   <p class="menu-section-title">Usuarios</p>
   <button mat-menu-item routerLink="/usuarios" class="custom-menu-item">
@@ -52,6 +84,20 @@
   </button>
   <button mat-menu-item routerLink="/usuarios/nuevo" class="custom-menu-item">
     <mat-icon>person_add</mat-icon> Registrar Usuario
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuUsuariosInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
+</mat-menu>
+
+<!-- Submenú Insights de Usuarios -->
+<mat-menu #menuUsuariosInsights="matMenu">
+  <p class="menu-section-title">Insights de Usuarios</p>
+  <button mat-menu-item routerLink="/usuarios/reportes" class="custom-menu-item">
+    <mat-icon>assessment</mat-icon> Ver Reportes
+  </button>
+  <button mat-menu-item routerLink="/usuarios/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
   </button>
 </mat-menu>
 
