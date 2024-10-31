@@ -3,6 +3,8 @@ import { ServiciosComponent } from './components/servicios/servicios.component';
 import { CreaeditaserviciosComponent } from './components/servicios/creaeditaservicios/creaeditaservicios.component';
 import { CentrosmedicosComponent } from './components/centrosmedicos/centrosmedicos.component';
 import { CreaeditacentrosComponent } from './components/centrosmedicos/creaeditacentros/creaeditacentros.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { CreaeditausuariosComponent } from './components/usuarios/creaeditausuarios/creaeditausuarios.component';
 
 export const routes: Routes = [
     {
@@ -30,6 +32,20 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component : CreaeditacentrosComponent,
+            },
+        ],
+    },
+    {
+        path : 'usuarios',
+        component: UsuariosComponent,
+        children:[
+            {
+                path: 'nuevo',
+                component: CreaeditausuariosComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component : CreaeditausuariosComponent,
             },
         ],
     }
