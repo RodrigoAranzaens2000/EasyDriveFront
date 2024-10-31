@@ -1,9 +1,9 @@
-<div class="container" style="text-align: center;margin:5%">
+<div class="container">
     <div>
         <h1>Registro de Centros</h1>
     </div>
     <div>
-        <form class="example-form" [formGroup]="form" (submit)="aceptar()">
+        <form class="example-form" [formGroup]="form" (submit)="aceptar()" style="text-align: center;">
 
             <mat-form-field class="example-full-width" *ngIf="edicion">
                 <mat-label>Código</mat-label>
@@ -11,25 +11,20 @@
             </mat-form-field>
             <br />
 
-
-
             <mat-form-field class="example-full-width">
-                <mat-label>CentroMedico</mat-label>
+                <mat-label>Centro Médico</mat-label>
                 <input matInput placeholder="hnombre" formControlName="hnombre" />
             </mat-form-field>
             <br />
 
-
-
             <mat-form-field class="example-full-width">
-                <mat-label>ruc</mat-label>
+                <mat-label>RUC</mat-label>
                 <input matInput placeholder="hruc" formControlName="hruc" />
             </mat-form-field>
             <br />
 
-
             <mat-form-field class="example-full-width">
-                <mat-label>imagen</mat-label>
+                <mat-label>Imagen</mat-label>
                 <input matInput placeholder="himagen" formControlName="himagen" />
             </mat-form-field>
             <br />
