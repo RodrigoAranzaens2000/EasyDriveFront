@@ -5,14 +5,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { CentrosMedicos } from '../../../models/CentrosMedicos';
 import { CentrosmedicosService } from '../../../services/centrosmedicos.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-creaeditacentros',
   standalone: true,
-  providers: [],
+  providers: [provideNativeDateAdapter()],
   imports: [
     MatFormFieldModule,
     MatInputModule,
