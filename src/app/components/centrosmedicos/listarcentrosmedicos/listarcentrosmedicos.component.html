@@ -1,57 +1,55 @@
 <div class="container">
-
-  <div style="text-align: center;margin: 5%;">
-    <h1>Lista de Centros Medicos</h1>
+  <div class="title-container">
+    <h1>Lista de Centros Médicos</h1>
   </div>
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+      <!-- Código -->
       <ng-container matColumnDef="c1">
-        <th mat-header-cell *matHeaderCellDef>Código </th>
-        <td mat-cell *matCellDef="let element"> {{element.idcentro}} </td>
+        <th mat-header-cell *matHeaderCellDef class="custom-header">Código</th>
+        <td mat-cell *matCellDef="let element">{{element.idcentro}}</td>
       </ng-container>
-
-
+    
+      <!-- Centro Médico -->
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef> centromedico </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        <th mat-header-cell *matHeaderCellDef class="custom-header">Centro Médico</th>
+        <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
       </ng-container>
-
+    
+      <!-- RUC -->
       <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef> ruc </th>
-        <td mat-cell *matCellDef="let element"> {{element.ruc}} </td>
+        <th mat-header-cell *matHeaderCellDef class="custom-header">RUC</th>
+        <td mat-cell *matCellDef="let element">{{element.ruc}}</td>
       </ng-container>
-
+    
       <!-- Imagen -->
       <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef> Imagen </th>
+        <th mat-header-cell *matHeaderCellDef class="custom-header">Imagen</th>
         <td mat-cell *matCellDef="let element">
-          <img [src]="element.imgServicio" alt="Imagen del Servicio" style="width: 100px; height: auto;" />
+          <img [src]="element.imgServicio" alt="Imagen del Servicio" class="image-cell" />
         </td>
       </ng-container>
-
-
+    
+      <!-- Acciones -->
       <ng-container matColumnDef="accion01">
-        <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+        <th mat-header-cell *matHeaderCellDef class="custom-header">Eliminar</th>
         <td mat-cell *matCellDef="let element" (click)="eliminar(element.idcentro)">
-          <mat-icon style="color:hsl(4, 97%, 48%) ;">delete</mat-icon>
+          <mat-icon class="action-icon delete-icon">delete</mat-icon>
         </td>
       </ng-container>
-
+    
       <ng-container matColumnDef="accion02">
-        <th mat-header-cell *matHeaderCellDef> Actualizar </th>
-        <td mat-cell *matCellDef="let element" [routerLink]="['ediciones',element.idcentro]">
-          <mat-icon style="color:hsl(4, 97%, 48%) ;">edit</mat-icon>
+        <th mat-header-cell *matHeaderCellDef class="custom-header">Actualizar</th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['ediciones', element.idcentro]">
+          <mat-icon class="action-icon edit-icon">edit</mat-icon>
         </td>
       </ng-container>
-
-
+    
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
     </table>
+    
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator class="custom-paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
