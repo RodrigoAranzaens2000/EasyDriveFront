@@ -1,0 +1,69 @@
+<div class="container">
+    <h1>Registro de Usuarios</h1>
+    <form class="example-form" [formGroup]="form" (submit)="aceptar()" style="text-align: center;">
+
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="hcodigo" />
+        </mat-form-field>
+        <br />
+
+        <!-- Campo para el enlace de imagen -->
+        <mat-form-field class="example-full-width">
+            <mat-label>Enlace de Imagen de Perfil</mat-label>
+            <input matInput placeholder="http://ejemplo.com/imagen.jpg" formControlName="hfoto" type="url" />
+            <mat-error *ngIf="form.get('hfoto')?.hasError('required')">El enlace de imagen es requerido.</mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="full-width">
+            <mat-label>Nombre de Usuario</mat-label>
+            <input matInput formControlName="husername" />
+            <mat-error *ngIf="form.get('husername')?.hasError('required')">El nombre de usuario es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="hname" />
+            <mat-error *ngIf="form.get('hname')?.hasError('required')">El nombre es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Apellido Paterno</mat-label>
+            <input matInput formControlName="hapellidoPaterno" />
+            <mat-error *ngIf="form.get('hapellidoPaterno')?.hasError('required')">El apellido paterno es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Apellido Materno</mat-label>
+            <input matInput formControlName="hapellidoMaterno" />
+            <mat-error *ngIf="form.get('hapellidoMaterno')?.hasError('required')">El apellido materno es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="hcorreo" type="email" />
+            <mat-error *ngIf="form.get('hcorreo')?.hasError('required')">El correo es requerido.</mat-error>
+            <mat-error *ngIf="form.get('hcorreo')?.hasError('email')">El correo no es válido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="hpassword" />
+            <mat-error *ngIf="form.get('hpassword')?.hasError('required')">La contraseña es requerida.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="henabled">
+                <mat-option [value]="true">Habilitado</mat-option>
+                <mat-option [value]="false">Deshabilitado</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('henabled')?.hasError('required')">El estado es requerido.</mat-error>
+        </mat-form-field>
+
+        <div class="button-container">
+            <button mat-raised-button color="primary" type="submit">Aceptar</button>
+        </div>
+    </form>
+</div>

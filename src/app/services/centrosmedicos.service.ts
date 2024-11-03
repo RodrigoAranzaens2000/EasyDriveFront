@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { CentrosMedicos } from '../models/CentrosMedicos';
 import { Subject } from 'rxjs';
+import { PromedioCentrosMedicos } from '../models/PromedioCentrosMedicos';
 
 const base_url = environment.base;
 @Injectable({
@@ -22,6 +23,12 @@ export class CentrosmedicosService {
   insert(de: CentrosMedicos) {
     return this.http.post(this.url, de);
   }
+
+    // Método para obtener los resultados de los queries
+    getConsultasPromedio() {
+      return this.http.get<PromedioCentrosMedicos[]>(`${this.url}/centrosreseinaspromedio`); 
+    }
+
 
   //get y set
   getList() {

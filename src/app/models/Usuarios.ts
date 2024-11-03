@@ -7,5 +7,6 @@ export class Usuarios {
     apellidoMaterno: string = ""
     apellidoPaterno: string = ""
     correo: string = ""
+    fotoPerfil: string = ""
 
 }
