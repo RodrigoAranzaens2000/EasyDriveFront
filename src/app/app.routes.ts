@@ -10,6 +10,8 @@ import { EscuelasComponent } from './components/escuelas/escuelas.component';
 import { CreaeditaescuelasComponent } from './components/escuelas/creaeditaescuelas/creaeditaescuelas.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { CreaeditapromocionesComponent } from './components/promociones/creaeditapromociones/creaeditapromociones.component';
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { CreaeditanotificacionesComponent } from './components/notificaciones/creaeditanotificaciones/creaeditanotificaciones.component';
 
 export const routes: Routes = [
     {
@@ -84,6 +86,20 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditapromocionesComponent,
+            },
+        ],
+    },
+    {
+        path: 'notificaciones',
+        component: NotificacionesComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditanotificacionesComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditanotificacionesComponent,
             },
         ],
     }

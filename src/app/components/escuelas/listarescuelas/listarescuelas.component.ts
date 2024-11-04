@@ -15,28 +15,20 @@ import { EscuelasService } from '../../../services/escuelas.service';
 })
 export class ListarescuelasComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Escuelas> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'accion01', 'accion02'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' , 'c5'];
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
   constructor(private eS: EscuelasService) {}
   ngOnInit(): void {
     this.eS.list().subscribe((data) => {
-      this.dataSource.data = data;
+      this.dataSource = new MatTableDataSource(data);
     });
     this.eS.getList().subscribe((data) => {
-      this.dataSource.data = data;
+      this.dataSource = new MatTableDataSource(data);
     });
   }
-
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
 
-  eliminar(id: number) {
-    this.eS.delete(id).subscribe((data) => {
-      this.eS.list().subscribe((data) => {
-        this.eS.setList(data);
-      });
-    });
-  }
 }
