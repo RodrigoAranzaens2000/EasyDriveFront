@@ -33,6 +33,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item">
     <mat-icon>vibration</mat-icon> Notificaciones
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuDirecciones" class="custom-menu-item">
+    <mat-icon> directions</mat-icon> Direcciones
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -164,6 +167,17 @@
   <p class="menu-section-title">Insights de Notificaciones</p>
   <button mat-menu-item routerLink="/notificaciones/queries" class="custom-menu-item">
     <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
+
+<!-- Submenú Direcciones -->
+<mat-menu #menuDirecciones="matMenu">
+  <p class="menu-section-title">Direcciones </p>
+  <button mat-menu-item routerLink="/direcciones" class="custom-menu-item">
+    <mat-icon>attach_money</mat-icon> Listar Direcciones
+  </button>
+  <button mat-menu-item routerLink="/direcciones/nuevo" class="custom-menu-item">
+    <mat-icon>add_circle</mat-icon> Registrar Direcciones
   </button>
 </mat-menu>
 
