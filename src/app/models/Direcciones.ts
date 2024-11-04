@@ -1,4 +1,5 @@
 import { Escuelas } from "./Escuelas"
+import { Usuarios } from "./Usuarios"
 
 export class Direcciones {
     calle: string = ""
@@ -9,5 +10,7 @@ export class Direcciones {
     iddireccion: number = 0
     codigoPostal :number = 0
     longitud: number = 0
-    Escuelas: Escuelas=new Escuelas()
+    esc: Escuelas=new Escuelas()
+    user: Usuarios = new Usuarios()
+
 }

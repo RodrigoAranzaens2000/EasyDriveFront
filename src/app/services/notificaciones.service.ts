@@ -30,9 +30,6 @@ export class NotificacionesService {
     this.listaCambio.next(listaNueva);
   }
 
-  delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
-  }
 
   listId(id: number) {
     return this.http.get<Notificaciones>(`${this.url}/${id}`);
