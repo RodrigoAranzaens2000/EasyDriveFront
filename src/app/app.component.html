@@ -30,6 +30,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuPromociones" class="custom-menu-item">
     <mat-icon>monetization_on</mat-icon> Promociones
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item">
+    <mat-icon>vibration</mat-icon> Notificaciones
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -107,10 +110,19 @@
   <button mat-menu-item routerLink="/escuelas/nuevo" class="custom-menu-item">
     <mat-icon>add_circle</mat-icon> Registrar Escuelas
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuEscuelasInsights" class="custom-menu-item">
     <mat-icon>analytics</mat-icon> Insights
   </button>
 </mat-menu>
+
+<!-- Submenú Insights de Escuelas -->
+<mat-menu #menuEscuelasInsights="matMenu">
+  <p class="menu-section-title">Insights de Escuelas</p>
+  <button mat-menu-item routerLink="/Escuelas/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
+
 <!-- Submenú Promociones -->
 <mat-menu #menuPromociones="matMenu">
   <p class="menu-section-title">Promociones</p>
@@ -120,8 +132,40 @@
   <button mat-menu-item routerLink="/promociones/nuevo" class="custom-menu-item">
     <mat-icon>add_circle</mat-icon> Registrar Promociones
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuPromocionesInsights" class="custom-menu-item">
     <mat-icon>analytics</mat-icon> Insights
   </button>
 </mat-menu>
+
+<!-- Submenú Insights de Promociones -->
+<mat-menu #menuPromocionesInsights="matMenu">
+  <p class="menu-section-title">Insights de Promociones</p>
+  <button mat-menu-item routerLink="/Promociones/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
+
+<!-- Submenú Notificaciones -->
+<mat-menu #menuNotificaciones="matMenu">
+  <p class="menu-section-title">Notificaciones </p>
+  <button mat-menu-item routerLink="/notificaciones" class="custom-menu-item">
+    <mat-icon>attach_money</mat-icon> Listar Notificaciones
+  </button>
+  <button mat-menu-item routerLink="/notificaciones/nuevo" class="custom-menu-item">
+    <mat-icon>add_circle</mat-icon> Registrar Notificaciones
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
+</mat-menu>
+
+<!-- Submenú Insights de Notificaciones -->
+<mat-menu #menuNotificacionesInsights="matMenu">
+  <p class="menu-section-title">Insights de Notificaciones</p>
+  <button mat-menu-item routerLink="/notificaciones/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
+
+
 <router-outlet></router-outlet>

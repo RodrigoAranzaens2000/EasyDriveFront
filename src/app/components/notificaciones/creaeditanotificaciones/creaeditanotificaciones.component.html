@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="title-container">
+      <h1>Crear o Editar Notificación</h1>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Fecha de Notificación</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="hfecha" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('hfecha')?.hasError('required')">
+          La fecha es obligatoria
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Título</mat-label>
+        <input matInput placeholder="Título de la notificación" formControlName="htitulo" />
+        <mat-error *ngIf="form.get('htitulo')?.hasError('required')">
+          El título es obligatorio
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput placeholder="Escribe el mensaje aquí" formControlName="hmensaje"></textarea>
+        <mat-error *ngIf="form.get('hmensaje')?.hasError('required')">
+          El mensaje es obligatorio
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="huser">
+          <mat-option *ngFor="let p of listaUsuarios" [value]="p.id">
+            {{ p.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" class="custom-button">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+  
