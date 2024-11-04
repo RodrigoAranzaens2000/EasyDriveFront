@@ -27,6 +27,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuEscuelas" class="custom-menu-item">
     <mat-icon>school</mat-icon> Escuelas
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuPromociones" class="custom-menu-item">
+    <mat-icon>monetization_on</mat-icon> Promociones
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -103,6 +106,19 @@
   </button>
   <button mat-menu-item routerLink="/escuelas/nuevo" class="custom-menu-item">
     <mat-icon>add_circle</mat-icon> Registrar Escuelas
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
+</mat-menu>
+<!-- Submenú Promociones -->
+<mat-menu #menuPromociones="matMenu">
+  <p class="menu-section-title">Promociones</p>
+  <button mat-menu-item routerLink="/promociones" class="custom-menu-item">
+    <mat-icon>attach_money</mat-icon> Listar Promociones
+  </button>
+  <button mat-menu-item routerLink="/promociones/nuevo" class="custom-menu-item">
+    <mat-icon>add_circle</mat-icon> Registrar Promociones
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
     <mat-icon>analytics</mat-icon> Insights

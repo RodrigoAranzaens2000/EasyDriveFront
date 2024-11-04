@@ -3,8 +3,6 @@ import { ServiciosService } from '../../../services/servicios.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'; // Importado MatPaginator y MatPaginatorModule
 import { Servicios } from '../../../models/Servicios';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 

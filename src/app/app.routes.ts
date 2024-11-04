@@ -8,6 +8,8 @@ import { CreaeditausuariosComponent } from './components/usuarios/creaeditausuar
 import { PromediocentrosqueryComponent } from './components/centrosmedicos/promediocentrosquery/promediocentrosquery.component';
 import { EscuelasComponent } from './components/escuelas/escuelas.component';
 import { CreaeditaescuelasComponent } from './components/escuelas/creaeditaescuelas/creaeditaescuelas.component';
+import { PromocionesComponent } from './components/promociones/promociones.component';
+import { CreaeditapromocionesComponent } from './components/promociones/creaeditapromociones/creaeditapromociones.component';
 
 export const routes: Routes = [
     {
@@ -73,15 +75,15 @@ export const routes: Routes = [
     },
     {
         path: 'promociones',
-        component: EscuelasComponent,
+        component: PromocionesComponent,
         children: [
             {
                 path: 'nuevo',
-                component: CreaeditaescuelasComponent,
+                component: CreaeditapromocionesComponent,
             },
             {
                 path: 'ediciones/:id',
-                component: CreaeditaescuelasComponent,
+                component: CreaeditapromocionesComponent,
             },
         ],
     }

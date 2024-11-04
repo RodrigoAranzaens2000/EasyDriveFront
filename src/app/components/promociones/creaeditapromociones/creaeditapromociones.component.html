@@ -1,1 +1,48 @@
-<p>creaeditapromociones works!</p>
+<div class="container">
+    <div class="title-container">
+      <h1>Registro de Promociones</h1>
+    </div>
+    <div>
+        <form class="example-form" [formGroup]="form" (submit)="aceptar()">
+          <mat-form-field class="example-full-width" *ngIf="edicion">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="hcodigo" readonly="readonly"/>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombre de Promocion</mat-label>
+            <input matInput placeholder="Nombre" formControlName="hnombre" />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput placeholder="Descripcion" formControlName="hdescripcion" rows="4"></textarea>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <mat-label>Descuento</mat-label>
+            <input matInput placeholder="Precio" formControlName="hdescuento" />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+              <mat-label>Fecha de Inicio</mat-label>
+              <input matInput [matDatepicker]="pickerinicio" formControlName="hfechainicio">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="pickerinicio"></mat-datepicker-toggle>
+              <mat-datepicker #pickerinicio></mat-datepicker>
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+              <mat-label>Fecha de Fin</mat-label>
+              <input matInput [matDatepicker]="pickerfin" formControlName="hfechafin">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="pickerfin"></mat-datepicker-toggle>
+              <mat-datepicker #pickerfin></mat-datepicker>
+          </mat-form-field>
+          <div>
+            <button mat-flat-button class="custom-button">Aceptar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  
