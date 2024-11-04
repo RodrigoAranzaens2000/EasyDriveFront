@@ -9,4 +9,4 @@ export class Resenias{
     Escuelas:Escuelas=new Escuelas()
     CentrosMedicos:CentrosMedicos=new CentrosMedicos()
 }
-/* */
+/* prueba */
