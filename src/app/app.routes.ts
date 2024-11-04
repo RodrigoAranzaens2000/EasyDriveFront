@@ -6,6 +6,8 @@ import { CreaeditacentrosComponent } from './components/centrosmedicos/creaedita
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { CreaeditausuariosComponent } from './components/usuarios/creaeditausuarios/creaeditausuarios.component';
 import { PromediocentrosqueryComponent } from './components/centrosmedicos/promediocentrosquery/promediocentrosquery.component';
+import { EscuelasComponent } from './components/escuelas/escuelas.component';
+import { CreaeditaescuelasComponent } from './components/escuelas/creaeditaescuelas/creaeditaescuelas.component';
 
 export const routes: Routes = [
     {
@@ -52,6 +54,34 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditausuariosComponent,
+            },
+        ],
+    },
+    {
+        path: 'escuelas',
+        component: EscuelasComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditaescuelasComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditaescuelasComponent,
+            },
+        ],
+    },
+    {
+        path: 'promociones',
+        component: EscuelasComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditaescuelasComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditaescuelasComponent,
             },
         ],
     }

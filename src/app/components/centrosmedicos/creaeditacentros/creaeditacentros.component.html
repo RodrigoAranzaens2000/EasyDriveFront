@@ -4,34 +4,29 @@
     </div>
     <div>
         <form class="example-form" [formGroup]="form" (submit)="aceptar()" style="text-align: center;">
-
             <mat-form-field class="example-full-width" *ngIf="edicion">
                 <mat-label>Código</mat-label>
-                <input matInput formControlName="hcodigo" />
+                <input matInput formControlName="hcodigo" readonly="readonly"/>
             </mat-form-field>
             <br />
-
             <mat-form-field class="example-full-width">
                 <mat-label>Centro Médico</mat-label>
                 <input matInput placeholder="Nombre" formControlName="hnombre" />
             </mat-form-field>
             <br />
-
             <mat-form-field class="example-full-width">
                 <mat-label>RUC</mat-label>
                 <input matInput placeholder="RUC" formControlName="hruc" />
             </mat-form-field>
             <br />
-
             <mat-form-field class="example-full-width">
                 <mat-label>Imagen</mat-label>
                 <input matInput placeholder="URL de imagen" formControlName="himagen" />
             </mat-form-field>
             <br />
-
             <div>
                 <button mat-flat-button class="custom-button">Aceptar</button>
-            </div>
+            </div> 
         </form>
     </div>
 </div>

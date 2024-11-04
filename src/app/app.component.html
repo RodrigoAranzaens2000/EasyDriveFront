@@ -24,6 +24,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuUsuarios" class="custom-menu-item">
     <mat-icon>group</mat-icon> Usuarios
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuEscuelas" class="custom-menu-item">
+    <mat-icon>school</mat-icon> Escuelas
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -92,4 +95,17 @@
   </button>
 </mat-menu>
 
+<!-- Submenú Escuelas -->
+<mat-menu #menuEscuelas="matMenu">
+  <p class="menu-section-title">Escuelas</p>
+  <button mat-menu-item routerLink="/escuelas" class="custom-menu-item">
+    <mat-icon>library_books</mat-icon> Listar Escuelas
+  </button>
+  <button mat-menu-item routerLink="/escuelas/nuevo" class="custom-menu-item">
+    <mat-icon>add_circle</mat-icon> Registrar Escuelas
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
+</mat-menu>
 <router-outlet></router-outlet>

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="title-container">
-      <h1>Registro de Dispositivos</h1>
+      <h1>Registro de Escuelas</h1>
     </div>
     <div>
       <form class="example-form" [formGroup]="form" (submit)="aceptar()">
@@ -10,19 +10,23 @@
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>Servicio</mat-label>
+          <mat-label>Nombre de Escuela</mat-label>
           <input matInput placeholder="Nombre" formControlName="hnombre" />
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>Descripción</mat-label>
-          <textarea matInput placeholder="Descripcion" formControlName="hdescripcion" rows="4"></textarea>
+          <mat-label>Ruc</mat-label>
+          <input matInput placeholder="Ruc" formControlName="hruc"/>
         </mat-form-field>
         <br />
-        <mat-form-field class="example-full-width">
-          <mat-label>Precio</mat-label>
-          <input matInput placeholder="Precio" formControlName="hprecio" />
-        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Promocion</mat-label>
+            <mat-select  formControlName="hpromocion">
+              @for (p of listaPromociones; track p) {
+              <mat-option [value]="p.idpromocion">{{ p.nombrePromocion }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
           <mat-label>Imagen</mat-label>
@@ -35,4 +39,3 @@
       </form>
     </div>
   </div>
-  

@@ -5,5 +5,5 @@ export class Escuelas {
     nombre:string=""
     ruc:number=0
     imgEscuela : string = ""
-    Promocion:Promocion=new Promocion()
+    prom:Promocion=new Promocion()
 }

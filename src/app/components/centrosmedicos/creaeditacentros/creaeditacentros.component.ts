@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,10 +24,10 @@ import { CentrosmedicosService } from '../../../services/centrosmedicos.service'
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './creaeditacentros.component.html',
-  styleUrls: ['./creaeditacentros.component.css'] // Corrige a styleUrls
+  styleUrls: ['./creaeditacentros.component.css'], // Corrige a styleUrls
 })
 export class CreaeditacentrosComponent implements OnInit {
   form: FormGroup;
@@ -39,10 +44,10 @@ export class CreaeditacentrosComponent implements OnInit {
   ) {
     // Inicializa el formulario en el constructor
     this.form = this.formBuilder.group({
-      hcodigo: [''],
+      hcodigo: ['', Validators.required],
       hnombre: ['', Validators.required],
-      hruc: ['', [Validators.required, Validators.pattern("^[0-9]*$")]], // Solo números
-      himagen: ['', Validators.required]
+      hruc: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // Solo números
+      himagen: ['', Validators.required],
     });
   }
 
@@ -79,14 +84,14 @@ export class CreaeditacentrosComponent implements OnInit {
       if (this.form.get('hruc')?.hasError('pattern')) {
         this.snackBar.open('El ruc debe ser un número válido.', 'Cerrar', {
           duration: 3000, // Duración en milisegundos
-          panelClass: ['error-snackbar'] // Estilos personalizados si los necesitas
+          panelClass: ['error-snackbar'], // Estilos personalizados si los necesitas
         });
       }
     }
   }
 
   private listarCentros() {
-    this.cS.list().subscribe(data => {
+    this.cS.list().subscribe((data) => {
       this.cS.setList(data);
       this.router.navigate(['centrosmedicos']);
     });
@@ -99,7 +104,7 @@ export class CreaeditacentrosComponent implements OnInit {
           hcodigo: data.idcentro,
           hnombre: data.nombre,
           hruc: data.ruc,
-          himagen: data.imgCentro
+          himagen: data.imgCentro,
         });
       });
     }
