@@ -3,13 +3,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Direcciones } from '../../../models/Direcciones';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { DireccionesService } from '../../../services/direcciones.service';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-listardirecciones',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterModule, MatPaginatorModule],
+  imports: [MatTableModule, MatPaginatorModule],
   templateUrl: './listardirecciones.component.html',
   styleUrl: './listardirecciones.component.css'
 })

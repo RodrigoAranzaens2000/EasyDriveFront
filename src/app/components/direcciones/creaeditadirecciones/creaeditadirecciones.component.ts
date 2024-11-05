@@ -1,4 +1,4 @@
-import { Component, Directive } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { DireccionesService } from '../../../services/direcciones.service';
 import { UsuariosService } from '../../../services/usuario.service';
 import { EscuelasService } from '../../../services/escuelas.service';
@@ -27,7 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './creaeditadirecciones.component.html',
   styleUrl: './creaeditadirecciones.component.css'
 })
-export class CreaeditadireccionesComponent {
+export class CreaeditadireccionesComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaUsuarios: Usuarios[] = [];
   listaEscuelas: Escuelas[] = [];
@@ -70,8 +70,8 @@ export class CreaeditadireccionesComponent {
       this.direc.latitud = this.form.value.hlatitud;
       this.direc.estadProvincia = this.form.value.hestadProvincia;
       this.direc.longitud = this.form.value.hlongitud;
-      this.direc.user.id = this.form.value.huser;
-      this.direc.esc.idescuela = this.form.value.hescuela
+      this.direc.user.id = this.form.value.huser || null;
+      this.direc.esc.idescuela = this.form.value.hescuela || null
 
       this.dS.insert(this.direc).subscribe((data) => {
         this.dS.list().subscribe((data) => {

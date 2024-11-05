@@ -14,6 +14,8 @@ import { NotificacionesComponent } from './components/notificaciones/notificacio
 import { CreaeditanotificacionesComponent } from './components/notificaciones/creaeditanotificaciones/creaeditanotificaciones.component';
 import { DireccionesComponent } from './components/direcciones/direcciones.component';
 import { CreaeditadireccionesComponent } from './components/direcciones/creaeditadirecciones/creaeditadirecciones.component';
+import { TelefonosComponent } from './components/telefonos/telefonos.component';
+import { CreaeditatelefonosComponent } from './components/telefonos/creaeditatelefonos/creaeditatelefonos.component';
 
 export const routes: Routes = [
     {
@@ -105,7 +107,6 @@ export const routes: Routes = [
             },
         ],
     },
-
     {
         path: 'direcciones',
         component: DireccionesComponent,
@@ -117,6 +118,21 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditadireccionesComponent,
+            },
+        ],
+    },
+    
+    {
+        path: 'telefonos',
+        component: TelefonosComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditatelefonosComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditatelefonosComponent,
             },
         ],
     }
