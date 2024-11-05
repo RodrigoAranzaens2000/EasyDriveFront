@@ -10,15 +10,12 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { provideNativeDateAdapter } from '@angular/material/core';
 import { CentrosMedicos } from '../../../models/CentrosMedicos';
 import { CentrosmedicosService } from '../../../services/centrosmedicos.service';
 
 @Component({
   selector: 'app-creaeditacentros',
   standalone: true,
-  providers: [provideNativeDateAdapter()],
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -40,13 +37,14 @@ export class CreaeditacentrosComponent implements OnInit {
     private cS: CentrosmedicosService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar // Agrega el servicio para Snackbar
   ) {
     // Inicializa el formulario en el constructor
     this.form = this.formBuilder.group({
       hcodigo: ['', Validators.required],
       hnombre: ['', Validators.required],
       hruc: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // Solo números
+      hdireccion: ['', Validators.required],
+      htelefono: ['', Validators.required],
       himagen: ['', Validators.required],
     });
   }
@@ -67,6 +65,8 @@ export class CreaeditacentrosComponent implements OnInit {
       this.centros.nombre = this.form.value.hnombre;
       this.centros.ruc = this.form.value.hruc;
       this.centros.imgCentro = this.form.value.himagen;
+      this.centros.direccion = this.form.value.hdireccion;
+      this.centros.numeroTelefono = this.form.value.htelefono;
 
       if (this.edicion) {
         // Actualizar el centro médico
@@ -79,17 +79,8 @@ export class CreaeditacentrosComponent implements OnInit {
           this.listarCentros();
         });
       }
-    } else {
-      // Mostrar notificación de error
-      if (this.form.get('hruc')?.hasError('pattern')) {
-        this.snackBar.open('El ruc debe ser un número válido.', 'Cerrar', {
-          duration: 3000, // Duración en milisegundos
-          panelClass: ['error-snackbar'], // Estilos personalizados si los necesitas
-        });
-      }
     }
   }
-
   private listarCentros() {
     this.cS.list().subscribe((data) => {
       this.cS.setList(data);
@@ -105,6 +96,9 @@ export class CreaeditacentrosComponent implements OnInit {
           hnombre: data.nombre,
           hruc: data.ruc,
           himagen: data.imgCentro,
+          hdireccion: data.direccion,
+          htelefono: data.numeroTelefono,
+
         });
       });
     }

@@ -4,7 +4,7 @@
 
         <mat-form-field class="example-full-width" *ngIf="edicion">
             <mat-label>Código</mat-label>
-            <input matInput formControlName="hcodigo" readonly="readonly"/>
+            <input matInput formControlName="hcodigo" readonly="readonly" />
         </mat-form-field>
         <br />
         <!-- Campo para el enlace de imagen -->
@@ -17,7 +17,8 @@
         <mat-form-field class="full-width">
             <mat-label>Nombre de Usuario</mat-label>
             <input matInput formControlName="husername" />
-            <mat-error *ngIf="form.get('husername')?.hasError('required')">El nombre de usuario es requerido.</mat-error>
+            <mat-error *ngIf="form.get('husername')?.hasError('required')">El nombre de usuario es
+                requerido.</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Nombre</mat-label>
@@ -27,13 +28,29 @@
         <mat-form-field class="full-width">
             <mat-label>Apellido Paterno</mat-label>
             <input matInput formControlName="hapellidoPaterno" />
-            <mat-error *ngIf="form.get('hapellidoPaterno')?.hasError('required')">El apellido paterno es requerido.</mat-error>
+            <mat-error *ngIf="form.get('hapellidoPaterno')?.hasError('required')">El apellido paterno es
+                requerido.</mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Apellido Materno</mat-label>
             <input matInput formControlName="hapellidoMaterno" />
-            <mat-error *ngIf="form.get('hapellidoMaterno')?.hasError('required')">El apellido materno es requerido.</mat-error>
+            <mat-error *ngIf="form.get('hapellidoMaterno')?.hasError('required')">El apellido materno es
+                requerido.</mat-error>
         </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>direccion</mat-label>
+            <input matInput formControlName="hdireccion" />
+            <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">La direccion es requerida.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Telefono</mat-label>
+            <input matInput formControlName="htelefono" />
+            <mat-error *ngIf="form.get('htelefono')?.hasError('required')">El numero de telefono es
+                requerido.</mat-error>
+        </mat-form-field>
+
         <mat-form-field class="full-width">
             <mat-label>Correo Electrónico</mat-label>
             <input matInput formControlName="hcorreo" type="email" />

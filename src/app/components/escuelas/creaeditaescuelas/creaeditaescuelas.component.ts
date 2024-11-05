@@ -16,7 +16,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Promocion } from '../../../models/Promocion';
 import { EscuelasService } from '../../../services/escuelas.service';
 import { PromocionesService } from '../../../services/promociones.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-creaeditaescuelas',
@@ -46,13 +46,14 @@ export class CreaeditaescuelasComponent implements OnInit {
     private route: ActivatedRoute,
     private eS: EscuelasService,
     private pS: PromocionesService,
-    private snackBar: MatSnackBar
   ) {
     this.form = this.formBuilder.group({
       hcodigo: [''],
       hnombre: ['', Validators.required],
       hruc: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       himagen: ['', Validators.required],
+      hdireccion: ['', Validators.required],
+      htelefono: ['', Validators.required],
       hpromocion: ['', Validators.required],
     });
   }
@@ -73,37 +74,19 @@ export class CreaeditaescuelasComponent implements OnInit {
   aceptar() {
     if (this.form.valid) {
       this.escuelas.idescuela = this.form.value.hcodigo;
-        this.escuelas.nombre = this.form.value.hnombre;
-        this.escuelas.ruc = this.form.value.hruc;
-        this.escuelas.imgEscuela = this.form.value.himagen;
-        this.escuelas.prom.idpromocion = this.form.value.hpromocion;
+      this.escuelas.nombre = this.form.value.hnombre;
+      this.escuelas.ruc = this.form.value.hruc;
+      this.escuelas.imgEscuela = this.form.value.himagen;
+      this.escuelas.direccion = this.form.value.hdireccion
+      this.escuelas.numeroTelefono = this.form.value.htelefono
+      this.escuelas.prom.idpromocion = this.form.value.hpromocion;
 
-      if (this.edicion) {
-        this.eS.update(this.escuelas).subscribe(() => {
-          this.listarEscuelas();
-        });
-      } else {
-        this.eS.insert(this.escuelas).subscribe(() => {
-          this.listarEscuelas();
-        });
-      }
+
+      this.eS.insert(this.escuelas).subscribe(() => {
+        this.listarEscuelas();
+      });
       this.router.navigate(['escuelas']);
-    } else {
-      let mensajeError = 'Todos los campos deben estar llenos';
-      // Mostrar notificación de error
-    if(this.form.get('hnombre')?.hasError('required')||
-    this.form.get('hruc')?.hasError('required')||
-    this.form.get('hpromocion')?.hasError('required')||
-    this.form.get('himagen')?.hasError('required')){
-      mensajeError = 'Todos los campos deben estar llenos'
-    } else if (this.form.get('hruc')?.hasError('pattern')){
-      mensajeError = 'El ruc debe ser un número válido.'
     }
-    this.snackBar.open(mensajeError, 'Cerrar', {
-      duration: 3000,
-      panelClass: ['error-snackbar'],
-    });
-  }
   }
 
   private listarEscuelas() {
@@ -120,6 +103,8 @@ export class CreaeditaescuelasComponent implements OnInit {
         hnombre: data.nombre,
         hruc: data.ruc,
         himagen: data.imgEscuela,
+        hdireccion: data.direccion,
+        htelefono: data.numeroTelefono,
         hpromocion: data.prom,
       });
     });
