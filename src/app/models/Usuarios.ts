@@ -8,4 +8,7 @@ export class Usuarios {
     apellidoPaterno: string = ""
     correo: string = ""
     fotoPerfil: string = ""
+    direccion: string = ""
+    numeroTelefono: string = ""
+
 }

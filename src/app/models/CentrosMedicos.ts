@@ -3,4 +3,6 @@ export class CentrosMedicos {
     nombre:string=""
     ruc:number=0
     imgCentro : string = ""
+    direccion: string = ""
+    numeroTelefono: string = ""
 }

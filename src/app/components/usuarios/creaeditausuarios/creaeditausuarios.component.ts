@@ -16,7 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 @Component({
   selector: 'app-creaeditausuarios',
   standalone: true,
-  imports: [   MatFormFieldModule,
+  imports: [MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -48,9 +48,11 @@ export class CreaeditausuariosComponent {
       hcorreo: ['', [Validators.required, Validators.email]],
       hpassword: ['', Validators.required],
       henabled: [true, Validators.required],// Valor por defecto y validación
-      hfoto: ['', Validators.required]
+      hfoto: ['', Validators.required],
+      hdireccion: ['', Validators.required],
+      htelefono: ['', Validators.required]
     });
-    
+
   }
 
   ngOnInit(): void {
@@ -74,7 +76,9 @@ export class CreaeditausuariosComponent {
         apellidoMaterno: this.form.value.hapellidoMaterno,
         apellidoPaterno: this.form.value.hapellidoPaterno,
         correo: this.form.value.hcorreo,
-        fotoPerfil: this.form.value.hfoto
+        fotoPerfil: this.form.value.hfoto,
+        direccion: this.form.value.hdireccion,
+        numeroTelefono: this.form.value.htelefono
       };
 
       if (this.edicion) {
@@ -86,7 +90,7 @@ export class CreaeditausuariosComponent {
           this.listarusuarios();
         });
       }
-    } 
+    }
   }
 
   private listarusuarios() {
@@ -107,7 +111,9 @@ export class CreaeditausuariosComponent {
         hapellidoMaterno: data.apellidoMaterno,
         hapellidoPaterno: data.apellidoPaterno,
         hcorreo: data.correo,
-        hfoto: data.fotoPerfil
+        hfoto: data.fotoPerfil,
+        hdireccion: data.direccion,
+        htelefono: data.numeroTelefono
       });
     });
   }

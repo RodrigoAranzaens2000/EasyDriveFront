@@ -5,5 +5,7 @@ export class Escuelas {
     nombre:string=""
     ruc:number=0
     imgEscuela : string = ""
+    direccion: string = ""
+    numeroTelefono: string = ""
     prom:Promocion=new Promocion()
 }

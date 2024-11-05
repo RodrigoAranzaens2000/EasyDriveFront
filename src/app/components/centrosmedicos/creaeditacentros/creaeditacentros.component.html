@@ -1,32 +1,61 @@
 <div class="container">
-    <div>
-        <h1>Registro de Centros</h1>
+    <h1>Crear/Editar Centro</h1>
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      
+      <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" placeholder="Código" required>
+          <mat-error *ngIf="form.get('hcodigo')?.hasError('required')">
+              El campo Código es obligatorio
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="hnombre" placeholder="Nombre" required>
+          <mat-error *ngIf="form.get('hnombre')?.hasError('required')">
+              El campo Nombre es obligatorio
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+          <mat-label>RUC</mat-label>
+          <input matInput formControlName="hruc" placeholder="RUC" required>
+          <mat-error *ngIf="form.get('hruc')?.hasError('required')">
+              El campo RUC es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.get('hruc')?.hasError('pattern')">
+              El RUC solo puede contener números
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Dirección</mat-label>
+          <input matInput formControlName="hdireccion" placeholder="Dirección" required>
+          <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
+              El campo Dirección es obligatorio
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="htelefono" placeholder="Teléfono" required>
+          <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
+              El campo Teléfono es obligatorio
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Imagen</mat-label>
+          <input matInput formControlName="himagen" placeholder="URL de la Imagen" required>
+          <mat-error *ngIf="form.get('himagen')?.hasError('required')">
+              El campo Imagen es obligatorio
+          </mat-error>
+      </mat-form-field>
+  
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit">Aceptar</button>
     </div>
-    <div>
-        <form class="example-form" [formGroup]="form" (submit)="aceptar()" style="text-align: center;">
-            <mat-form-field class="example-full-width" *ngIf="edicion">
-                <mat-label>Código</mat-label>
-                <input matInput formControlName="hcodigo" readonly="readonly"/>
-            </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-                <mat-label>Centro Médico</mat-label>
-                <input matInput placeholder="Nombre" formControlName="hnombre" />
-            </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-                <mat-label>RUC</mat-label>
-                <input matInput placeholder="RUC" formControlName="hruc" />
-            </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-                <mat-label>Imagen</mat-label>
-                <input matInput placeholder="URL de imagen" formControlName="himagen" />
-            </mat-form-field>
-            <br />
-            <div>
-                <button mat-flat-button class="custom-button">Aceptar</button>
-            </div> 
-        </form>
-    </div>
-</div>
+    </form>
+  </div>
+  

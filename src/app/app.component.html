@@ -33,12 +33,6 @@
   <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item">
     <mat-icon>vibration</mat-icon> Notificaciones
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuDirecciones" class="custom-menu-item">
-    <mat-icon> directions</mat-icon> Direcciones
-  </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuTelefonos" class="custom-menu-item">
-    <mat-icon>settings_cell</mat-icon> Telefonos
-  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -159,30 +153,6 @@
   </button>
   <button mat-menu-item routerLink="/notificaciones/nuevo" class="custom-menu-item">
     <mat-icon>add_circle</mat-icon> Registrar Notificaciones
-  </button>
-</mat-menu>
-
-
-<!-- Submenú Direcciones -->
-<mat-menu #menuDirecciones="matMenu">
-  <p class="menu-section-title">Direcciones </p>
-  <button mat-menu-item routerLink="/direcciones" class="custom-menu-item">
-    <mat-icon>attach_money</mat-icon> Listar Direcciones
-  </button>
-  <button mat-menu-item routerLink="/direcciones/nuevo" class="custom-menu-item">
-    <mat-icon>add_circle</mat-icon> Registrar Direcciones
-  </button>
-</mat-menu>
-
-
-<!-- Submenú Telefonos -->
-<mat-menu #menuTelefonos="matMenu">
-  <p class="menu-section-title">Telefonos </p>
-  <button mat-menu-item routerLink="/telefonos" class="custom-menu-item">
-    <mat-icon>attach_money</mat-icon> Listar Telefonos
-  </button>
-  <button mat-menu-item routerLink="/telefonos/nuevo" class="custom-menu-item">
-    <mat-icon>add_circle</mat-icon> Registrar Telefonos
   </button>
 </mat-menu>
 
