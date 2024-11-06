@@ -2,7 +2,7 @@
   <!-- Menú en la izquierda -->
   <div class="menu-left">
     <button mat-button [matMenuTriggerFor]="mainMenu" style="color: #ff4d32">
-      <mat-icon>menu</mat-icon> Información del negocio 
+      <mat-icon>menu</mat-icon> Información del negocio
     </button>
   </div>
 
@@ -47,7 +47,7 @@
 <!-- Submenú Servicios -->
 <mat-menu #menuServicios="matMenu">
   <p class="menu-section-title">Servicios</p>
-  <button mat-menu-item routerLink="/servicios" class="custom-menu-item"> 
+  <button mat-menu-item routerLink="/servicios" class="custom-menu-item">
     <mat-icon>list</mat-icon> Listar Servicios
   </button>
   <button mat-menu-item routerLink="/servicios/nuevo" class="custom-menu-item">
@@ -66,6 +66,7 @@
   </button>
 </mat-menu>
 
+
 <!-- Submenú Centros Médicos -->
 <mat-menu #menuCentros="matMenu">
   <p class="menu-section-title">Centros Médicos</p>
@@ -80,16 +81,35 @@
   </button>
 </mat-menu>
 
-<!-- Submenú Insights de Centros Médicos -->
-<mat-menu #menuCentrosInsights="matMenu">
-  <p class="menu-section-title">Insights de Centros Médicos</p>
-  <button mat-menu-item routerLink="/centrosmedicos/queries" class="custom-menu-item">
-    <mat-icon>query_stats</mat-icon> Mostrar Queries
-</button>
-<button mat-menu-item routerLink="/centrosmedicos/graficoquery" class="custom-menu-item">
-  <mat-icon>query_stats</mat-icon> Mostrar Graficos
-</button>
-</mat-menu>
+        <!-- Submenú Insights de Centros Médicos -->
+        <mat-menu #menuCentrosInsights="matMenu">
+          <p class="menu-section-title">Insights de Centros Médicos</p>
+
+          <button mat-menu-item [matMenuTriggerFor]="menuCentrosQuery" class="custom-menu-item">
+            <mat-icon>assignment</mat-icon> Querys
+          </button>
+            <button mat-menu-item [matMenuTriggerFor]="menuCentrosGraficas" class="custom-menu-item">
+              <mat-icon> bar_chart</mat-icon> Graficas
+            </button>
+        </mat-menu>
+
+                <!-- Submenú Querys de Centros Médicos -->
+                <mat-menu #menuCentrosQuery="matMenu">
+                  <p class="menu-section-title">Querys Centros Médicos</p>
+                  <button mat-menu-item routerLink="/centrosmedicos/queries" class="custom-menu-item">
+                    <mat-icon>query_stats</mat-icon> Promedio Resenias Centros Medicos
+                  </button>
+                </mat-menu>
+
+                <!-- Submenú Graficas de Centros Médicos -->
+                <mat-menu #menuCentrosGraficas="matMenu">
+                  <p class="menu-section-title">Graficas Centros Médicos</p>
+                  <button mat-menu-item routerLink="/centrosmedicos/graficoquery" class="custom-menu-item">
+                    <mat-icon>query_stats</mat-icon> Promedio Resenias Centros Medicos
+                  </button>
+                </mat-menu>
+
+
 
 <!-- Submenú Usuarios -->
 <mat-menu #menuUsuarios="matMenu">
