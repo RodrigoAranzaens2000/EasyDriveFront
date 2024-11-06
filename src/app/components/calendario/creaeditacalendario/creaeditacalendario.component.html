@@ -22,7 +22,7 @@
         <mat-label>Reserva</mat-label>
         <mat-select  formControlName="hreserva">
           @for (r of listaReservas; track r) {
-          <mat-option [value]="r.idreserva">{{ r.estadoReserva }}</mat-option>
+          <mat-option [value]="r.idreserva">{{ r.idreserva }}</mat-option>
           }
         </mat-select>
       </mat-form-field>

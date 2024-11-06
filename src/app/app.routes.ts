@@ -16,6 +16,8 @@ import { RolesComponent } from './components/roles/roles.component';
 import { CreaeditarolesComponent } from './components/roles/creaeditaroles/creaeditaroles.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { CreaeditacalendarioComponent } from './components/calendario/creaeditacalendario/creaeditacalendario.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+import { CreaeditareservasComponent } from './components/reservas/creaeditareservas/creaeditareservas.component';
 
 export const routes: Routes = [
     {
@@ -132,6 +134,20 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditacalendarioComponent,
+            },
+        ],
+    },
+    {
+        path: 'reservas',
+        component: ReservasComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditareservasComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditareservasComponent,
             },
         ],
     }
