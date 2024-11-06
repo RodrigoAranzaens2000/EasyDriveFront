@@ -12,6 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(withFetch()), provideAnimationsAsync() , provideCharts(withDefaultRegisterables())
+    provideHttpClient(withFetch()), provideAnimationsAsync() , provideCharts(withDefaultRegisterables()), provideCharts(withDefaultRegisterables())
   ],
 };
