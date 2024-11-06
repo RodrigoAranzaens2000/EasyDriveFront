@@ -10,7 +10,7 @@ const base_url = environment.base;
 })
 export class ReservasService {
 
-  private url = `${base_url}/roles`;
+  private url = `${base_url}/reservas`;
   private listaCambio = new Subject<Reservas[]>();
   constructor(private http: HttpClient) { }
   list() {
