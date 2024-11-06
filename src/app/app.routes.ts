@@ -19,6 +19,8 @@ import { CreaeditacalendarioComponent } from './components/calendario/creaeditac
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { CreaeditareservasComponent } from './components/reservas/creaeditareservas/creaeditareservas.component';
 import { GraficopromediosComponent } from './components/centrosmedicos/graficopromedios/graficopromedios.component';
+import { PromedioescuelasqueryComponent } from './components/escuelas/promedioescuelasquery/promedioescuelasquery.component';
+import { GraficopromediosescuelasComponent } from './components/escuelas/graficopromediosescuelas/graficopromediosescuelas.component';
 
 export const routes: Routes = [
     {
@@ -84,6 +86,14 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditaescuelasComponent,
+            },
+            {
+                path: 'queries',
+                component: PromedioescuelasqueryComponent,
+            },
+            {
+                path: 'graficoquery',
+                component: GraficopromediosescuelasComponent,
             },
         ],
     },

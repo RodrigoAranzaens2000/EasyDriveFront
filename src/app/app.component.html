@@ -148,13 +148,35 @@
   </button>
 </mat-menu>
 
-<!-- Submenú Insights de Escuelas -->
-<mat-menu #menuEscuelasInsights="matMenu">
-  <p class="menu-section-title">Insights de Escuelas</p>
-  <button mat-menu-item routerLink="/Escuelas/queries" class="custom-menu-item">
-    <mat-icon>query_stats</mat-icon> Mostrar Queries
-  </button>
-</mat-menu>
+        <!--  Submenú Insights de Centros Médicos -->
+        <mat-menu #menuEscuelasInsights="matMenu">
+          <p class="menu-section-title">Insights de Escuelas</p>
+
+          <button mat-menu-item [matMenuTriggerFor]="menuEscuelasQuery" class="custom-menu-item">
+            <mat-icon>assignment</mat-icon> Querys
+          </button>
+            <button mat-menu-item [matMenuTriggerFor]="menuEscuelasGraficas" class="custom-menu-item">
+              <mat-icon> bar_chart</mat-icon> Graficas
+            </button>
+        </mat-menu>
+
+                           <!-- Submenú Querys de Centros Médicos -->
+                           <mat-menu #menuEscuelasQuery="matMenu">
+                            <p class="menu-section-title">Querys Escuelas </p>
+                            <button mat-menu-item routerLink="/escuelas/queries" class="custom-menu-item">
+                              <mat-icon>query_stats</mat-icon> Mostrar Queries
+                            </button>
+                          </mat-menu>
+          
+                          <!-- Submenú Graficas de Centros Médicos -->
+                          <mat-menu #menuEscuelasGraficas="matMenu">
+                            <p class="menu-section-title">Graficas Escuelas </p>
+                            <button mat-menu-item routerLink="/escuelas/graficoquery" class="custom-menu-item">
+                              <mat-icon>query_stats</mat-icon> Promedio Resenias Escuelas
+                            </button>
+                          </mat-menu>
+          
+
 
 <!-- Submenú Promociones -->
 <mat-menu #menuPromociones="matMenu">

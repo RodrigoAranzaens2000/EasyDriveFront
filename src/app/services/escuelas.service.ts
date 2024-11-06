@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Escuelas } from '../models/Escuelas';
+import { PromedioEscuelas } from '../models/PromedioEscuelas';
 
 const base_url = environment.base;
 @Injectable({
@@ -20,6 +21,12 @@ export class EscuelasService {
   insert(de: Escuelas) {
     return this.http.post(this.url, de);
   }
+
+    // Método para obtener los resultados de los queries
+    getConsultasPromedio() {
+      return this.http.get<PromedioEscuelas[]>(`${this.url}/calificacionpromedioporescuelas`); 
+    }
+
 
   //get y set
   getList() {
