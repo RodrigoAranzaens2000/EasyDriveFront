@@ -38,4 +38,9 @@ export class NotificacionesService {
   update(n: Notificaciones) {
     return this.http.put(this.url, n);
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
 }
