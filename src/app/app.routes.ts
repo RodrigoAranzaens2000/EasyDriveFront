@@ -18,6 +18,7 @@ import { CalendarioComponent } from './components/calendario/calendario.componen
 import { CreaeditacalendarioComponent } from './components/calendario/creaeditacalendario/creaeditacalendario.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { CreaeditareservasComponent } from './components/reservas/creaeditareservas/creaeditareservas.component';
+import { GraficopromediosComponent } from './components/centrosmedicos/graficopromedios/graficopromedios.component';
 
 export const routes: Routes = [
     {
@@ -49,9 +50,14 @@ export const routes: Routes = [
             {   
                 path: 'queries', 
                 component: PromediocentrosqueryComponent ,
+            },
+            {   
+                path: 'graficoquery', 
+                component: GraficopromediosComponent ,
             }
         ],
     },
+    
     
     {
         path: 'usuarios',

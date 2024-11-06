@@ -29,7 +29,6 @@ export class CentrosmedicosService {
       return this.http.get<PromedioCentrosMedicos[]>(`${this.url}/centrosreseinaspromedio`); 
     }
 
-
   //get y set
   getList() {
     return this.listaCambio.asObservable();
