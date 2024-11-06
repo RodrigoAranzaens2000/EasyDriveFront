@@ -1,0 +1,55 @@
+.chart-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.chart-canvas {
+    width: 100%;
+    max-width: 100%; /* Asegura que el gráfico no se estire más allá del contenedor */
+    height: auto; /* Ajusta la altura automáticamente según el ancho */
+    max-height: 400px; /* Establece una altura máxima para evitar que se haga muy grande */
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container .chart-canvas {
+    transition: all 0.3s ease;
+}
+
+.chart-container .chart-canvas:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        width: 95%;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-container {
+        width: 100%;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+}
