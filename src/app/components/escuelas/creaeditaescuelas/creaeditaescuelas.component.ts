@@ -17,7 +17,6 @@ import { Promocion } from '../../../models/Promocion';
 import { EscuelasService } from '../../../services/escuelas.service';
 import { PromocionesService } from '../../../services/promociones.service';
 
-
 @Component({
   selector: 'app-creaeditaescuelas',
   standalone: true,
@@ -71,7 +70,7 @@ export class CreaeditaescuelasComponent implements OnInit {
     });
   }
 
-  aceptar() {
+  aceptar() : void {
     if (this.form.valid) {
       this.escuelas.idescuela = this.form.value.hcodigo;
       this.escuelas.nombre = this.form.value.hnombre;

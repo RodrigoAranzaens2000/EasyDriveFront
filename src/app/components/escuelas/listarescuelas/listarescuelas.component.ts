@@ -15,7 +15,7 @@ import { EscuelasService } from '../../../services/escuelas.service';
 })
 export class ListarescuelasComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Escuelas> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' , 'c5' , 'c6' , 'c7'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' , 'c5' , 'c6' , 'c7','accion01'];
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
   constructor(private eS: EscuelasService) {}
