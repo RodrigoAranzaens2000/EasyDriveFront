@@ -14,6 +14,8 @@ import { NotificacionesComponent } from './components/notificaciones/notificacio
 import { CreaeditanotificacionesComponent } from './components/notificaciones/creaeditanotificaciones/creaeditanotificaciones.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { CreaeditarolesComponent } from './components/roles/creaeditaroles/creaeditaroles.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
+import { CreaeditacalendarioComponent } from './components/calendario/creaeditacalendario/creaeditacalendario.component';
 
 export const routes: Routes = [
     {
@@ -116,6 +118,20 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditarolesComponent,
+            },
+        ],
+    },
+    {
+        path: 'calendario',
+        component: CalendarioComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditacalendarioComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditacalendarioComponent,
             },
         ],
     }
