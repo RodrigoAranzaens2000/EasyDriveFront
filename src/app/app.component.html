@@ -36,6 +36,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuRoles" class="custom-menu-item">
     <mat-icon>account_box</mat-icon> Roles
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuCalendario" class="custom-menu-item">
+    <mat-icon>account_box</mat-icon> Calendario
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -167,6 +170,17 @@
   </button>
   <button mat-menu-item routerLink="/roles/nuevo" class="custom-menu-item">
     <mat-icon>group_add</mat-icon> Registrar Roles
+  </button>
+</mat-menu>
+
+<!-- Submenú Roles -->
+<mat-menu #menuCalendario="matMenu">
+  <p class="menu-section-title">Calendario </p>
+  <button mat-menu-item routerLink="/calendario" class="custom-menu-item">
+    <mat-icon>calendar_today</mat-icon> Listar Calendario
+  </button>
+  <button mat-menu-item routerLink="/calendario/nuevo" class="custom-menu-item">
+    <mat-icon>date_range</mat-icon> Registrar Calendario
   </button>
 </mat-menu>
 <router-outlet></router-outlet>

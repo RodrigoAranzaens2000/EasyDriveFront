@@ -1,32 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Roles } from '../models/Roles';
-import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Reservas } from '../models/Reservas';
 
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root'
 })
-export class RolesService {
+export class ReservasService {
 
   private url = `${base_url}/roles`;
-  private listaCambio = new Subject<Roles[]>();
-  constructor(private http: HttpClient) {}
-
+  private listaCambio = new Subject<Reservas[]>();
+  constructor(private http: HttpClient) { }
   list() {
-    return this.http.get<Roles[]>(this.url);
+    return this.http.get<Reservas[]>(this.url);
   }
 
-  insert(ro: Roles) {
-    return this.http.post(this.url, ro);
+  insert(re: Reservas) {
+    return this.http.post(this.url, re);
   }
 
   //get y set
   getList() {
     return this.listaCambio.asObservable();
   }
-  setList(listaNueva: Roles[]) {
+  setList(listaNueva: Reservas[]) {
     this.listaCambio.next(listaNueva);
   }
 
@@ -35,10 +34,10 @@ export class RolesService {
   }
   
   listId(id: number) {
-    return this.http.get<Roles>(`${this.url}/${id}`);
+    return this.http.get<Reservas>(`${this.url}/${id}`);
   }
 
-  update(r: Roles) {
+  update(r: Reservas) {
     return this.http.put(this.url, r);
   }
 }
