@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="title-container">
+      <h1>Crear o Editar Roles</h1>
+    </div>
+    <form class="example-form" [formGroup]="form" (submit)="aceptar()">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" readonly="readonly"/>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre de Roles</mat-label>
+          <input matInput placeholder="Nombre" formControlName="hrol" />
+        </mat-form-field>
+        <br />
+  
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select  formControlName="huser">
+            @for (u of listaUsuarios; track u) {
+            <mat-option [value]="u.id">{{ u.username }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      <br />
+      <div>
+        <button mat-flat-button class="custom-button">Aceptar</button>
+      </div>
+    </form>
+  </div>

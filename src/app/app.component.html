@@ -33,6 +33,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item">
     <mat-icon>vibration</mat-icon> Notificaciones
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuRoles" class="custom-menu-item">
+    <mat-icon>account_box</mat-icon> Roles
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -156,5 +159,14 @@
   </button>
 </mat-menu>
 
-
+<!-- Submenú Roles -->
+<mat-menu #menuRoles="matMenu">
+  <p class="menu-section-title">Roles </p>
+  <button mat-menu-item routerLink="/roles" class="custom-menu-item">
+    <mat-icon>account_circle</mat-icon> Listar Roles
+  </button>
+  <button mat-menu-item routerLink="/roles/nuevo" class="custom-menu-item">
+    <mat-icon>group_add</mat-icon> Registrar Roles
+  </button>
+</mat-menu>
 <router-outlet></router-outlet>
