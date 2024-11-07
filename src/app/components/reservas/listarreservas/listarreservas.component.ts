@@ -15,18 +15,20 @@ import { RouterModule } from '@angular/router';
 })
 export class ListarreservasComponent {
   dataSource: MatTableDataSource<Reservas> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' , 'c5' , 'c6' , 'c7', 'c8','c9' ,  'accion01'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' , 'c5' , 'c6' , 'c7', 'c8' ,  'accion01'];
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
   constructor(private rS: ReservasService) {}
+
   ngOnInit(): void {
     this.rS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
     this.rS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.data = data;
     });
   }
+
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }

@@ -1,1 +1,79 @@
-<p>creaeditareservas works!</p>
+<div class="container">
+    <h2 *ngIf="edicion; else crear">Editar Reserva</h2>
+    <ng-template #crear>
+      <h2>Crear Reserva</h2>
+    </ng-template>
+  
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <!-- Codigo de Reserva -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Código de Reserva</mat-label>
+        <input matInput formControlName="hcodigo" placeholder="Código de Reserva" />
+      </mat-form-field>
+  
+      <!-- Estado de Reserva -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Estado de Reserva</mat-label>
+        <mat-select formControlName="hestado">
+          <mat-option value="Pendiente">Pendiente</mat-option>
+          <mat-option value="Confirmada">Confirmada</mat-option>
+          <mat-option value="Cancelada">Cancelada</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Fecha de Reserva -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Fecha de Reserva</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="hfecha" placeholder="Seleccione una fecha" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <!-- Usuario -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="huser">
+          <mat-option *ngFor="let usuario of listausuarios" [value]="usuario.username">{{ usuario?.username }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Escuela -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Escuela</mat-label>
+        <mat-select formControlName="hescuela">
+          <mat-option *ngFor="let escuela of listaescuelas" [value]="escuela.nombre">{{ escuela.nombre }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Centro Médico -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Centro Médico</mat-label>
+        <mat-select formControlName="hcentro">
+          <mat-option *ngFor="let centro of listacentros" [value]="centro.nombre">{{ centro.nombre }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Servicio -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Servicio</mat-label>
+        <mat-select formControlName="hservicio">
+          <mat-option *ngFor="let servicio of listaservicios" [value]="servicio.nombreServicio">{{ servicio.nombreServicio }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Promoción -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Promoción</mat-label>
+        <mat-select formControlName="hpromocion">
+          <mat-option *ngFor="let promocion of listaPromociones" [value]="promocion.idpromocion">{{ promocion.nombrePromocion }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones -->
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Aceptar</button>
+        <button mat-raised-button color="warn" type="button" (click)="router.navigate(['reservas'])">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

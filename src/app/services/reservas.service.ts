@@ -28,11 +28,6 @@ export class ReservasService {
   setList(listaNueva: Reservas[]) {
     this.listaCambio.next(listaNueva);
   }
-
-  delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
-  }
-  
   listId(id: number) {
     return this.http.get<Reservas>(`${this.url}/${id}`);
   }
