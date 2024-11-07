@@ -21,6 +21,8 @@ import { CreaeditareservasComponent } from './components/reservas/creaeditareser
 import { GraficopromediosComponent } from './components/centrosmedicos/graficopromedios/graficopromedios.component';
 import { PromedioescuelasqueryComponent } from './components/escuelas/promedioescuelasquery/promedioescuelasquery.component';
 import { GraficopromediosescuelasComponent } from './components/escuelas/graficopromediosescuelas/graficopromediosescuelas.component';
+import { ContadornotificacionesqueryComponent } from './components/notificaciones/contadornotificacionesquery/contadornotificacionesquery.component';
+import { GraficacontadorqueryComponent } from './components/notificaciones/graficacontadorquery/graficacontadorquery.component';
 
 export const routes: Routes = [
     {
@@ -122,6 +124,14 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditanotificacionesComponent,
+            },
+            {
+                path: 'queries',
+                component: ContadornotificacionesqueryComponent,
+            },
+            {
+                path: 'graficoquery',
+                component: GraficacontadorqueryComponent,
             },
         ],
     },
