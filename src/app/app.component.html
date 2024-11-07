@@ -209,7 +209,41 @@
   <button mat-menu-item routerLink="/notificaciones/nuevo" class="custom-menu-item">
     <mat-icon>add_alert</mat-icon> Registrar Notificaciones
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
 </mat-menu>
+
+        <!--  Submenú Insights de Notificaciones -->
+        <mat-menu #menuNotificacionesInsights="matMenu">
+          <p class="menu-section-title">Insights de Notificaciones</p>
+
+          <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesQuery" class="custom-menu-item">
+            <mat-icon>assignment</mat-icon> Querys
+          </button>
+            <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesGraficas" class="custom-menu-item">
+              <mat-icon> bar_chart</mat-icon> Graficas
+            </button>
+        </mat-menu>
+
+                           <!-- Submenú Querys de Notificaciones -->
+                           <mat-menu #menuNotificacionesQuery="matMenu">
+                            <p class="menu-section-title">Querys Notificaciones </p>
+                            <button mat-menu-item routerLink="/notificaciones/queries" class="custom-menu-item">
+                              <mat-icon>query_stats</mat-icon> Mostrar Queries
+                            </button>
+                          </mat-menu>
+          
+                          <!-- Submenú Graficas de Notificaciones -->
+                          <mat-menu #menuNotificacionesGraficas="matMenu">
+                            <p class="menu-section-title">Graficas Notificaciones </p>
+                            <button mat-menu-item routerLink="/notificaciones/graficoquery" class="custom-menu-item">
+                              <mat-icon>query_stats</mat-icon> Contador de Notificaciones
+                            </button>
+                          </mat-menu>
+          
+
+          
 
 <!-- Submenú Roles -->
 <mat-menu #menuRoles="matMenu">

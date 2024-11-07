@@ -3,6 +3,7 @@ import { Notificaciones } from '../models/Notificaciones';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { ContadorNotificaciones } from '../models/ContadorNotificaciones';
 
 const base_url = environment.base;
 
@@ -20,6 +21,10 @@ export class NotificacionesService {
 
   insert(not: Notificaciones) {
     return this.http.post(this.url, not);
+  }
+
+  getCantidadNotificaciones() {
+    return this.http.get<ContadorNotificaciones[]>(`${this.url}/cantidadnotificaciones`); 
   }
 
   //get y set
