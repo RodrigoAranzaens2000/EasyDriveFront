@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -27,35 +28,33 @@ import { CentrosmedicosService } from '../../../services/centrosmedicos.service'
   styleUrls: ['./creaeditacentros.component.css'], // Corrige a styleUrls
 })
 export class CreaeditacentrosComponent implements OnInit {
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
   centros: CentrosMedicos = new CentrosMedicos();
+
   id: number = 0;
   edicion: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private cS: CentrosmedicosService,
-    private router: Router,
     private route: ActivatedRoute,
-  ) {
-    // Inicializa el formulario en el constructor
+    private router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
+
     this.form = this.formBuilder.group({
-      hcodigo: ['', Validators.required],
+      hcodigo: [''],
       hnombre: ['', Validators.required],
       hruc: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // Solo números
       hdireccion: ['', Validators.required],
       htelefono: ['', Validators.required],
       himagen: ['', Validators.required],
-    });
-  }
-
-  ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = this.id != null;
-      if (this.edicion) {
-        this.init();
-      }
     });
   }
 
@@ -70,37 +69,35 @@ export class CreaeditacentrosComponent implements OnInit {
 
       if (this.edicion) {
         // Actualizar el centro médico
-        this.cS.update(this.centros).subscribe(() => {
-          this.listarCentros();
+        this.cS.update(this.centros).subscribe(data=> {
+          this.cS.list().subscribe(data=>{
+            this.cS.setList(data)
+          })
         });
       } else {
         // Insertar nuevo centro médico
-        this.cS.insert(this.centros).subscribe(() => {
-          this.listarCentros();
+        this.cS.insert(this.centros).subscribe((data) => {
+          this.cS.list().subscribe((data) => {
+            this.cS.setList(data);
+          });
         });
       }
     }
-  }
-  private listarCentros() {
-    this.cS.list().subscribe((data) => {
-      this.cS.setList(data);
-      this.router.navigate(['centrosmedicos']);
-    });
+    this.router.navigate(['centrosmedicos']);
   }
 
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
-        this.form.patchValue({
-          hcodigo: data.idcentro,
-          hnombre: data.nombre,
-          hruc: data.ruc,
-          himagen: data.imgCentro,
-          hdireccion: data.direccion,
-          htelefono: data.numeroTelefono,
-
+        this.form = new FormGroup({
+          hcodigo: new FormControl(data.idcentro),
+          hnombre: new FormControl(data.nombre),
+          hruc: new FormControl(data.ruc),
+          himagen: new FormControl(data.imgCentro),
+          hdireccion:new FormControl(data.direccion),
+          htelefono:new FormControl(data.numeroTelefono),
         });
       });
+    };
     }
-  }
 }

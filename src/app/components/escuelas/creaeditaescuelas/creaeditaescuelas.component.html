@@ -34,15 +34,6 @@
           <input matInput placeholder="Ruc" formControlName="hruc"/>
         </mat-form-field>
         <br />
-        <mat-form-field>
-            <mat-label>Promocion</mat-label>
-            <mat-select  formControlName="hpromocion">
-              @for (p of listaPromociones; track p) {
-              <mat-option [value]="p.idpromocion">{{ p.nombrePromocion }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        <br />
         <mat-form-field class="example-full-width">
           <mat-label>Imagen</mat-label>
           <input matInput placeholder="URL de imagen" formControlName="himagen" />

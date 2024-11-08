@@ -7,7 +7,7 @@
           <mat-label>Código</mat-label>
           <input matInput formControlName="hcodigo" readonly="readonly"/>
         </mat-form-field>
-        <br />
+        <br/>
       <mat-form-field appearance="outline" class="mat-form-field full-width">
         <mat-label>Fecha de Sincronizacion</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="hfecha" />
@@ -22,9 +22,12 @@
         <mat-label>Reserva</mat-label>
         <mat-select  formControlName="hreserva">
           @for (r of listaReservas; track r) {
-          <mat-option [value]="r.idreserva">{{ r.idreserva }}</mat-option>
+          <mat-option [value]="r">{{ r.estadoReserva }}</mat-option>
           }
         </mat-select>
+        <mat-error *ngIf="form.get('hreserva')?.hasError('required')">
+          El campo Reserva es obligatorio
+      </mat-error>
       </mat-form-field>
       <br />
       <div>

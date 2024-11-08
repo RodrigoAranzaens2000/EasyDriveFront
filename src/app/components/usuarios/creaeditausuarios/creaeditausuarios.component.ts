@@ -8,8 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
@@ -26,7 +24,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   templateUrl: './creaeditausuarios.component.html',
   styleUrl: './creaeditausuarios.component.css'
 })
-export class CreaeditausuariosComponent {
+
+export class CreaeditausuariosComponent implements OnInit {
 
   form: FormGroup;
   usuarios: Usuarios = new Usuarios();

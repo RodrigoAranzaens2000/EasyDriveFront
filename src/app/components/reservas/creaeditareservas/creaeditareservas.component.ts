@@ -36,15 +36,22 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   styleUrl: './creaeditareservas.component.css'
 })
 export class CreaeditareservasComponent {
-  form: FormGroup;
-  listaPromociones: Promocion[] = [];
+  form: FormGroup = new FormGroup({});
+  listausuarios: Usuarios[] = [];
   listaescuelas: Escuelas[] = [];
   listacentros: CentrosMedicos[] = [];
   listaservicios: Servicios[] = [];
-  listausuarios: Usuarios[] = [];
+  listaPromociones: Promocion[] = [];
   reservas: Reservas = new Reservas();
+
   edicion: boolean = false;
   id: number = 0;
+
+  listaEstados: { value: string; viewValue: string }[] = [
+    { value: 'Confirmada', viewValue: 'Confirmada' },
+    { value: 'Pendiente', viewValue: 'Pendiente' },
+    { value: 'Cancelada', viewValue: 'Cancelada' },
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,18 +63,7 @@ export class CreaeditareservasComponent {
     private cS: CentrosmedicosService,
     private sS: ServiciosService,
     private rS: ReservasService
-  ) {
-    this.form = this.formBuilder.group({
-      hcodigo: [''],
-      hestado: ['', Validators.required],
-      hfecha: ['', Validators.required],
-      huser: [''],
-      hescuela: [''],
-      hcentro: [''],
-      hservicio: [''],
-      hpromocion: [''],
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -77,7 +73,18 @@ export class CreaeditareservasComponent {
         this.init();
       }
     });
-    
+
+    this.form = this.formBuilder.group({
+      hcodigo: [''],
+      huser: [''],
+      hescuela: [''],
+      hcentro: [''],
+      hservicio: [''],
+      hpromocion: [''],
+      hestado: ['', Validators.required],
+      hfecha: ['', Validators.required],
+    });
+
     this.pS.list().subscribe((data) => {
       this.listaPromociones = data;
     });
@@ -93,6 +100,7 @@ export class CreaeditareservasComponent {
     this.uS.list().subscribe((data) => {
       this.listausuarios = data;
     });
+
   }
 
   aceptar() : void {
@@ -100,11 +108,13 @@ export class CreaeditareservasComponent {
       this.reservas.idreserva = this.form.value.hcodigo;
       this.reservas.estadoReserva = this.form.value.hestado;
       this.reservas.fechaReserva = this.form.value.hfecha;
-      this.reservas.user.username = this.form.value.huser;
-      this.reservas.ser.nombreServicio = this.form.value.hservicio
-      this.reservas.esc.nombre = this.form.value.hescuela
-      this.reservas.prom.idpromocion = this.form.value.hpromocion;
-      this.reservas.cen.nombre = this.form.value.hcentro;
+
+    
+      this.reservas.user = { id: this.form.value.huser } as Usuarios;
+this.reservas.esc = { idescuela: this.form.value.hescuela } as Escuelas;
+this.reservas.centros = { idcentro: this.form.value.hcentro } as CentrosMedicos;
+this.reservas.ser = { idservicio: this.form.value.hservicio } as Servicios;
+this.reservas.prom = { idpromocion: this.form.value.hpromocion } as Promocion;
 
       if (this.edicion) {
         //update
@@ -136,8 +146,7 @@ export class CreaeditareservasComponent {
           hservicio: new FormControl(data.ser),
           hescuela: new FormControl(data.esc),
           hpromocion: new FormControl(data.prom),
-          hcentro: new FormControl(data.cen),
-
+          hcentro: new FormControl(data.centros),
         });
       });
     }

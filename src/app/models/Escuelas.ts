@@ -7,5 +7,4 @@ export class Escuelas {
     imgEscuela : string = ""
     direccion: string = ""
     numeroTelefono: string = ""
-    prom:Promocion=new Promocion()
 }

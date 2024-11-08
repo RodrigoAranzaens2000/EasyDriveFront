@@ -23,8 +23,8 @@ export class ListarcalendarioComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
       data.forEach((calendario) => {
-        if (!calendario.reserva) {
-          calendario.reserva = new Reservas(); // Inicializa `reserva` si no está presente
+        if (!calendario.res) {
+          calendario.res = new Reservas(); // Inicializa `reserva` si no está presente
         }
       });
       this.dataSource = new MatTableDataSource(data);

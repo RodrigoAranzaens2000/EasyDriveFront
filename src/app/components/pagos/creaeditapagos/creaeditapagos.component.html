@@ -1,0 +1,48 @@
+<div class="container">
+    <div><h1>Crear/Editar Centro</h1></div>
+    <div>
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+      
+      <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>Código</mat-label>
+          <input matInput formControlName="hcodigo" readonly="readonly"/>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>Metodo de Pago</mat-label>
+          <mat-select  formControlName="hmetodo">
+            @for (m of listaMetodos; track m) {
+            <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
+            }
+          </mat-select>
+          <mat-error *ngIf="form.get('hnombre')?.hasError('required')">
+              El campo de metodoPago es obligatorio
+          </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Escoge una fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="hfecha">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Reserva</mat-label>
+        <mat-select  formControlName="hreserva">
+          @for (r of listaReservas; track r) {
+          <mat-option [value]="r">{{ r.estadoReserva }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('hreserva')?.hasError('required')">
+            El campo Reserva es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <br>    
+      <div class="button-container">
+        <button mat-raised-button class="custom-button">Aceptar</button>
+    </div>
+    </form>
+  </div>
+</div>  

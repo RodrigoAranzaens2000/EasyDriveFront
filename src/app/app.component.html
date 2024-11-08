@@ -42,6 +42,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuReservas" class="custom-menu-item">
     <mat-icon>collections_bookmark</mat-icon> Reservas
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuPagos" class="custom-menu-item">
+    <mat-icon>payment</mat-icon> Pagos
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -279,4 +282,15 @@
     <mat-icon>group_add</mat-icon> Registrar Reservas
   </button>
 </mat-menu>
+
+<mat-menu #menuPagos="matMenu">
+  <p class="menu-section-title">Pagos </p>
+  <button mat-menu-item routerLink="/pagos" class="custom-menu-item">
+    <mat-icon>money</mat-icon> Listar Pagos
+  </button>
+  <button mat-menu-item routerLink="/pagos/nuevo" class="custom-menu-item">
+    <mat-icon>attach_money</mat-icon> Registrar Pagos
+  </button>
+</mat-menu>
+
 <router-outlet></router-outlet>

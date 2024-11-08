@@ -23,6 +23,8 @@ import { PromedioescuelasqueryComponent } from './components/escuelas/promedioes
 import { GraficopromediosescuelasComponent } from './components/escuelas/graficopromediosescuelas/graficopromediosescuelas.component';
 import { ContadornotificacionesqueryComponent } from './components/notificaciones/contadornotificacionesquery/contadornotificacionesquery.component';
 import { GraficacontadorqueryComponent } from './components/notificaciones/graficacontadorquery/graficacontadorquery.component';
+import { PagosComponent } from './components/pagos/pagos.component';
+import { CreaeditapagosComponent } from './components/pagos/creaeditapagos/creaeditapagos.component';
 
 export const routes: Routes = [
     {
@@ -174,6 +176,20 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditareservasComponent,
+            },
+        ],
+    },
+    {
+        path: 'pagos',
+        component: PagosComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditapagosComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditapagosComponent,
             },
         ],
     }

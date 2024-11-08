@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Escuelas } from '../../../models/Escuelas';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Promocion } from '../../../models/Promocion';
+
 import { EscuelasService } from '../../../services/escuelas.service';
 import { PromocionesService } from '../../../services/promociones.service';
 
@@ -34,7 +34,6 @@ import { PromocionesService } from '../../../services/promociones.service';
 })
 export class CreaeditaescuelasComponent implements OnInit {
   form: FormGroup;
-  listaPromociones: Promocion[] = [];
   escuelas: Escuelas = new Escuelas();
   edicion: boolean = false;
   id: number = 0;
@@ -44,7 +43,6 @@ export class CreaeditaescuelasComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private eS: EscuelasService,
-    private pS: PromocionesService,
   ) {
     this.form = this.formBuilder.group({
       hcodigo: [''],
@@ -53,7 +51,6 @@ export class CreaeditaescuelasComponent implements OnInit {
       himagen: ['', Validators.required],
       hdireccion: ['', Validators.required],
       htelefono: ['', Validators.required],
-      hpromocion: ['', Validators.required],
     });
   }
 
@@ -65,9 +62,6 @@ export class CreaeditaescuelasComponent implements OnInit {
         this.init();
       }
     });
-    this.pS.list().subscribe((data) => {
-      this.listaPromociones = data;
-    });
   }
 
   aceptar() : void {
@@ -78,7 +72,6 @@ export class CreaeditaescuelasComponent implements OnInit {
       this.escuelas.imgEscuela = this.form.value.himagen;
       this.escuelas.direccion = this.form.value.hdireccion
       this.escuelas.numeroTelefono = this.form.value.htelefono
-      this.escuelas.prom.idpromocion = this.form.value.hpromocion;
 
 
       this.eS.insert(this.escuelas).subscribe(() => {
@@ -104,7 +97,6 @@ export class CreaeditaescuelasComponent implements OnInit {
         himagen: data.imgEscuela,
         hdireccion: data.direccion,
         htelefono: data.numeroTelefono,
-        hpromocion: data.prom,
       });
     });
   }

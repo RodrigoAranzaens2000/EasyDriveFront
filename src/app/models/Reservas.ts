@@ -7,7 +7,7 @@ import { Usuarios } from "./Usuarios"
 export class Reservas {
     user:Usuarios=new Usuarios()
     esc:Escuelas=new Escuelas()
-    cen:CentrosMedicos= new CentrosMedicos()
+    centros:CentrosMedicos= new CentrosMedicos()
     ser:Servicios= new Servicios()
     prom:Promocion= new Promocion()
     idreserva:number=0
