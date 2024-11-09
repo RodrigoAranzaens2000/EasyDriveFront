@@ -281,8 +281,30 @@
   <button mat-menu-item routerLink="/reservas/nuevo" class="custom-menu-item">
     <mat-icon>group_add</mat-icon> Registrar Reservas
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuReservasInsights" class="custom-menu-item">
+    <mat-icon>analytics</mat-icon> Insights
+  </button>
 </mat-menu>
 
+        <!--  Submenú Insights de Notificaciones -->
+        <mat-menu #menuReservasInsights="matMenu">
+          <p class="menu-section-title">Insights de Reservas</p>
+
+            <button mat-menu-item [matMenuTriggerFor]="menuReservasGraficas" class="custom-menu-item">
+              <mat-icon> bar_chart</mat-icon> Graficas
+            </button>
+        </mat-menu>
+
+                          <!-- Submenú Graficas de Notificaciones -->
+                          <mat-menu #menuReservasGraficas="matMenu">
+                            <p class="menu-section-title">Graficas Reservas </p>
+                            <button mat-menu-item routerLink="/reservas/graficoquery" class="custom-menu-item">
+                              <mat-icon>query_stats</mat-icon> Contador de Reservas
+                            </button>
+                          </mat-menu>
+          
+
+<!-- Submenú Pagos -->
 <mat-menu #menuPagos="matMenu">
   <p class="menu-section-title">Pagos </p>
   <button mat-menu-item routerLink="/pagos" class="custom-menu-item">
@@ -294,3 +316,7 @@
 </mat-menu>
 
 <router-outlet></router-outlet>
+
+
+
+

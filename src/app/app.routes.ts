@@ -25,6 +25,7 @@ import { ContadornotificacionesqueryComponent } from './components/notificacione
 import { GraficacontadorqueryComponent } from './components/notificaciones/graficacontadorquery/graficacontadorquery.component';
 import { PagosComponent } from './components/pagos/pagos.component';
 import { CreaeditapagosComponent } from './components/pagos/creaeditapagos/creaeditapagos.component';
+import { GraficasComponent } from './components/reservas/graficas/graficas.component';
 
 export const routes: Routes = [
     {
@@ -53,18 +54,18 @@ export const routes: Routes = [
                 path: 'ediciones/:id',
                 component: CreaeditacentrosComponent,
             },
-            {   
-                path: 'queries', 
-                component: PromediocentrosqueryComponent ,
+            {
+                path: 'queries',
+                component: PromediocentrosqueryComponent,
             },
-            {   
-                path: 'graficoquery', 
-                component: GraficopromediosComponent ,
+            {
+                path: 'graficoquery',
+                component: GraficopromediosComponent,
             }
         ],
     },
-    
-    
+
+
     {
         path: 'usuarios',
         component: UsuariosComponent,
@@ -177,6 +178,11 @@ export const routes: Routes = [
                 path: 'ediciones/:id',
                 component: CreaeditareservasComponent,
             },
+            {
+                path: 'graficoquery',
+                component: GraficasComponent,
+            }
+
         ],
     },
     {
