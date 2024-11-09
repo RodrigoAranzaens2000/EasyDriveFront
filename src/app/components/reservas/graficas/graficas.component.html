@@ -1,0 +1,184 @@
+<div class="dashboard-container" @fadeIn>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1>Metricas Reservas</h1>
+          <p class="subtitle">Resumen de Actividades</p>
+        </div>
+        <div class="header-right">
+          <div class="date-selector">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Noviembre 2024</span>
+          </div>
+        </div>
+      </header>
+  
+      <!-- Metrics Cards -->
+      <div class="metrics-grid" @fadeInUp>
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="metric-info">
+            <h3>Total Reservas</h3>
+            <p class="metric-value">{{totalReservas | number}}</p>
+            <span class="metric-trend positive">
+              <i class="fas fa-arrow-up"></i> 12.5%
+            </span>
+          </div>
+        </div>
+  
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-school"></i>
+          </div>
+          <div class="metric-info">
+            <h3>Escuelas Activas</h3>
+            <p class="metric-value">{{totalEscuelas}}</p>
+            <span class="metric-trend neutral">
+              <i class="fas fa-minus"></i> 0%
+            </span>
+          </div>
+        </div>
+  
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="metric-info">
+            <h3>Total Centros</h3>
+            <p class="metric-value">{{totalCentros}}</p>
+            <span class="metric-trend positive">
+              <i class="fas fa-arrow-up"></i> 8.3%
+            </span>
+          </div>
+        </div>
+  
+        <div class="metric-card">
+          <div class="metric-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="metric-info">
+            <h3>Crecimiento</h3>
+            <p class="metric-value">{{crecimientoMensual | number:'1.1-1'}}%</p>
+            <span class="metric-trend" [ngClass]="crecimientoMensual >= 0 ? 'positive' : 'negative'">
+              <i class="fas" [ngClass]="crecimientoMensual >= 0 ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+              Este mes
+            </span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Charts Grid -->
+      <div class="charts-grid">
+        <!-- Pie Chart -->
+        <div class="chart-card" @fadeInUp>
+          <div class="chart-header">
+            <h3>Ganancias Servicios por Escuelas</h3>
+            <div class="chart-actions">
+              <button class="btn-icon" title="Más opciones">
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [type]="barChartType"
+              [legend]="barChartLegend">
+            </canvas>
+          </div>
+        </div>
+  
+        <!-- Bar Chart -->
+        <div class="chart-card" @fadeInUp>
+          <div class="chart-header">
+            <h3>Reservas por Escuela</h3>
+            <div class="chart-actions">
+              <button class="btn-icon" title="Más opciones">
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas baseChart
+              [datasets]="barChartData1"
+              [labels]="barChartLabels1"
+              [options]="barChartOptions1"
+              [type]="barChartType1"
+              [legend]="barChartLegend1">
+            </canvas>
+          </div>
+        </div>
+  
+        <!-- Doughnut Chart -->
+        <div class="chart-card" @fadeInUp>
+          <div class="chart-header">
+            <h3>Reservas por centros</h3>
+            <div class="chart-actions">
+              <button class="btn-icon" title="Más opciones">
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas baseChart
+              [datasets]="barChartData2"
+              [labels]="barChartLabels2"
+              [options]="barChartOptions2"
+              [type]="barChartType2"
+              [legend]="barChartLegend2">
+            </canvas>
+          </div>
+        </div>
+  
+        <!-- Line Chart -->
+        <div class="chart-card" @fadeInUp>
+          <div class="chart-header">
+            <h3>Ganancias por promociones</h3>
+            <div class="chart-actions">
+              <button class="btn-icon" title="Más opciones">
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas baseChart
+              [datasets]="barChartData3"
+              [labels]="barChartLabels3"
+              [options]="barChartOptions3"
+              [type]="barChartType3"
+              [legend]="barChartLegend3">
+            </canvas>
+          </div>
+        </div>
+
+        <!-- Line Chart -->
+        <div class="chart-card" @fadeInUp>
+            <div class="chart-header">
+              <h3>Analisis de servicios</h3>
+              <div class="chart-actions">
+                <button class="btn-icon" title="Más opciones">
+                  <i class="fas fa-ellipsis-v"></i>
+                </button>
+              </div>
+            </div>
+            <div class="chart-body">
+              <canvas baseChart
+                [datasets]="barChartData4"
+                [labels]="barChartLabels4"
+                [options]="barChartOptions4"
+                [type]="barChartType4"
+                [legend]="barChartLegend4">
+              </canvas>
+            </div>
+          </div>
+
+
+      </div>
+    </main>
+  </div>

@@ -25,7 +25,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   selector: 'app-creaeditareservas',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [    MatFormFieldModule,
+  imports: [MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -35,7 +35,83 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   templateUrl: './creaeditareservas.component.html',
   styleUrl: './creaeditareservas.component.css'
 })
+
 export class CreaeditareservasComponent {
+  form: FormGroup = new FormGroup({});
+  listausuarios: Usuarios[] = [];
+  listapromociones: Promocion[] = [];
+  listaescuelas: Escuelas[] = [];
+  listacentros: CentrosMedicos[] = [];
+  listaservicios: Servicios[] = [];
+  reservas: Reservas = new Reservas();
+  listaEstados: { value: string; viewValue: string }[] = [
+    { value: 'Confirmada', viewValue: 'Confirmada' },
+    { value: 'Pendiente', viewValue: 'Pendiente' },
+    { value: 'Cancelada', viewValue: 'Cancelada' },
+  ];
+  constructor(
+    private formBuilder: FormBuilder,
+    private uS: UsuariosService,
+    private pS: PromocionesService,
+    private eS: EscuelasService,
+    private cS: CentrosmedicosService,
+    private sS: ServiciosService,
+    private rS: ReservasService,
+    public router: Router
+  ) { }
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      hcodigo: [''],
+      hestado: ['', Validators.required],
+      hfecha: ['', Validators.required],
+      husuario: ['', Validators.required],
+      hescuela: ['', Validators.required],
+      hcentro: ['', Validators.required],
+      hservicio: ['', Validators.required],
+      hpromocion: ['', Validators.required],
+    });
+    this.uS.list().subscribe((data) => {
+      this.listausuarios = data;
+    });
+    this.cS.list().subscribe((data) => {
+      this.listacentros = data;
+    });
+    this.sS.list().subscribe((data) => {
+      this.listaservicios = data;
+    });
+    this.eS.list().subscribe((data) => {
+      this.listaescuelas = data;
+    });
+    this.pS.list().subscribe((data) => {
+      this.listapromociones = data;
+    });
+  }
+
+  aceptar(): void {
+    if (this.form.valid) {
+      this.reservas.idreserva = this.form.value.hcodigo;
+      this.reservas.estadoReserva = this.form.value.hestado;
+      this.reservas.fechaReserva = this.form.value.hfecha;
+      this.reservas.user.username = this.form.value.huser;
+      this.reservas.centros.nombre = this.form.value.hcentro;
+      this.reservas.prom.nombrePromocion = this.form.value.hpromocion;
+      this.reservas.ser.nombreServicio = this.form.value.hservicio;
+      this.reservas.esc.nombre= this.form.value.hescuela;
+
+
+      this.rS.insert(this.reservas).subscribe((data) => {
+        this.rS.list().subscribe((data) => {
+          this.rS.setList(data);
+        });
+      });
+      this.router.navigate(['reservas']);
+    }
+  }
+}
+
+
+
+/**export class CreaeditareservasComponent {
   form: FormGroup = new FormGroup({});
   listausuarios: Usuarios[] = [];
   listaescuelas: Escuelas[] = [];
@@ -152,3 +228,4 @@ this.reservas.prom = { idpromocion: this.form.value.hpromocion } as Promocion;
     }
   }
 }
+ */
