@@ -1,5 +1,5 @@
 <div class="container">
-    <div><h1>Crear/Editar Centro</h1></div>
+    <div><h1>Crear/Editar Pagos</h1></div>
     <div>
     <form [formGroup]="form" (submit)="aceptar()" class="example-form">
       
@@ -15,7 +15,7 @@
             <mat-option [value]="m.value">{{ m.viewValue }}</mat-option>
             }
           </mat-select>
-          <mat-error *ngIf="form.get('hnombre')?.hasError('required')">
+          <mat-error *ngIf="form.get('hmetodo')?.hasError('required')">
               El campo de metodoPago es obligatorio
           </mat-error>
       </mat-form-field>
@@ -39,7 +39,7 @@
             El campo Reserva es obligatorio
         </mat-error>
       </mat-form-field>
-      <br>    
+      <br>  
       <div class="button-container">
         <button mat-raised-button class="custom-button">Aceptar</button>
     </div>

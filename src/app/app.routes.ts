@@ -26,6 +26,8 @@ import { GraficacontadorqueryComponent } from './components/notificaciones/grafi
 import { PagosComponent } from './components/pagos/pagos.component';
 import { CreaeditapagosComponent } from './components/pagos/creaeditapagos/creaeditapagos.component';
 import { GraficasComponent } from './components/reservas/graficas/graficas.component';
+import { ReseniasComponent } from './components/resenias/resenias.component';
+import { CreaeditareseniasComponent } from './components/resenias/creaeditaresenias/creaeditaresenias.component';
 
 export const routes: Routes = [
     {
@@ -196,6 +198,20 @@ export const routes: Routes = [
             {
                 path: 'ediciones/:id',
                 component: CreaeditapagosComponent,
+            },
+        ],
+    },
+    {
+        path: 'resenias',
+        component: ReseniasComponent,
+        children: [
+            {
+                path: 'nuevo',
+                component: CreaeditareseniasComponent,
+            },
+            {
+                path: 'ediciones/:id',
+                component: CreaeditareseniasComponent,
             },
         ],
     }

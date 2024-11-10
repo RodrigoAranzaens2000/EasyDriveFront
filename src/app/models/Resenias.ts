@@ -1,12 +1,13 @@
 import { CentrosMedicos } from "./CentrosMedicos"
 import { Escuelas } from "./Escuelas"
+import { Usuarios } from "./Usuarios"
 
 export class Resenias{
-    fechaResenia: Date = new Date(Date.now())
+    user: Usuarios = new Usuarios()
+    esc:Escuelas=new Escuelas()
+    centros:CentrosMedicos=new CentrosMedicos()
     idresenia: number = 0
-    comentario: string = ""
+    fechaResenia: Date = new Date(Date.now())
     calificacion: number = 0
-    Escuelas:Escuelas=new Escuelas()
-    CentrosMedicos:CentrosMedicos=new CentrosMedicos()
+    comentario: string = ""
 }
-/* prueba */

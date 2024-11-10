@@ -1,5 +1,3 @@
-import { Promocion } from "./Promocion"
-
 export class Escuelas {
     idescuela:number=0
     nombre:string=""

@@ -1,6 +1,11 @@
 <div class="reserva-form-container">
   <h2>Registrar Reserva</h2>
   <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <mat-form-field class="example-full-width" *ngIf="edicion">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="hcodigo" readonly="readonly"/>
+    </mat-form-field>
+    <br />
 
     <mat-form-field>
       <mat-label>Estado</mat-label>
@@ -30,7 +35,7 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Escuela</mat-label>
       <mat-select formControlName="hescuela" required>
-        <mat-option *ngFor="let escuela of listaescuelas" [value]="escuela.nombre">
+        <mat-option *ngFor="let escuela of listaescuelas" [value]="escuela.idescuela">
           {{ escuela.nombre }}
         </mat-option>
       </mat-select>
@@ -39,7 +44,7 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Centro Médico</mat-label>
       <mat-select formControlName="hcentro" required>
-        <mat-option *ngFor="let centro of listacentros" [value]="centro.nombre">
+        <mat-option *ngFor="let centro of listacentros" [value]="centro.idcentro">
           {{ centro.nombre }}
         </mat-option>
       </mat-select>
@@ -48,7 +53,7 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Servicio</mat-label>
       <mat-select formControlName="hservicio" required>
-        <mat-option *ngFor="let servicio of listaservicios" [value]="servicio.nombreServicio">
+        <mat-option *ngFor="let servicio of listaservicios" [value]="servicio.idservicio">
           {{ servicio.nombreServicio }}
         </mat-option>
       </mat-select>
@@ -57,7 +62,7 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Promoción</mat-label>
       <mat-select formControlName="hpromocion" required>
-        <mat-option *ngFor="let promo of listapromociones" [value]="promo.nombrePromocion">
+        <mat-option *ngFor="let promo of listapromociones" [value]="promo.idpromocion">
           {{ promo.nombrePromocion }}
         </mat-option>
       </mat-select>

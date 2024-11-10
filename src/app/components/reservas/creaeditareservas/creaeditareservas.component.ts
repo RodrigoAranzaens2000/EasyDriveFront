@@ -43,7 +43,10 @@ export class CreaeditareservasComponent {
   listaescuelas: Escuelas[] = [];
   listacentros: CentrosMedicos[] = [];
   listaservicios: Servicios[] = [];
+  id: number = 0;
+  edicion: boolean = false;
   reservas: Reservas = new Reservas();
+
   listaEstados: { value: string; viewValue: string }[] = [
     { value: 'Confirmada', viewValue: 'Confirmada' },
     { value: 'Pendiente', viewValue: 'Pendiente' },
@@ -57,19 +60,28 @@ export class CreaeditareservasComponent {
     private cS: CentrosmedicosService,
     private sS: ServiciosService,
     private rS: ReservasService,
-    public router: Router
-  ) { }
+    public router: Router,
+    private route:ActivatedRoute
+  ) { this.form = this.formBuilder.group({
+    hcodigo: [''],
+    hestado: ['', Validators.required],
+    hfecha: ['', Validators.required],
+    husuario: ['', Validators.required],
+    hescuela: ['', Validators.required],
+    hcentro: ['', Validators.required],
+    hservicio: ['', Validators.required],
+    hpromocion: ['', Validators.required],
+  });}
+
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      hcodigo: [''],
-      hestado: ['', Validators.required],
-      hfecha: ['', Validators.required],
-      husuario: ['', Validators.required],
-      hescuela: ['', Validators.required],
-      hcentro: ['', Validators.required],
-      hservicio: ['', Validators.required],
-      hpromocion: ['', Validators.required],
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+      this.edicion = this.id != null;
+      if (this.edicion) {
+        this.init();
+      }
     });
+    
     this.uS.list().subscribe((data) => {
       this.listausuarios = data;
     });
@@ -92,21 +104,58 @@ export class CreaeditareservasComponent {
       this.reservas.idreserva = this.form.value.hcodigo;
       this.reservas.estadoReserva = this.form.value.hestado;
       this.reservas.fechaReserva = this.form.value.hfecha;
-      this.reservas.user.username = this.form.value.huser;
-      this.reservas.centros.nombre = this.form.value.hcentro;
-      this.reservas.prom.nombrePromocion = this.form.value.hpromocion;
-      this.reservas.ser.nombreServicio = this.form.value.hservicio;
-      this.reservas.esc.nombre= this.form.value.hescuela;
+      this.reservas.user.id = this.form.value.huser;
+      this.reservas.centros.idcentro = this.form.value.hcentro;
+      this.reservas.prom.idpromocion = this.form.value.hpromocion;
+      this.reservas.ser.idservicio = this.form.value.hservicio;
+      this.reservas.esc.idescuela= this.form.value.hescuela;
 
 
-      this.rS.insert(this.reservas).subscribe((data) => {
-        this.rS.list().subscribe((data) => {
-          this.rS.setList(data);
-        });
+      this.rS.insert(this.reservas).subscribe(() => {
+        this.listaReservas();
       });
       this.router.navigate(['reservas']);
     }
   }
+
+  private listaReservas() {
+    this.rS.list().subscribe((data) => {
+      this.rS.setList(data);
+      this.router.navigate(['reservas']);
+    });
+  }
+
+  init() {
+    if (this.edicion) {
+      this.rS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          hcodigo: new FormControl(data.idreserva),
+          hestado: new FormControl(data.estadoReserva),
+          hfecha: new FormControl(data.fechaReserva),
+          huser: new FormControl(data.user.id),
+          hcentro: new FormControl(data.centros.idcentro),
+          hpromocion: new FormControl(data.prom.idpromocion),
+          hservicio:new FormControl(data.ser.idservicio),
+          hescuela:new FormControl(data.esc.idescuela),
+        });
+      });
+    }
+  }
+
+  /*private init() {
+    this.rS.listId(this.id).subscribe((data) => {
+      this.form.patchValue({
+        hcodigo: data.idreserva,
+        hestado: data.estadoReserva,
+        hfecha: data.fechaReserva,
+        huser: data.user,
+        hcentro: data.centros,
+        hpromocion: data.prom,
+        hservicio: data.ser,
+        hescuela: data.esc,
+      });
+    });
+  }*/
 }
 
 

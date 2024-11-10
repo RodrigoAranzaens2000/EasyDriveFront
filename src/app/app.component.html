@@ -45,6 +45,9 @@
   <button mat-menu-item [matMenuTriggerFor]="menuPagos" class="custom-menu-item">
     <mat-icon>payment</mat-icon> Pagos
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuResenias" class="custom-menu-item">
+    <mat-icon>feedback</mat-icon> Reseñas
+  </button>
 </mat-menu>
 
 <!-- Submenú Servicios -->
@@ -315,6 +318,16 @@
   </button>
 </mat-menu>
 
+<!-- Submenú Pagos -->
+<mat-menu #menuResenias="matMenu">
+  <p class="menu-section-title">Pagos </p>
+  <button mat-menu-item routerLink="/resenias" class="custom-menu-item">
+    <mat-icon>feedback</mat-icon> Listar Reseñas
+  </button>
+  <button mat-menu-item routerLink="/resenias/nuevo" class="custom-menu-item">
+    <mat-icon>star</mat-icon> Registrar Reseñas
+  </button>
+</mat-menu>
 <router-outlet></router-outlet>
 
 

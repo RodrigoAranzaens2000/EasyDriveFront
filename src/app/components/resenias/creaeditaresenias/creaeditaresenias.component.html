@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="title-container">
+      <h1>Crear o Editar Reseñas</h1>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="example-form">
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Fecha de Reseña</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="hfecha" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('hfecha')?.hasError('required')">
+          La fecha es obligatoria
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Comentario</mat-label>
+        <input matInput placeholder="Comentario" formControlName="hcomentario" />
+        <mat-error *ngIf="form.get('hcomentario')?.hasError('required')">
+          El comentario es obligatorio
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Calificacion</mat-label>
+        <mat-select  formControlName="hcalificacion">
+          @for (c of listaCalificacion; track c) {
+          <mat-option [value]="c.value">{{ c.viewValue }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('hcalificacion')?.hasError('required')">
+            El campo de calificacion es obligatorio
+        </mat-error>
+    </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="huser">
+          <mat-option *ngFor="let u of listaUsuarios" [value]="u.id">
+            {{ u.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Escuela</mat-label>
+        <mat-select formControlName="hescuela">
+          <mat-option *ngFor="let e of listaEscuelas" [value]="e.idescuela">
+            {{ e.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="mat-form-field full-width">
+        <mat-label>Centro Medico</mat-label>
+        <mat-select formControlName="hcentro">
+          <mat-option *ngFor="let c of listaCentros" [value]="c.idcentro">
+            {{ c.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid" class="custom-button">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
