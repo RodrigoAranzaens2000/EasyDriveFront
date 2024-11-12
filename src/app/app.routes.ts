@@ -28,8 +28,20 @@ import { CreaeditapagosComponent } from './components/pagos/creaeditapagos/creae
 import { GraficasComponent } from './components/reservas/graficas/graficas.component';
 import { ReseniasComponent } from './components/resenias/resenias.component';
 import { CreaeditareseniasComponent } from './components/resenias/creaeditaresenias/creaeditaresenias.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { seguridadGuard } from './guard/seguridad.guard';
 
 export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
     {
         path: 'servicios',
         component: ServiciosComponent,
@@ -214,6 +226,11 @@ export const routes: Routes = [
                 component: CreaeditareseniasComponent,
             },
         ],
-    }
+    },
+    {
+        path: 'homes',
+        component: HomeComponent,
+        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+      },
 
 ];

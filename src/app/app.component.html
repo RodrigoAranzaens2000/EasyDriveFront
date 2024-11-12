@@ -1,4 +1,4 @@
-<mat-toolbar class="custom-toolbar">
+<mat-toolbar class="custom-toolbar" *ngIf="verificar()">
   <!-- Menú en la izquierda -->
   <div class="menu-left">
     <button mat-button [matMenuTriggerFor]="mainMenu" style="color: #ff4d32">
@@ -10,42 +10,48 @@
   <div class="logo-container">
     <img src="assets/images/logoEd.png" alt="Logo Easy Drive" class="logo-img">
   </div>
+
+  <div class="right-menu">
+    <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
+      <mat-icon>person</mat-icon>Usuario
+    </button>
+  </div>
 </mat-toolbar>
 
 <!-- Menú principal -->
-<mat-menu #mainMenu="matMenu">
+<mat-menu #mainMenu="matMenu" >
   <p class="menu-section-title">Módulos</p>
-  <button mat-menu-item [matMenuTriggerFor]="menuServicios" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuServicios" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>build_circle</mat-icon> Servicios
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCentros" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuCentros" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>medical_services</mat-icon> Centros Médicos
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuUsuarios" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuUsuarios" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>group</mat-icon> Usuarios
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuEscuelas" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuEscuelas" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>school</mat-icon> Escuelas
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuPromociones" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuPromociones" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>monetization_on</mat-icon> Promociones
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>notifications</mat-icon> Notificaciones
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuRoles" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuRoles" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>account_box</mat-icon> Roles
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCalendario" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuCalendario" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>calendar_today</mat-icon> Calendario
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuReservas" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuReservas" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>collections_bookmark</mat-icon> Reservas
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuPagos" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuPagos" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>payment</mat-icon> Pagos
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuResenias" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuResenias" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>feedback</mat-icon> Reseñas
   </button>
 </mat-menu>
@@ -56,7 +62,7 @@
   <button mat-menu-item routerLink="/servicios" class="custom-menu-item">
     <mat-icon>list</mat-icon> Listar Servicios
   </button>
-  <button mat-menu-item routerLink="/servicios/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/servicios/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>add_circle</mat-icon> Registrar Servicio
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuServiciosInsights" class="custom-menu-item">
@@ -79,7 +85,7 @@
   <button mat-menu-item routerLink="/centrosmedicos" class="custom-menu-item">
     <mat-icon>local_hospital</mat-icon> Listar Centros Médicos
   </button>
-  <button mat-menu-item routerLink="/centrosmedicos/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/centrosmedicos/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>add_circle</mat-icon> Registrar Centro Médico
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuCentrosInsights" class="custom-menu-item">
@@ -132,13 +138,13 @@
   </button>
 </mat-menu>
 
-<!-- Submenú Insights de Usuarios -->
-<mat-menu #menuUsuariosInsights="matMenu">
-  <p class="menu-section-title">Insights de Usuarios</p>
-  <button mat-menu-item routerLink="/usuarios/queries" class="custom-menu-item">
-    <mat-icon>query_stats</mat-icon> Mostrar Queries
-  </button>
-</mat-menu>
+        <!-- Submenú Insights de Usuarios -->
+        <mat-menu #menuUsuariosInsights="matMenu">
+          <p class="menu-section-title">Insights de Usuarios</p>
+          <button mat-menu-item routerLink="/usuarios/queries" class="custom-menu-item">
+            <mat-icon>query_stats</mat-icon> Mostrar Queries
+          </button>
+        </mat-menu>
 
 <!-- Submenú Escuelas -->
 <mat-menu #menuEscuelas="matMenu">
@@ -146,7 +152,7 @@
   <button mat-menu-item routerLink="/escuelas" class="custom-menu-item">
     <mat-icon>library_books</mat-icon> Listar Escuelas
   </button>
-  <button mat-menu-item routerLink="/escuelas/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/escuelas/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>add_circle</mat-icon> Registrar Escuelas
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuEscuelasInsights" class="custom-menu-item">
@@ -190,7 +196,7 @@
   <button mat-menu-item routerLink="/promociones" class="custom-menu-item">
     <mat-icon>attach_money</mat-icon> Listar Promociones
   </button>
-  <button mat-menu-item routerLink="/promociones/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/promociones/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>add_circle</mat-icon> Registrar Promociones
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuPromocionesInsights" class="custom-menu-item">
@@ -198,13 +204,13 @@
   </button>
 </mat-menu>
 
-<!-- Submenú Insights de Promociones -->
-<mat-menu #menuPromocionesInsights="matMenu">
-  <p class="menu-section-title">Insights de Promociones</p>
-  <button mat-menu-item routerLink="/Promociones/queries" class="custom-menu-item">
-    <mat-icon>query_stats</mat-icon> Mostrar Queries
-  </button>
-</mat-menu>
+          <!-- Submenú Insights de Promociones -->
+          <mat-menu #menuPromocionesInsights="matMenu">
+            <p class="menu-section-title">Insights de Promociones</p>
+            <button mat-menu-item routerLink="/Promociones/queries" class="custom-menu-item">
+              <mat-icon>query_stats</mat-icon> Mostrar Queries
+            </button>
+          </mat-menu>
 
 <!-- Submenú Notificaciones -->
 <mat-menu #menuNotificaciones="matMenu">
@@ -212,7 +218,7 @@
   <button mat-menu-item routerLink="/notificaciones" class="custom-menu-item">
     <mat-icon>list</mat-icon> Listar Notificaciones
   </button>
-  <button mat-menu-item routerLink="/notificaciones/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/notificaciones/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>add_alert</mat-icon> Registrar Notificaciones
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesInsights" class="custom-menu-item">
@@ -268,7 +274,7 @@
   <button mat-menu-item routerLink="/calendario" class="custom-menu-item">
     <mat-icon>calendar_view_day</mat-icon> Listar Calendario
   </button>
-  <button mat-menu-item routerLink="/calendario/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/calendario/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>date_range</mat-icon> Registrar Calendario
   </button>
 </mat-menu>
@@ -281,7 +287,7 @@
   <button mat-menu-item routerLink="/reservas" class="custom-menu-item">
     <mat-icon>schedule</mat-icon> Listar reservas
   </button>
-  <button mat-menu-item routerLink="/reservas/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/reservas/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>group_add</mat-icon> Registrar Reservas
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuReservasInsights" class="custom-menu-item">
@@ -318,14 +324,29 @@
   </button>
 </mat-menu>
 
-<!-- Submenú Pagos -->
+<!-- Submenú Resenias -->
 <mat-menu #menuResenias="matMenu">
-  <p class="menu-section-title">Pagos </p>
+  <p class="menu-section-title">Reseñas </p>
   <button mat-menu-item routerLink="/resenias" class="custom-menu-item">
     <mat-icon>feedback</mat-icon> Listar Reseñas
   </button>
-  <button mat-menu-item routerLink="/resenias/nuevo" class="custom-menu-item">
+  <button mat-menu-item routerLink="/resenias/nuevo" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>star</mat-icon> Registrar Reseñas
+  </button>
+</mat-menu>
+<mat-menu #menuSalir="matMenu">
+  <button
+    mat-menu-item
+    routerLink="/login"
+    (click)="cerrar()"
+    class="custom-menu-item"
+  >
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item class="custom-menu-item">
+    Rol:
+    <span>{{ role }}</span>
   </button>
 </mat-menu>
 <router-outlet></router-outlet>

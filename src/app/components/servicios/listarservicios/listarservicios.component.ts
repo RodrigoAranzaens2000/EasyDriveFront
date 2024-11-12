@@ -5,6 +5,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator'; 
 import { Servicios } from '../../../models/Servicios';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarservicios',
@@ -19,7 +20,9 @@ export class ListarserviciosComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
-  constructor(private sS: ServiciosService) {}
+  constructor(private sS: ServiciosService,
+    private lS: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.sS.list().subscribe((data) => {

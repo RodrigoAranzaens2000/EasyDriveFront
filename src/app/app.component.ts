@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,23 @@ MatFormFieldModule],
 })
 export class AppComponent {
   title = 'EasyDriveFront';
+  role: string = '';
+  constructor(private loginService: LoginService) {}
+  cerrar() {
+    sessionStorage.clear();
+  }
 
+  verificar() {
+    this.role = this.loginService.showRole();
+    return this.loginService.verificar();
+  }
+  isAdmin() {
+    return this.role === 'ADMINISTRADOR';
+  }
+
+  isUser() {
+    return this.role === 'USUARIO';
+  }
 }
   
 
