@@ -1,7 +1,155 @@
-mat-form-field {
-    width: 50%;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  padding: 20px;
 }
-.custom-button {
-    background-color: #ce940c;     
-    color: white;         
+
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 77, 153, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
 }
+
+.logo-container {
+  margin-bottom: 24px;
+}
+
+.logo {
+  max-width: 180px;
+  height: auto;
+}
+
+h2 {
+  color: #004d99;
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #004d99;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.remember-me {
+  color: #666;
+  font-size: 14px;
+}
+
+.forgot-password {
+  color: #004d99;
+  text-decoration: none;
+  font-size: 14px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.login-button {
+  background-color: #004d99;
+  color: white;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+  
+  &:hover:not([disabled]) {
+    background-color: #003d7a;
+  }
+  
+  &[disabled] {
+    background-color: #ccc;
+  }
+  
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+.register-link {
+  margin-top: 24px;
+  color: #666;
+  font-size: 14px;
+  
+  a {
+    color: #004d99;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 24px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.error-snackbar {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .success-snackbar {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .login-button {
+    position: relative;
+  }
+  
+  .login-button[disabled] {
+    background-color: rgba(0, 77, 153, 0.5);
+    cursor: not-allowed;
+  }
+  
+  /* Añade este estilo si quieres mostrar un spinner durante la carga */
+  .loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }

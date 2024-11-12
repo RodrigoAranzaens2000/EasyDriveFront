@@ -1,23 +1,57 @@
-<div class="container" style="text-align: center">
-    <div>
-      <img src="../../../assets/images/logoEd.png" alt="Logo de la empresa" >
-
+<div class="login-container">
+  <div class="login-card">
+    <div class="logo-container">
+      <img src="../../../assets/images/logoEd.png" alt="Logo de la empresa" class="logo">
     </div>
-    <h2>Inicie sesión</h2>
-    <mat-form-field class="example-full-width">
-      <mat-label>Usuario</mat-label>
-      <input matInput placeholder="Username" [(ngModel)]="username" />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="example-full-width">
-      <mat-label>Password</mat-label>
-      <input
-        type="password"
-        matInput
-        placeholder="Password"
-        [(ngModel)]="password"
-      />
-    </mat-form-field>
-    <br />
-    <button mat-raised-button class="custom-button " (click)="login()">Ingresar</button>
+    
+    <h2>Bienvenido de Vuelta</h2>
+    <p class="subtitle">Ingresa a tu cuenta para continuar</p>
+
+    <form class="login-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Usuario</mat-label>
+          <input matInput 
+                 placeholder="Ingresa tu usuario" 
+                 [(ngModel)]="username"
+                 name="username"
+                 required
+                 (keypress)="onKeyPress($event)">
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Contraseña</mat-label>
+          <input matInput
+                 [type]="hidePassword ? 'password' : 'text'"
+                 placeholder="Ingresa tu contraseña"
+                 [(ngModel)]="password"
+                 name="password"
+                 required
+                 (keypress)="onKeyPress($event)">
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-icon matSuffix 
+                    (click)="hidePassword = !hidePassword"
+                    style="cursor: pointer">
+            {{hidePassword ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <mat-checkbox class="remember-me">Recordarme</mat-checkbox>
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <button mat-raised-button 
+              class="login-button" 
+              type="submit"
+              [disabled]="!username || !password || loading">
+        <mat-icon>login</mat-icon>
+        {{loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}}
+      </button>
+    </form>
   </div>
+</div>
