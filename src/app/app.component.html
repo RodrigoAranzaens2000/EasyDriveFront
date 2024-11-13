@@ -13,13 +13,13 @@
 
   <div class="right-menu">
     <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
-      <mat-icon>person</mat-icon>Usuario
+      <mat-icon>person</mat-icon>Username
     </button>
   </div>
 </mat-toolbar>
 
 <!-- Menú principal -->
-<mat-menu #mainMenu="matMenu" >
+<mat-menu #mainMenu="matMenu">
   <p class="menu-section-title">Módulos</p>
   <button mat-menu-item [matMenuTriggerFor]="menuServicios" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
     <mat-icon>build_circle</mat-icon> Servicios
@@ -93,33 +93,33 @@
   </button>
 </mat-menu>
 
-        <!--  Submenú Insights de Centros Médicos -->
-        <mat-menu #menuCentrosInsights="matMenu">
-          <p class="menu-section-title">Insights de Centros Médicos</p>
+<!--  Submenú Insights de Centros Médicos -->
+<mat-menu #menuCentrosInsights="matMenu">
+  <p class="menu-section-title">Insights de Centros Médicos</p>
 
-          <button mat-menu-item [matMenuTriggerFor]="menuCentrosQuery" class="custom-menu-item">
-            <mat-icon>assignment</mat-icon> Querys
-          </button>
-            <button mat-menu-item [matMenuTriggerFor]="menuCentrosGraficas" class="custom-menu-item">
-              <mat-icon> bar_chart</mat-icon> Graficas
-            </button>
-        </mat-menu>
+  <button mat-menu-item [matMenuTriggerFor]="menuCentrosQuery" class="custom-menu-item">
+    <mat-icon>assignment</mat-icon> Querys
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuCentrosGraficas" class="custom-menu-item">
+    <mat-icon> bar_chart</mat-icon> Graficas
+  </button>
+</mat-menu>
 
-                 <!-- Submenú Querys de Centros Médicos -->
-                <mat-menu #menuCentrosQuery="matMenu">
-                  <p class="menu-section-title">Querys Centros Médicos</p>
-                  <button mat-menu-item routerLink="/centrosmedicos/queries" class="custom-menu-item">
-                    <mat-icon>query_stats</mat-icon> Promedio Resenias Centros Medicos
-                  </button>
-                </mat-menu>
+<!-- Submenú Querys de Centros Médicos -->
+<mat-menu #menuCentrosQuery="matMenu">
+  <p class="menu-section-title">Querys Centros Médicos</p>
+  <button mat-menu-item routerLink="/centrosmedicos/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Promedio Resenias Centros Medicos
+  </button>
+</mat-menu>
 
-                <!-- Submenú Graficas de Centros Médicos -->
-                <mat-menu #menuCentrosGraficas="matMenu">
-                  <p class="menu-section-title">Graficas Centros Médicos</p>
-                  <button mat-menu-item routerLink="/centrosmedicos/graficoquery" class="custom-menu-item">
-                    <mat-icon>query_stats</mat-icon> Promedio Resenias Centros Medicos
-                  </button>
-                </mat-menu>
+<!-- Submenú Graficas de Centros Médicos -->
+<mat-menu #menuCentrosGraficas="matMenu">
+  <p class="menu-section-title">Graficas Centros Médicos</p>
+  <button mat-menu-item routerLink="/centrosmedicos/graficoquery" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Promedio Resenias Centros Medicos
+  </button>
+</mat-menu>
 
 
 
@@ -138,13 +138,13 @@
   </button>
 </mat-menu>
 
-        <!-- Submenú Insights de Usuarios -->
-        <mat-menu #menuUsuariosInsights="matMenu">
-          <p class="menu-section-title">Insights de Usuarios</p>
-          <button mat-menu-item routerLink="/usuarios/queries" class="custom-menu-item">
-            <mat-icon>query_stats</mat-icon> Mostrar Queries
-          </button>
-        </mat-menu>
+<!-- Submenú Insights de Usuarios -->
+<mat-menu #menuUsuariosInsights="matMenu">
+  <p class="menu-section-title">Insights de Usuarios</p>
+  <button mat-menu-item routerLink="/usuarios/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
 
 <!-- Submenú Escuelas -->
 <mat-menu #menuEscuelas="matMenu">
@@ -160,34 +160,34 @@
   </button>
 </mat-menu>
 
-        <!--  Submenú Insights de Centros Médicos -->
-        <mat-menu #menuEscuelasInsights="matMenu">
-          <p class="menu-section-title">Insights de Escuelas</p>
+<!--  Submenú Insights de Centros Médicos -->
+<mat-menu #menuEscuelasInsights="matMenu">
+  <p class="menu-section-title">Insights de Escuelas</p>
 
-          <button mat-menu-item [matMenuTriggerFor]="menuEscuelasQuery" class="custom-menu-item">
-            <mat-icon>assignment</mat-icon> Querys
-          </button>
-            <button mat-menu-item [matMenuTriggerFor]="menuEscuelasGraficas" class="custom-menu-item">
-              <mat-icon> bar_chart</mat-icon> Graficas
-            </button>
-        </mat-menu>
+  <button mat-menu-item [matMenuTriggerFor]="menuEscuelasQuery" class="custom-menu-item">
+    <mat-icon>assignment</mat-icon> Querys
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuEscuelasGraficas" class="custom-menu-item">
+    <mat-icon> bar_chart</mat-icon> Graficas
+  </button>
+</mat-menu>
 
-                           <!-- Submenú Querys de Centros Médicos -->
-                           <mat-menu #menuEscuelasQuery="matMenu">
-                            <p class="menu-section-title">Querys Escuelas </p>
-                            <button mat-menu-item routerLink="/escuelas/queries" class="custom-menu-item">
-                              <mat-icon>query_stats</mat-icon> Mostrar Queries
-                            </button>
-                          </mat-menu>
-          
-                          <!-- Submenú Graficas de Centros Médicos -->
-                          <mat-menu #menuEscuelasGraficas="matMenu">
-                            <p class="menu-section-title">Graficas Escuelas </p>
-                            <button mat-menu-item routerLink="/escuelas/graficoquery" class="custom-menu-item">
-                              <mat-icon>query_stats</mat-icon> Promedio Resenias Escuelas
-                            </button>
-                          </mat-menu>
-          
+<!-- Submenú Querys de Centros Médicos -->
+<mat-menu #menuEscuelasQuery="matMenu">
+  <p class="menu-section-title">Querys Escuelas </p>
+  <button mat-menu-item routerLink="/escuelas/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
+
+<!-- Submenú Graficas de Centros Médicos -->
+<mat-menu #menuEscuelasGraficas="matMenu">
+  <p class="menu-section-title">Graficas Escuelas </p>
+  <button mat-menu-item routerLink="/escuelas/graficoquery" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Promedio Resenias Escuelas
+  </button>
+</mat-menu>
+
 
 
 <!-- Submenú Promociones -->
@@ -204,13 +204,13 @@
   </button>
 </mat-menu>
 
-          <!-- Submenú Insights de Promociones -->
-          <mat-menu #menuPromocionesInsights="matMenu">
-            <p class="menu-section-title">Insights de Promociones</p>
-            <button mat-menu-item routerLink="/Promociones/queries" class="custom-menu-item">
-              <mat-icon>query_stats</mat-icon> Mostrar Queries
-            </button>
-          </mat-menu>
+<!-- Submenú Insights de Promociones -->
+<mat-menu #menuPromocionesInsights="matMenu">
+  <p class="menu-section-title">Insights de Promociones</p>
+  <button mat-menu-item routerLink="/Promociones/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
 
 <!-- Submenú Notificaciones -->
 <mat-menu #menuNotificaciones="matMenu">
@@ -226,36 +226,36 @@
   </button>
 </mat-menu>
 
-        <!--  Submenú Insights de Notificaciones -->
-        <mat-menu #menuNotificacionesInsights="matMenu">
-          <p class="menu-section-title">Insights de Notificaciones</p>
+<!--  Submenú Insights de Notificaciones -->
+<mat-menu #menuNotificacionesInsights="matMenu">
+  <p class="menu-section-title">Insights de Notificaciones</p>
 
-          <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesQuery" class="custom-menu-item">
-            <mat-icon>assignment</mat-icon> Querys
-          </button>
-            <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesGraficas" class="custom-menu-item">
-              <mat-icon> bar_chart</mat-icon> Graficas
-            </button>
-        </mat-menu>
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesQuery" class="custom-menu-item">
+    <mat-icon>assignment</mat-icon> Querys
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificacionesGraficas" class="custom-menu-item">
+    <mat-icon> bar_chart</mat-icon> Graficas
+  </button>
+</mat-menu>
 
-                           <!-- Submenú Querys de Notificaciones -->
-                           <mat-menu #menuNotificacionesQuery="matMenu">
-                            <p class="menu-section-title">Querys Notificaciones </p>
-                            <button mat-menu-item routerLink="/notificaciones/queries" class="custom-menu-item">
-                              <mat-icon>query_stats</mat-icon> Mostrar Queries
-                            </button>
-                          </mat-menu>
-          
-                          <!-- Submenú Graficas de Notificaciones -->
-                          <mat-menu #menuNotificacionesGraficas="matMenu">
-                            <p class="menu-section-title">Graficas Notificaciones </p>
-                            <button mat-menu-item routerLink="/notificaciones/graficoquery" class="custom-menu-item">
-                              <mat-icon>query_stats</mat-icon> Contador de Notificaciones
-                            </button>
-                          </mat-menu>
-          
+<!-- Submenú Querys de Notificaciones -->
+<mat-menu #menuNotificacionesQuery="matMenu">
+  <p class="menu-section-title">Querys Notificaciones </p>
+  <button mat-menu-item routerLink="/notificaciones/queries" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Mostrar Queries
+  </button>
+</mat-menu>
 
-          
+<!-- Submenú Graficas de Notificaciones -->
+<mat-menu #menuNotificacionesGraficas="matMenu">
+  <p class="menu-section-title">Graficas Notificaciones </p>
+  <button mat-menu-item routerLink="/notificaciones/graficoquery" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Contador de Notificaciones
+  </button>
+</mat-menu>
+
+
+
 
 <!-- Submenú Roles -->
 <mat-menu #menuRoles="matMenu">
@@ -295,23 +295,23 @@
   </button>
 </mat-menu>
 
-        <!--  Submenú Insights de Notificaciones -->
-        <mat-menu #menuReservasInsights="matMenu">
-          <p class="menu-section-title">Insights de Reservas</p>
+<!--  Submenú Insights de Notificaciones -->
+<mat-menu #menuReservasInsights="matMenu">
+  <p class="menu-section-title">Insights de Reservas</p>
 
-            <button mat-menu-item [matMenuTriggerFor]="menuReservasGraficas" class="custom-menu-item">
-              <mat-icon> bar_chart</mat-icon> Graficas
-            </button>
-        </mat-menu>
+  <button mat-menu-item [matMenuTriggerFor]="menuReservasGraficas" class="custom-menu-item">
+    <mat-icon> bar_chart</mat-icon> Graficas
+  </button>
+</mat-menu>
 
-                          <!-- Submenú Graficas de Notificaciones -->
-                          <mat-menu #menuReservasGraficas="matMenu">
-                            <p class="menu-section-title">Graficas Reservas </p>
-                            <button mat-menu-item routerLink="/reservas/graficoquery" class="custom-menu-item">
-                              <mat-icon>query_stats</mat-icon> Contador de Reservas
-                            </button>
-                          </mat-menu>
-          
+<!-- Submenú Graficas de Notificaciones -->
+<mat-menu #menuReservasGraficas="matMenu">
+  <p class="menu-section-title">Graficas Reservas </p>
+  <button mat-menu-item routerLink="/reservas/graficoquery" class="custom-menu-item">
+    <mat-icon>query_stats</mat-icon> Contador de Reservas
+  </button>
+</mat-menu>
+
 
 <!-- Submenú Pagos -->
 <mat-menu #menuPagos="matMenu">
@@ -334,13 +334,11 @@
     <mat-icon>star</mat-icon> Registrar Reseñas
   </button>
 </mat-menu>
+
+
+<!-- Submenú Cerrar -->
 <mat-menu #menuSalir="matMenu">
-  <button
-    mat-menu-item
-    routerLink="/login"
-    (click)="cerrar()"
-    class="custom-menu-item"
-  >
+  <button mat-menu-item routerLink="/login" (click)="cerrar()" class="custom-menu-item">
     <mat-icon>logout</mat-icon>
     <span>Cerrar sesión</span>
   </button>
@@ -350,7 +348,3 @@
   </button>
 </mat-menu>
 <router-outlet></router-outlet>
-
-
-
-

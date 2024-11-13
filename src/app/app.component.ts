@@ -33,7 +33,11 @@ MatFormFieldModule],
 export class AppComponent {
   title = 'EasyDriveFront';
   role: string = '';
+  username: string = '';
   constructor(private loginService: LoginService) {}
+
+
+
   cerrar() {
     sessionStorage.clear();
   }
@@ -49,6 +53,8 @@ export class AppComponent {
   isUser() {
     return this.role === 'USUARIO';
   }
+
+  
 }
   
 
