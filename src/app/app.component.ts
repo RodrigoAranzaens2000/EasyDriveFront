@@ -36,8 +36,6 @@ export class AppComponent {
   username: string = '';
   constructor(private loginService: LoginService) {}
 
-
-
   cerrar() {
     sessionStorage.clear();
   }
