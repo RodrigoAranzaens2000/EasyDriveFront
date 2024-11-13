@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error durante el login:', error);
-        this.mensaje = 'Credenciales incorrectas!!!';
+        this.mensaje = 'Credenciales invalidas';
         this.showMessage(this.mensaje);
         this.password = ''; // Limpiar contraseña por seguridad
       },
