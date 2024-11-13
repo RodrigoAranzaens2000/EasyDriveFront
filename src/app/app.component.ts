@@ -44,6 +44,7 @@ export class AppComponent {
 
   verificar() {
     this.role = this.loginService.showRole();
+    this.username = this.loginService.showUser();
     return this.loginService.verificar();
   }
   isAdmin() {

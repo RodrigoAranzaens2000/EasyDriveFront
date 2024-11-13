@@ -13,7 +13,7 @@
 
   <div class="right-menu">
     <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
-      <mat-icon>person</mat-icon>Username
+      <mat-icon>person</mat-icon><span>{{ username }}</span>
     </button>
   </div>
 </mat-toolbar>
@@ -100,7 +100,7 @@
   <button mat-menu-item [matMenuTriggerFor]="menuCentrosQuery" class="custom-menu-item">
     <mat-icon>assignment</mat-icon> Querys
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCentrosGraficas" class="custom-menu-item">
+  <button mat-menu-item [matMenuTriggerFor]="menuCentrosGraficas" class="custom-menu-item" >
     <mat-icon> bar_chart</mat-icon> Graficas
   </button>
 </mat-menu>

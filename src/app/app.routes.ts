@@ -55,6 +55,7 @@ export const routes: Routes = [
                 component: CreaeditaserviciosComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'centrosmedicos',
@@ -77,6 +78,7 @@ export const routes: Routes = [
                 component: GraficopromediosComponent,
             }
         ],
+        canActivate: [seguridadGuard],
     },
 
 
@@ -93,6 +95,7 @@ export const routes: Routes = [
                 component: CreaeditausuariosComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'escuelas',
@@ -115,6 +118,7 @@ export const routes: Routes = [
                 component: GraficopromediosescuelasComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'promociones',
@@ -129,6 +133,7 @@ export const routes: Routes = [
                 component: CreaeditapromocionesComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'notificaciones',
@@ -151,6 +156,7 @@ export const routes: Routes = [
                 component: GraficacontadorqueryComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'roles',
@@ -165,6 +171,7 @@ export const routes: Routes = [
                 component: CreaeditarolesComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'calendario',
@@ -179,6 +186,7 @@ export const routes: Routes = [
                 component: CreaeditacalendarioComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'reservas',
@@ -198,6 +206,7 @@ export const routes: Routes = [
             }
 
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'pagos',
@@ -212,6 +221,7 @@ export const routes: Routes = [
                 component: CreaeditapagosComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'resenias',
@@ -226,6 +236,7 @@ export const routes: Routes = [
                 component: CreaeditareseniasComponent,
             },
         ],
+        canActivate: [seguridadGuard],
     },
     {
         path: 'homes',
