@@ -5,6 +5,7 @@ import { ReservasService } from '../../../services/reservas.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-graficas',
   standalone: true,
