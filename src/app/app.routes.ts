@@ -31,17 +31,17 @@ import { CreaeditareseniasComponent } from './components/resenias/creaeditaresen
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { seguridadGuard } from './guard/seguridad.guard';
+import { LandingComponent } from './components/landing/landing.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
-      {
+        component: LandingComponent,  // Ruta inicial al iniciar la aplicación
+    },
+    {
         path: 'login',
         component: LoginComponent,
-      },
+    },
     {
         path: 'servicios',
         component: ServiciosComponent,
@@ -80,8 +80,6 @@ export const routes: Routes = [
         ],
         canActivate: [seguridadGuard],
     },
-
-
     {
         path: 'usuarios',
         component: UsuariosComponent,
@@ -204,7 +202,6 @@ export const routes: Routes = [
                 path: 'graficoquery',
                 component: GraficasComponent,
             }
-
         ],
         canActivate: [seguridadGuard],
     },
@@ -241,7 +238,10 @@ export const routes: Routes = [
     {
         path: 'homes',
         component: HomeComponent,
-        canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
-      },
-
+        canActivate: [seguridadGuard],
+    },
+    {
+        path: '**',
+        redirectTo: ''  // Redirección a la página principal para rutas no encontradas
+    }
 ];

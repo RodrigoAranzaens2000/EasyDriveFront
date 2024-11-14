@@ -1,0 +1,36 @@
+<div class="news-container">
+    <!-- Mostrar mensaje de carga -->
+    <div *ngIf="isLoading" class="loading">
+      <p>Cargando noticias...</p>
+    </div>
+  
+    <!-- Mostrar mensaje de error -->
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  
+    <!-- Noticias destacadas a la izquierda -->
+    <div *ngIf="!isLoading && newsData.length > 0" class="news-list-left">
+      <div class="news-item-large">
+        <img *ngIf="newsData[0]?.image_url" [src]="newsData[0].image_url" alt="Imagen de {{ newsData[0].title }}">
+        <div class="news-title-large">
+          <h2>{{ newsData[0].title }}</h2>
+          <p class="news-info">{{ newsData[0].pubDate }} / {{ newsData[0].source_id }}</p>
+          <a [href]="newsData[0].link" target="_blank" class="read-more">Leer más</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Noticias más pequeñas a la derecha -->
+    <div class="news-list-right">
+      <div *ngFor="let news of newsData.slice(1, 4)" class="news-item-small">
+        <img *ngIf="news.image_url" [src]="news.image_url" alt="Imagen de {{ news.title }}">
+        <div class="news-content-small">
+          <h3 class="news-title-small">{{ news.title }}</h3>
+          <p class="news-info-small">{{ news.pubDate }} / {{ news.source_id }}</p>
+          <a [href]="news.link" target="_blank" class="read-more">Leer más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
