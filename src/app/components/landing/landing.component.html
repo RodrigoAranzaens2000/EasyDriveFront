@@ -1,0 +1,70 @@
+<div class="landing-container">
+    <!-- Navbar -->
+    <nav class="navbar" [class.fixed]="isNavbarFixed">
+        <div class="logo">
+            <img src="../../../assets/images/logoEd.png" alt="EasyDrive Logo" />
+          </div>
+      <ul class="nav-links" [class.open]="isMenuOpen">
+        <button><li><a (click)="scrollTo('home')">Inicio</a></li></button>
+        <button><li><a (click)="scrollTo('courses')">Cursos</a></li></button>
+        <button><li><a (click)="scrollTo('about')">Acerca de</a></li></button>
+        <button><li><a (click)="scrollTo('testimonials')">Testimonios</a></li></button>
+        <button><li><a (click)="scrollTo('contact')">Contacto</a></li></button>
+      </ul>
+      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    </nav>
+  
+    <!-- Home Section -->
+    <section id="home" class="home">
+      <div class="hero-content">
+        <h1>Bienvenido a EasyDrive</h1>
+        <p>Aprende a conducir de forma rápida y segura</p>
+        <button (click)="navigateToLogin()">Comienza ahora</button>
+      </div>
+    </section>
+  
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+      <h2>Cursos Disponibles</h2>
+      <div class="course-cards">
+        <div class="course-card" *ngFor="let course of courses">
+          <h3>{{ course.title }}</h3>
+          <p><strong>Duración:</strong> {{ course.duration }}</p>
+          <p><strong>Precio:</strong> {{ course.price }}</p>
+          <ul>
+            <li *ngFor="let feature of course.features">{{ feature }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <h2>Testimonios</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+          <img [src]="testimonial.image" alt="{{ testimonial.name }}">
+          <h3>{{ testimonial.name }}</h3>
+          <p>{{ testimonial.comment }}</p>
+        </div>
+      </div>
+    </section>
+
+     <app-viewnews></app-viewnews>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contacto</h2>
+      <form>
+        <input type="text" placeholder="Nombre" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <textarea placeholder="Mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 EasyDrive. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+  

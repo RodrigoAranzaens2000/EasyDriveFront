@@ -1,0 +1,114 @@
+/* Contenedor principal */
+.news-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilo para el mensaje de carga */
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  /* Estilo para el mensaje de error */
+  .error-message {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Contenedor de las noticias grandes a la izquierda */
+  .news-list-left {
+    grid-column: 1;
+  }
+  
+  .news-item-large {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .news-item-large img {
+    width: 100%;
+    height: auto;
+    border-bottom: 5px solid red;
+  }
+  
+  .news-title-large {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+  
+  .news-info {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 10px;
+  }
+  
+  /* Estilo para las noticias pequeñas a la derecha */
+  .news-list-right {
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+  }
+  
+  .news-item-small {
+    display: flex;
+    gap: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .news-item-small img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
+  
+  .news-content-small {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .news-title-small {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .news-info-small {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* Estilo del botón "Leer más" */
+  .read-more {
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .read-more:hover {
+    background-color: black;
+  }
+  
