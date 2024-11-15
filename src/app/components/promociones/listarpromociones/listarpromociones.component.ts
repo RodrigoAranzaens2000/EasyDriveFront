@@ -5,6 +5,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { Promocion } from '../../../models/Promocion';
 import { PromocionesService } from '../../../services/promociones.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listarpromociones',
@@ -19,7 +20,7 @@ export class ListarpromocionesComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
-  constructor(private pS: PromocionesService) {}
+  constructor(private pS: PromocionesService , private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.pS.list().subscribe((data) => {
@@ -34,11 +35,33 @@ export class ListarpromocionesComponent {
     this.dataSource.paginator = this.paginator;
   }
 
-  eliminar(id: number) {
-    this.pS.delete(id).subscribe((data) => {
-      this.pS.list().subscribe((data) => {
-        this.pS.setList(data);
-      });
+  eliminar(id: number): void {
+    this.pS.delete(id).subscribe({
+      next: (data) => {
+        this.pS.list().subscribe((data) => {
+          this.pS.setList(data);
+        });
+        // Mostrar mensaje de éxito
+        this.snackBar.open('Promocion eliminado exitosamente', 'Cerrar', {
+          duration: 3000,  // El mensaje se cierra después de 3 segundos
+          panelClass: ['snack-success']
+        });
+      },
+      error: (err) => {
+        // Manejar error si no se puede eliminar por clave foránea
+        if (err.status === 400 && err.error && err.error.error.includes('No se puede eliminar Promocion')) {
+          this.snackBar.open('No se puede eliminar Promocion, está siendo utilizado en otras tablas.', 'Cerrar', {
+            duration: 5000,  // El mensaje se muestra durante 5 segundos
+            panelClass: ['snack-error']
+          });
+        } else {
+          // Otro tipo de error
+          this.snackBar.open('Ocurrió un error al eliminar Promocion.', 'Cerrar', {
+            duration: 5000,
+            panelClass: ['snack-error']
+          });
+        }
+      }
     });
   }
 }
