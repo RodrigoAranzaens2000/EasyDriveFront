@@ -1,70 +1,103 @@
+<!-- landing.component.html -->
 <div class="landing-container">
-    <!-- Navbar -->
-    <nav class="navbar" [class.fixed]="isNavbarFixed">
-        <div class="logo">
-            <img src="../../../assets/images/logoEd.png" alt="EasyDrive Logo" />
-          </div>
-      <ul class="nav-links" [class.open]="isMenuOpen">
-        <button><li><a (click)="scrollTo('home')">Inicio</a></li></button>
-        <button><li><a (click)="scrollTo('courses')">Cursos</a></li></button>
-        <button><li><a (click)="scrollTo('about')">Acerca de</a></li></button>
-        <button><li><a (click)="scrollTo('testimonials')">Testimonios</a></li></button>
-        <button><li><a (click)="scrollTo('contact')">Contacto</a></li></button>
-      </ul>
-      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
-    </nav>
-  
-    <!-- Home Section -->
-    <section id="home" class="home">
-      <div class="hero-content">
-        <h1>Bienvenido a EasyDrive</h1>
-        <p>Aprende a conducir de forma rápida y segura</p>
-        <button (click)="navigateToLogin()">Comienza ahora</button>
-      </div>
-    </section>
-  
-    <!-- Courses Section -->
-    <section id="courses" class="courses">
-      <h2>Cursos Disponibles</h2>
-      <div class="course-cards">
-        <div class="course-card" *ngFor="let course of courses">
-          <h3>{{ course.title }}</h3>
-          <p><strong>Duración:</strong> {{ course.duration }}</p>
-          <p><strong>Precio:</strong> {{ course.price }}</p>
-          <ul>
-            <li *ngFor="let feature of course.features">{{ feature }}</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-      <h2>Testimonios</h2>
-      <div class="testimonial-cards">
-        <div class="testimonial-card" *ngFor="let testimonial of testimonials">
-          <img [src]="testimonial.image" alt="{{ testimonial.name }}">
-          <h3>{{ testimonial.name }}</h3>
-          <p>{{ testimonial.comment }}</p>
-        </div>
-      </div>
-    </section>
+  <!-- Navbar -->
+  <nav class="navbar" [class.fixed]="isNavbarFixed" [class.nav-shadow]="isNavbarFixed">
+    <div class="logo">
+      <img src="../../../assets/images/logoEd.png" alt="EasyDrive Logo" />
+    </div>
+    <ul class="nav-links" [class.nav-active]="isMenuOpen">
+      <li><a (click)="scrollTo('home')">Inicio</a></li>
+      <li><a (click)="scrollTo('courses')">Cursos</a></li>
+      <li><a (click)="scrollTo('about')">Acerca de</a></li>
+      <li><a (click)="scrollTo('testimonials')">Testimonios</a></li>
+      <li><a (click)="scrollTo('contact')">Contacto</a></li>
+    </ul>
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
 
-     <app-viewnews></app-viewnews>
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+  <!-- Home Section -->
+  <section id="home" class="home">
+    <div class="hero-content">
+      <h1>Bienvenido a EasyDrive</h1>
+      <p>Aprende a conducir de forma rápida y segura</p>
+      <button class="cta-button" (click)="navigateToLogin()">Comienza ahora</button>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="courses">
+    <div class="section-container">
+      <h2>Cursos Disponibles</h2>
+      <div class="course-grid">
+        <div class="course-card" *ngFor="let course of courses">
+          <div class="card-content">
+            <h3>{{ course.title }}</h3>
+            <div class="course-details">
+              <p class="duration"><i class="fas fa-clock"></i> {{ course.duration }}</p>
+              <p class="price"><i class="fas fa-tag"></i> {{ course.price }}</p>
+            </div>
+            <ul class="feature-list">
+              <li *ngFor="let feature of course.features">
+                <i class="fas fa-check"></i> {{ feature }}
+              </li>
+            </ul>
+            <button class="course-btn">Más información</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="section-container">
+      <h2>Testimonios</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+          <div class="testimonial-image">
+            <img [src]="testimonial.image" alt="{{ testimonial.name }}">
+          </div>
+          <div class="testimonial-content">
+            <h3>{{ testimonial.name }}</h3>
+            <p>{{ testimonial.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-viewnews></app-viewnews>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="section-container">
       <h2>Contacto</h2>
-      <form>
-        <input type="text" placeholder="Nombre" required>
-        <input type="email" placeholder="Correo electrónico" required>
-        <textarea placeholder="Mensaje" required></textarea>
-        <button type="submit">Enviar</button>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Nombre" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Mensaje" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Enviar</button>
       </form>
-    </section>
-  
-    <!-- Footer -->
-    <footer class="footer">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
       <p>&copy; 2024 EasyDrive. Todos los derechos reservados.</p>
-    </footer>
-  </div>
-  
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+</div>
