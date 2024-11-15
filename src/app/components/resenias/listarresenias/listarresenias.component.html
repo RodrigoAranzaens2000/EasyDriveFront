@@ -2,69 +2,33 @@
   <div class="title-container">
     <h1>Lista de Reseñas</h1>
   </div>
-  <div class="table-container">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
 
-      <!-- Código -->
-      <ng-container matColumnDef="c1">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Código</th>
-        <td mat-cell *matCellDef="let element">{{ element.idresenia }}</td>
-      </ng-container>
+  <div class="cards-container">
+    <mat-card class="mat-card" *ngFor="let element of dataSource.data">
+      <mat-card-header>
+        <!-- Avatar que muestra la foto de perfil del usuario -->
+        <div mat-card-avatar class="avatar" [style.backgroundImage]="'url(' + element.user.fotoPerfil + ')'"></div>
+        <mat-card-title>Reseña: {{ element.comentario }}</mat-card-title>
+        <mat-card-subtitle>Calificación: {{ element.calificacion }}</mat-card-subtitle>
+      </mat-card-header>
 
-      <!-- Titulo -->
-      <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Comentario</th>
-        <td mat-cell *matCellDef="let element">{{ element.comentario }}</td>
-      </ng-container>
+      <mat-card-content>
+        <p><strong>Comentario:</strong> {{ element.comentario }}</p>
+        <p><strong>Fecha de Reseña:</strong> {{ element.fechaResenia | date }}</p>
+        <p><strong>Nombre Escuela:</strong> {{ element.esc.nombre }}</p>
+        <p><strong>Nombre Centro Médico:</strong> {{ element.centros.nombre }}</p>
+      </mat-card-content>
 
-      <!-- Mensaje -->
-      <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Calificacion</th>
-        <td mat-cell *matCellDef="let element">{{ element.calificacion }}</td>
-      </ng-container>
-
-      <!-- fechaNotificacion -->
-      <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Fecha de Reseña</th>
-        <td mat-cell *matCellDef="let element">{{ element.fechaResenia }}</td>
-      </ng-container>
-
-      <!-- Nombre Usuario -->
-      <ng-container matColumnDef="c5">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Nombre Escuela</th>
-        <td mat-cell *matCellDef="let element">{{ element.user.name }}</td>
-      </ng-container>
-
-      <!-- Apellido Paterno Usuario -->
-      <ng-container matColumnDef="c6">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Nombre Centro Escuela</th>
-        <td mat-cell *matCellDef="let element">{{ element.esc.nombre }}</td>
-      </ng-container>
-
-      <!-- Apellido Paterno Usuario -->
-      <ng-container matColumnDef="c7">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Nombre Centro Medico</th>
-        <td mat-cell *matCellDef="let element">{{ element.centros.nombre }}</td>
-      </ng-container>
-
-      <!-- Acciones -->
-      <ng-container matColumnDef="accion01">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Eliminar</th>
-        <td mat-cell *matCellDef="let element" (click)="eliminar(element.idresenia)">
-          <mat-icon class="action-icon delete-icon">delete</mat-icon>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="accion02">
-        <th mat-header-cell *matHeaderCellDef class="custom-header">Actualizar</th>
-        <td mat-cell *matCellDef="let element" [routerLink]="['ediciones', element.idresenia]">
-          <mat-icon class="action-icon edit-icon">edit</mat-icon>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-paginator class="custom-paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      <mat-card-actions>
+        <button mat-icon-button color="warn" (click)="eliminar(element.idresenia)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" [routerLink]="['ediciones', element.idresenia]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </div>
+
+  <mat-paginator class="custom-paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
