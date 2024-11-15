@@ -21,15 +21,17 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   selector: 'app-creaeditaresenias',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     MatDatepickerModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule,],
+    MatButtonModule,
+  ],
   templateUrl: './creaeditaresenias.component.html',
-  styleUrl: './creaeditaresenias.component.css'
+  styleUrls: ['./creaeditaresenias.component.css'],
 })
 export class CreaeditareseniasComponent {
   form: FormGroup = new FormGroup({});
@@ -48,70 +50,89 @@ export class CreaeditareseniasComponent {
     { value: '5', viewValue: '5' },
   ];
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private rS: ReseniasService,
     private uS: UsuariosService,
     private eS: EscuelasService,
     private cS: CentrosmedicosService,
     private router: Router,
-    private route:ActivatedRoute
-  ){
-      this.form = this.formBuilder.group({
-        hfecha: ['', Validators.required],
-        hcomentario: ['', Validators.required],
-        huser: ['', Validators.required],
-        hcalificacion: ['', Validators.required],
-        hescuela: ['', Validators.required],
-        hcentro: ['', Validators.required]
-      });
-    }
-    ngOnInit(): void {
-      this.route.params.subscribe((params: Params) => {
-        this.id = params['id'];
-        this.edicion = this.id != null;
-          this.init();  
-      });
-      this.uS.list().subscribe((data) => {
-        this.listaUsuarios = data;
-      });
-      this.eS.list().subscribe((data) => {
-        this.listaEscuelas = data;
-      });
-      this.cS.list().subscribe((data) => {
-        this.listaCentros = data;
-      });
-    }
-    aceptar() : void {
-      if (this.form.valid) {
-        this.rese.comentario = this.form.value.hcomentario;
-        this.rese.calificacion = this.form.value.hcalificacion;
-        this.rese.fechaResenia = this.form.value.hfecha;
-        this.rese.user.id = this.form.value.huser;
-        this.rese.esc.idescuela = this.form.value.hescuela;
-        this.rese.centros.idcentro = this.form.value.hcentro;
-        this.rS.insert(this.rese).subscribe(() => {
-          this.listaResenias();
-        });
-        this.router.navigate(['resenias']);
-      }
-    }
+    private route: ActivatedRoute
+  ) {}
 
-    private listaResenias() {
-      this.rS.list().subscribe((data) => {
-        this.rS.setList(data);
-        this.router.navigate(['resenias']);
-      });
-    }
-    private init() {
+  ngOnInit(): void {
+    // Obtenemos el ID de la notificación si existe en los parámetros de la ruta
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = this.id != null; // Verificamos si estamos en modo de edición
+      this.init(); // Llamamos a la función para inicializar los datos
+    });
+
+    this.form = this.formBuilder.group({
+      hfecha: ['', Validators.required],
+      hcomentario: ['', Validators.required],
+      huser: ['', Validators.required],
+      hcalificacion: ['', Validators.required],
+      hescuela: ['', Validators.required],
+      hcentro: ['', Validators.required],
+    });
+
+    this.uS.list().subscribe((data) => {
+      this.listaUsuarios = data;
+    });
+    this.eS.list().subscribe((data) => {
+      this.listaEscuelas = data;
+    });
+    this.cS.list().subscribe((data) => {
+      this.listaCentros = data;
+    });
+  }
+
+  // Función para inicializar los datos cuando estamos en modo de edición
+  init(): void {
+    if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
-        this.form.patchValue({
-          hcomentario: data.comentario,
-          hcalificacion: data.calificacion,
+        this.form.setValue({
           hfecha: data.fechaResenia,
-          huser: data.user,
-          hescuela: data.esc,
-          hcentro: data.centros,
+          hcomentario: data.comentario,
+          huser: data.user.id,
+          hcalificacion: data.calificacion,
+          hescuela: data.esc.idescuela,
+          hcentro: data.centros.idcentro,
         });
+
+        // Asignar el ID de la reseña para la actualización
+        this.rese.idresenia = data.idresenia;  // Asignar el ID de la reseña para la actualización
       });
     }
+  }
+
+  aceptar(): void {
+    if (this.form.valid) {
+      this.rese.comentario = this.form.value.hcomentario;
+      this.rese.calificacion = this.form.value.hcalificacion;
+      this.rese.fechaResenia = this.form.value.hfecha;
+      this.rese.user.id = this.form.value.huser;
+      this.rese.esc.idescuela = this.form.value.hescuela;
+      this.rese.centros.idcentro = this.form.value.hcentro;
+
+      if (this.edicion) {
+        // Actualizar la reseña
+        this.rS.update(this.rese).subscribe(() => {
+          this.rS.list().subscribe((data) => {
+            this.rS.setList(data);
+          });
+        });
+      } else {
+        // Insertar nueva reseña
+        this.rS.insert(this.rese).subscribe(() => {
+          this.rS.list().subscribe((data) => {
+            this.rS.setList(data);
+          });
+        });
+      }
+
+      this.router.navigate(['resenias']);
+    }
+  }
 }

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Notificaciones } from '../../../models/Notificaciones';
 import { NotificacionesService } from '../../../services/notificaciones.service';
 import { UsuariosService } from '../../../services/usuario.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,28 +29,55 @@ import { CommonModule } from '@angular/common'; // Importar CommonModule
   templateUrl: './creaeditanotificaciones.component.html',
   styleUrls: ['./creaeditanotificaciones.component.css']
 })
-export class CreaeditanotificacionesComponent {
+export class CreaeditanotificacionesComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaUsuarios: Usuarios[] = [];
   noti: Notificaciones = new Notificaciones();
+  id: number = 0; // Variable para el ID de la notificación
+  edicion: boolean = false; // Para verificar si es edición o creación
 
   constructor(
     private formBuilder: FormBuilder,
     private nS: NotificacionesService,
     private uS: UsuariosService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute // Para leer los parámetros de la ruta
   ) {}
 
   ngOnInit(): void {
+    // Obtenemos el ID de la notificación si existe en los parámetros de la ruta
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = this.id != null; // Verificamos si estamos en modo de edición
+      this.init(); // Llamamos a la función para inicializar los datos
+    });
+
+    // Inicializamos el formulario
     this.form = this.formBuilder.group({
       hfecha: ['', Validators.required],
       hmensaje: ['', Validators.required],
       htitulo: ['', Validators.required],
       huser: ['', Validators.required],
     });
+
+    // Obtenemos la lista de usuarios
     this.uS.list().subscribe((data) => {
       this.listaUsuarios = data;
     });
+  }
+
+  // Función para inicializar los datos cuando estamos en modo de edición
+  init(): void {
+    if (this.edicion) {
+      this.nS.listId(this.id).subscribe((data) => {
+        this.form.setValue({
+          hfecha: data.fechaNotificacion,
+          hmensaje: data.mensaje,
+          htitulo: data.titulo,
+          huser: data.user.id,
+        });
+      });
+    }
   }
 
   aceptar(): void {
@@ -60,11 +87,23 @@ export class CreaeditanotificacionesComponent {
       this.noti.titulo = this.form.value.htitulo;
       this.noti.user.id = this.form.value.huser;
 
-      this.nS.insert(this.noti).subscribe((data) => {
-        this.nS.list().subscribe((data) => {
-          this.nS.setList(data);
+      if (this.edicion) {
+        // Actualizar la notificación
+        this.nS.update(this.noti).subscribe(() => {
+          this.nS.list().subscribe((data) => {
+            this.nS.setList(data);
+          });
         });
-      });
+      } else {
+        // Insertar nueva notificación
+        this.nS.insert(this.noti).subscribe(() => {
+          this.nS.list().subscribe((data) => {
+            this.nS.setList(data);
+          });
+        });
+      }
+
+      // Redirigir a la lista de notificaciones
       this.router.navigate(['notificaciones']);
     }
   }
