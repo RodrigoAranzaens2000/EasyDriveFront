@@ -104,7 +104,7 @@ export class CreaeditareservasComponent {
       this.reservas.idreserva = this.form.value.hcodigo;
       this.reservas.estadoReserva = this.form.value.hestado;
       this.reservas.fechaReserva = this.form.value.hfecha;
-      this.reservas.user.id = this.form.value.huser;
+      this.reservas.user.id = this.form.value.husuario;
       this.reservas.centros.idcentro = this.form.value.hcentro;
       this.reservas.prom.idpromocion = this.form.value.hpromocion;
       this.reservas.ser.idservicio = this.form.value.hservicio;
