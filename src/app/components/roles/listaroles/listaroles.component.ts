@@ -5,6 +5,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { RolesService } from '../../../services/roles.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listaroles',
@@ -15,10 +16,10 @@ import { RouterModule } from '@angular/router';
 })
 export class ListarolesComponent implements OnInit, AfterViewInit{
   dataSource: MatTableDataSource<Roles> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'accion01'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'accion01' ];
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
-  constructor(private rS: RolesService) {}
+  constructor(private rS: RolesService ,  private snackBar: MatSnackBar) {}
   ngOnInit(): void {
     this.rS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -30,5 +31,4 @@ export class ListarolesComponent implements OnInit, AfterViewInit{
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-
 }

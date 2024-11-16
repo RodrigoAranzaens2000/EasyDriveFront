@@ -13,7 +13,7 @@
     <ul>
       <li *ngFor="let event of filteredEvents">
         <strong>{{ event.res.estadoReserva }}</strong><br>
-        <span>{{ event.fechaSincronizacion | date: 'short' }}</span>
+        <span>{{ event.fechaSincronizacion | date: 'shortDate' }}</span>
       </li>
     </ul>
   </div>
