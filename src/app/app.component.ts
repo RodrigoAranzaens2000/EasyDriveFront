@@ -10,9 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { LoginService } from './services/login.service';
-import { UsuariosService } from './services/usuario.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { Usuarios } from './models/Usuarios';
+
 
 @Component({
   selector: 'app-root',
@@ -49,8 +47,8 @@ export class AppComponent {
     return this.role === 'ADMINISTRADOR';
   }
 
-  isUser() {
-    return this.role === 'USUARIO';
+  isEstudiante() {
+    return this.role === 'ESTUDIANTE';
   }
 
   
