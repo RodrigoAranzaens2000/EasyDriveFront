@@ -21,7 +21,6 @@ export class ListarnotificacionesComponent {
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4' , 'c5' , 'c6', 'accion01' , 'accion02'];
   @ViewChild(MatPaginator) paginator!: MatPaginator; // Referencia al paginador
 
-  readonly dialog = inject(MatDialog);
   readonly snackBar = inject(MatSnackBar); // Inyecta MatSnackBar
 
   constructor(private nS: NotificacionesService) {}
