@@ -43,6 +43,7 @@ export class CreaeditareservasComponent {
   listaescuelas: Escuelas[] = [];
   listacentros: CentrosMedicos[] = [];
   listaservicios: Servicios[] = [];
+  today : Date = new Date()
   id: number = 0;
   edicion: boolean = false;
   reservas: Reservas = new Reservas();

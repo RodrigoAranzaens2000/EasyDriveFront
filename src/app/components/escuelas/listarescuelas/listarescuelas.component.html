@@ -44,7 +44,7 @@
       </ng-container>
 
       <!-- Actualizar Promoción -->
-      <ng-container matColumnDef="accion01">
+      <ng-container matColumnDef="accion02">
         <th mat-header-cell *matHeaderCellDef class="custom-header">Actualizar</th>
         <td mat-cell *matCellDef="let element" [routerLink]="['ediciones', element.idescuela]">
           <mat-icon class="action-icon edit-icon">edit</mat-icon>
@@ -52,7 +52,7 @@
       </ng-container>
 
       <!-- Eliminar Promoción -->
-      <ng-container matColumnDef="accion02">
+      <ng-container matColumnDef="accion01">
         <th mat-header-cell *matHeaderCellDef class="custom-header">Eliminar</th>
         <td mat-cell *matCellDef="let element" (click)="eliminar(element.idescuela)">
           <mat-icon class="action-icon delete-icon">delete</mat-icon>

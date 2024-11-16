@@ -35,6 +35,7 @@ export class CreaeditanotificacionesComponent implements OnInit {
   noti: Notificaciones = new Notificaciones();
   id: number = 0; // Variable para el ID de la notificación
   edicion: boolean = false; // Para verificar si es edición o creación
+  today: Date = new Date()
 
   constructor(
     private formBuilder: FormBuilder,

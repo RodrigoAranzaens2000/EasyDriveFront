@@ -17,23 +17,18 @@ import { ReservasService } from '../../../services/reservas.service';
   selector: 'app-creaeditacalendario',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [CommonModule, // Agregar CommonModule aquí
-    MatDatepickerModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,],
+  imports: [CommonModule, MatDatepickerModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatSelectModule, MatButtonModule],
   templateUrl: './creaeditacalendario.component.html',
   styleUrl: './creaeditacalendario.component.css'
 })
-export class CreaeditacalendarioComponent implements OnInit{
+export class CreaeditacalendarioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   listaReservas: Reservas[] = [];
   calendarios: Calendario = new Calendario();
 
   edicion: boolean = false;
   id: number = 0;
+  today: Date = new Date(); // Fecha actual
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,7 +47,7 @@ export class CreaeditacalendarioComponent implements OnInit{
 
     this.form = this.formBuilder.group({
       hcodigo: [''],
-      hfecha: ['', Validators.required],
+      hfecha: ['', [Validators.required]],
       hreserva: ['', Validators.required],
     });
 
@@ -61,28 +56,26 @@ export class CreaeditacalendarioComponent implements OnInit{
     });
   }
 
-  aceptar() : void {
+  aceptar(): void {
     if (this.form.valid) {
       this.calendarios.idcalendario = this.form.value.hcodigo;
-      this.calendarios.fechaSincronizacion= this.form.value.hfecha;
-      this.calendarios.res= this.form.value.hreserva;
+      this.calendarios.fechaSincronizacion = this.form.value.hfecha;
+      this.calendarios.res = this.form.value.hreserva;
       if (this.edicion) {
-        // Actualizar el centro médico
-        this.cS.update(this.calendarios).subscribe(data=> {
-          this.cS.list().subscribe(data=>{
-            this.cS.setList(data)
-          })
+        this.cS.update(this.calendarios).subscribe(data => {
+          this.cS.list().subscribe(data => {
+            this.cS.setList(data);
+          });
         });
       } else {
-        // Insertar nuevo centro médico
         this.cS.insert(this.calendarios).subscribe((data) => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
           });
         });
       }
+      this.router.navigate(['calendario']);
     }
-    this.router.navigate(['calendario']);
   }
 
   init() {
@@ -94,6 +87,6 @@ export class CreaeditacalendarioComponent implements OnInit{
           hreserva: new FormControl(data.res)
         });
       });
-    };
+    }
   }
 }
