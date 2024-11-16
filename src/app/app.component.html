@@ -21,37 +21,37 @@
 <!-- Menú principal -->
 <mat-menu #mainMenu="matMenu">
   <p class="menu-section-title">Módulos</p>
-  <button mat-menu-item [matMenuTriggerFor]="menuServicios" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuServicios" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>build_circle</mat-icon> Servicios
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCentros" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuCentros" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>medical_services</mat-icon> Centros Médicos
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuUsuarios" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>group</mat-icon> Usuarios
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuEscuelas" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuEscuelas" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>school</mat-icon> Escuelas
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuPromociones" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuPromociones" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>monetization_on</mat-icon> Promociones
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuNotificaciones" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>notifications</mat-icon> Notificaciones
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuRoles" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>account_box</mat-icon> Roles
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuCalendario" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuCalendario" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>calendar_today</mat-icon> Calendario
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuReservas" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuReservas" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>collections_bookmark</mat-icon> Reservas
   </button>
   <button mat-menu-item [matMenuTriggerFor]="menuPagos" class="custom-menu-item" *ngIf="isAdmin()">
     <mat-icon>payment</mat-icon> Pagos
   </button>
-  <button mat-menu-item [matMenuTriggerFor]="menuResenias" class="custom-menu-item" *ngIf="isAdmin() || isUser()">
+  <button mat-menu-item [matMenuTriggerFor]="menuResenias" class="custom-menu-item" *ngIf="isAdmin() || isEstudiante()">
     <mat-icon>feedback</mat-icon> Reseñas
   </button>
 </mat-menu>
