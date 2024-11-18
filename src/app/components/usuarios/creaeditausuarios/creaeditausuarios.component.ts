@@ -89,6 +89,7 @@ export class CreaeditausuariosComponent implements OnInit {
           this.listarusuarios();
         });
       }
+      this.router.navigate(['usuarios']);
     }
   }
 

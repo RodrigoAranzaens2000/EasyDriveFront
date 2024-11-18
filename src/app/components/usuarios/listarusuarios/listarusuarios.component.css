@@ -80,3 +80,22 @@
     margin: 0 10px;
   }
   
+  /* Campo de búsqueda */
+.search-container {
+  margin-bottom: 2rem;
+}
+
+.search-container .mat-form-field {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+}
+
+::ng-deep .search-container .mat-form-field-outline {
+  color: #1976d2;
+}
+
+::ng-deep .search-container .mat-form-field-outline-thick {
+  color: #1976d2;
+}

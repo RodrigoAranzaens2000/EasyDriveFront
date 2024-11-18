@@ -8,11 +8,12 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar'; // Importa MatSnackBar
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-listarnotificaciones',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterModule, MatPaginatorModule, MatButtonModule, MatDialogModule],
+  imports: [MatTableModule, MatIconModule, RouterModule, MatPaginatorModule, MatButtonModule, MatDialogModule , MatFormFieldModule , MatInputModule],
   templateUrl: './listarnotificaciones.component.html',
   styleUrl: './listarnotificaciones.component.css'
 })
@@ -36,6 +37,11 @@ export class ListarnotificacionesComponent {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+  }
+
+  aplicarFiltro(event: Event) {
+    const valorFiltro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = valorFiltro.trim().toLowerCase();
   }
 
   eliminar(id: number): void {

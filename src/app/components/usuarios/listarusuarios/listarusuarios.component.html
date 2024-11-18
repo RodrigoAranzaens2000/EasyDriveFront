@@ -2,6 +2,13 @@
     <div class="title-container">
         <h1>Lista de Usuarios</h1>
     </div>
+    <!-- Campo de búsqueda -->
+    <div class="search-container">
+        <mat-form-field appearance="outline" class="mat-form-field full-width">
+            <mat-label>Buscar Usuario</mat-label>
+            <input matInput (input)="aplicarFiltro($event)" placeholder="Escribe para buscar..." />
+        </mat-form-field>
+    </div>
     <div class="table-container">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
 
