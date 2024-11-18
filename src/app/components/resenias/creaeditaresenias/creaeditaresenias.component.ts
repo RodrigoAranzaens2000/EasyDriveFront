@@ -41,6 +41,7 @@ export class CreaeditareseniasComponent {
   id: number = 0;
   edicion: boolean = false;
   rese: Resenias = new Resenias();
+  today:Date=new Date()
 
   listaCalificacion: { value: string; viewValue: string }[] = [
     { value: '1', viewValue: '1' },

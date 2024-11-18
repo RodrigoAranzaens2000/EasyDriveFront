@@ -33,6 +33,7 @@ export class ListarreservasComponent {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
+  
   eliminar(id: number): void {
     this.rS.delete(id).subscribe({
       next: () => {

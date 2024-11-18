@@ -23,8 +23,8 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: ['localhost:8081'],
-          disallowedRoutes: ['http://localhost:8081/login/forget'],
+          allowedDomains: ['https://easydrivebacksinsecurity.onrender.com'],
+          disallowedRoutes: ['https://easydrivebacksinsecurity.onrender.com/login/forget'],
         },
       })
     ), provideCharts(withDefaultRegisterables()), provideAnimationsAsync()
