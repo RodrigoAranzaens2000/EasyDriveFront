@@ -52,6 +52,18 @@
         <mat-icon>login</mat-icon>
         {{loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}}
       </button>
+
     </form>
+
+    <!-- Botón de Sign Up -->
+    <div class="sign-up-container">
+      <p>¿No tienes cuenta?</p>
+      <button mat-raised-button 
+              color="primary" 
+              [routerLink]="['/signUp']">
+        Crear Cuenta
+      </button>
+    </div>
+
   </div>
 </div>

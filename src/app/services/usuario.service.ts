@@ -20,7 +20,7 @@ export class UsuariosService {
   }
 
   insert(de: Usuarios) {
-    return this.http.post(this.url, de);
+    return this.http.post(`${this.url}/registrar`, de);
   }
 
   //get y set

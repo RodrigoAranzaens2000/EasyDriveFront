@@ -51,6 +51,10 @@ export class AppComponent {
     return this.role === 'ESTUDIANTE';
   }
 
+  isNuevoUsuario() {
+    return this.role === '';
+  }
+
   
 }
   

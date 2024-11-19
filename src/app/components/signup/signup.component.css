@@ -1,0 +1,121 @@
+/* Contenedor principal */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinear al inicio para que se pueda hacer scroll */
+    min-height: 100vh; /* Asegurar que ocupe al menos toda la altura de la pantalla */
+    background: #1976d211;
+    padding: 1rem;
+    overflow-y: auto; /* Permitir desplazamiento vertical */
+    box-sizing: border-box; /* Incluir padding en el tamaño total */
+  }
+  
+  /* Tarjeta de registro */
+  .signup-card {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box; /* Asegurar que padding no cause desbordamiento */
+  }
+  
+  /* Título */
+  .title {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    word-wrap: break-word; /* Evitar desbordamientos de texto */
+  }
+  
+  /* Grupo de formularios */
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    box-sizing: border-box; /* Asegurar que padding no cause desbordamiento */
+  }
+  
+  input:focus {
+    border-color: #1976d2;
+    outline: none;
+  }
+  
+  /* Mensajes de error */
+  .error-message {
+    font-size: 0.85rem;
+    color: #f44336;
+    margin-top: 0.5rem;
+  }
+  
+  /* Botón de registro */
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #1976d2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    box-sizing: border-box; /* Asegurar que padding no cause desbordamiento */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #155da8;
+  }
+  
+  button[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Acciones del formulario */
+  .form-actions {
+    margin-top: 1rem;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 600px) {
+    .signup-card {
+      padding: 1.5rem;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    input {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+    }
+  
+    button[type="submit"] {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+    }
+  }
+  
