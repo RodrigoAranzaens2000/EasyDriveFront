@@ -1,99 +1,102 @@
 <div class="signup-container">
-    <div class="signup-card">
-      <h2 class="title">Crear una Cuenta</h2>
-  
-      <form [formGroup]="form" (ngSubmit)="aceptar()">
-        
-        <!-- Username -->
-        <div class="form-group">
-          <label for="husername">Nombre de Usuario</label>
-          <input type="text" id="husername" formControlName="husername" required />
-          <div *ngIf="form.get('husername')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Name -->
-        <div class="form-group">
-          <label for="hname">Nombre</label>
-          <input type="text" id="hname" formControlName="hname" required />
-          <div *ngIf="form.get('hname')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Apellido Paterno -->
-        <div class="form-group">
-          <label for="hapellidoPaterno">Apellido Paterno</label>
-          <input type="text" id="hapellidoPaterno" formControlName="hapellidoPaterno" required />
-          <div *ngIf="form.get('hapellidoPaterno')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Apellido Materno -->
-        <div class="form-group">
-          <label for="hapellidoMaterno">Apellido Materno</label>
-          <input type="text" id="hapellidoMaterno" formControlName="hapellidoMaterno" required />
-          <div *ngIf="form.get('hapellidoMaterno')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Correo -->
-        <div class="form-group">
-          <label for="hcorreo">Correo Electrónico</label>
-          <input type="email" id="hcorreo" formControlName="hcorreo" required />
-          <div *ngIf="form.get('hcorreo')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-          <div *ngIf="form.get('hcorreo')?.hasError('email')" class="error-message">
-            Ingrese un correo válido.
-          </div>
-        </div>
-  
-        <!-- Contraseña -->
-        <div class="form-group">
-          <label for="hpassword">Contraseña</label>
-          <input type="password" id="hpassword" formControlName="hpassword" required />
-          <div *ngIf="form.get('hpassword')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Foto de perfil -->
-        <div class="form-group">
-          <label for="hfoto">Foto de Perfil (URL)</label>
-          <input type="text" id="hfoto" formControlName="hfoto" required />
-          <div *ngIf="form.get('hfoto')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Dirección -->
-        <div class="form-group">
-          <label for="hdireccion">Dirección</label>
-          <input type="text" id="hdireccion" formControlName="hdireccion" required />
-          <div *ngIf="form.get('hdireccion')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
-  
-        <!-- Teléfono -->
-        <div class="form-group">
-          <label for="htelefono">Teléfono</label>
-          <input type="text" id="htelefono" formControlName="htelefono" required />
-          <div *ngIf="form.get('htelefono')?.hasError('required')" class="error-message">
-            Este campo es obligatorio.
-          </div>
-        </div>
+  <div class="signup-card">
+    <h2 class="title">Crear una Cuenta</h2>
 
-  
-        <!-- Submit Button -->
-        <div class="form-actions">
-          <button type="submit" [disabled]="form.invalid">Registrar</button>
-        </div>
-      </form>
-    </div>
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <!-- Nombre de Usuario -->
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de Usuario</mat-label>
+        <input matInput id="husername" formControlName="husername" required />
+        <mat-error *ngIf="form.get('husername')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+<br>
+      <!-- Nombre -->
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput id="hname" formControlName="hname" required />
+        <mat-error *ngIf="form.get('hname')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Apellido Paterno -->
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido Paterno</mat-label>
+        <input matInput id="hapellidoPaterno" formControlName="hapellidoPaterno" required />
+        <mat-error *ngIf="form.get('hapellidoPaterno')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Apellido Materno -->
+      <mat-form-field appearance="outline">
+        <mat-label>Apellido Materno</mat-label>
+        <input matInput id="hapellidoMaterno" formControlName="hapellidoMaterno" required />
+        <mat-error *ngIf="form.get('hapellidoMaterno')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Correo -->
+      <mat-form-field appearance="outline">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput type="email" id="hcorreo" formControlName="hcorreo" required />
+        <mat-error *ngIf="form.get('hcorreo')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('hcorreo')?.hasError('email')">
+          Ingrese un correo válido.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Contraseña -->
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" id="hpassword" formControlName="hpassword" required />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('hpassword')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Foto de Perfil -->
+      <mat-form-field appearance="outline">
+        <mat-label>Foto de Perfil (URL)</mat-label>
+        <input matInput id="hfoto" formControlName="hfoto" required />
+        <mat-error *ngIf="form.get('hfoto')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Dirección -->
+      <mat-form-field appearance="outline">
+        <mat-label>Dirección</mat-label>
+        <input matInput id="hdireccion" formControlName="hdireccion" required />
+        <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Teléfono -->
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input matInput id="htelefono" formControlName="htelefono" required />
+        <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
+          Este campo es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <!-- Botón de envío -->
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          Registrar
+        </button>
+      </div>
+    </form>
   </div>
+</div>
   

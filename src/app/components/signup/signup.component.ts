@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +21,8 @@ import { MatCard, MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatDatepickerModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatIcon,
 
     ],
   templateUrl: './signup.component.html',
@@ -30,12 +33,15 @@ export class SignupComponent {
   usuarios: Usuarios = new Usuarios();
   id: number = 0;
   edicion: boolean = false;
+  hidePassword: boolean = true;
+  password: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private uS: UsuariosService,
     private router: Router,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
   ) {
     this.form = this.formBuilder.group({
       hcodigo: [''],
@@ -76,6 +82,14 @@ export class SignupComponent {
     }
   }
 
+  private showMessage(message: string) {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: message.includes('exitoso') ? ['success-snackbar'] : ['error-snackbar']
+    });
+  }
   private listarusuarios() {
     this.uS.list().subscribe(data => {
       this.uS.setList(data);
@@ -83,4 +97,15 @@ export class SignupComponent {
     });
   }
   
+  login() {
+    if (!this.password) {
+      this.showMessage('Por favor, complete todos los campos');
+      return;
+    }
+  }
+  onKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.login();
+    }
+  }
 }
