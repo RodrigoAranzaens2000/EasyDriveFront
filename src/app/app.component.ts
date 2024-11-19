@@ -16,7 +16,6 @@ import { LoginService } from './services/login.service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,
-    ServiciosComponent,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
