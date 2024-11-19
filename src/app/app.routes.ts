@@ -32,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { LandingComponent } from './components/landing/landing.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+    },
+    {
+        path: 'signUp',
+        component: SignupComponent,
     },
     {
         path: 'servicios',

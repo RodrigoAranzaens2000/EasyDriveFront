@@ -1,155 +1,157 @@
-
+/* Contenedor principal del formulario de login */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-  padding: 20px;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 1rem;
 }
 
+/* Tarjeta del login */
 .login-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 77, 153, 0.1);
-  padding: 40px;
   width: 100%;
-  max-width: 420px;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
+/* Logo */
 .logo-container {
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .logo {
-  max-width: 180px;
+  width: 100px;
   height: auto;
 }
 
+/* Títulos y subtítulos */
 h2 {
-  color: #004d99;
-  font-size: 24px;
-  margin-bottom: 8px;
-  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.8rem;
 }
 
 .subtitle {
-  color: #666;
-  margin-bottom: 32px;
-  font-size: 14px;
+  margin-bottom: 2rem;
+  color: #777;
+  font-size: 1rem;
 }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* Formularios */
+.form-group {
+  margin-bottom: 1.5rem;
 }
 
 .form-field {
   width: 100%;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #004d99;
+mat-form-field {
+  width: 100%;
 }
 
+mat-icon {
+  color: #888;
+}
+
+/* Botones */
+.login-button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #1976d2; /* Color primario de Angular Material */
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #155da8;
+}
+
+.mat-raised-button[disabled] {
+  background-color: #cccccc !important;
+  color: #ffffff !important;
+}
+
+/* Acciones (Recordarme y Olvidé mi contraseña) */
 .form-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 8px 0;
+  margin-bottom: 1rem;
 }
 
 .remember-me {
-  color: #666;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .forgot-password {
-  color: #004d99;
+  font-size: 0.9rem;
+  color: #1976d2;
   text-decoration: none;
-  font-size: 14px;
-  &:hover {
-    text-decoration: underline;
-  }
+  transition: color 0.3s;
 }
 
-.login-button {
-  background-color: #004d99;
-  color: white;
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: background-color 0.3s ease;
-  
-  &:hover:not([disabled]) {
-    background-color: #003d7a;
-  }
-  
-  &[disabled] {
-    background-color: #ccc;
-  }
-  
-  mat-icon {
-    margin-right: 8px;
-  }
+.forgot-password:hover {
+  color: #155da8;
 }
 
-.register-link {
-  margin-top: 24px;
-  color: #666;
-  font-size: 14px;
-  
-  a {
-    color: #004d99;
-    text-decoration: none;
-    font-weight: 500;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+/* Crear cuenta */
+.sign-up-container {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
 }
 
-@media (max-width: 480px) {
+.sign-up-container button {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
   .login-card {
-    padding: 24px;
+    padding: 1.5rem;
   }
-  
-  .form-actions {
-    flex-direction: column;
-    gap: 12px;
+
+  h2 {
+    font-size: 1.5rem;
   }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .login-button {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .sign-up-container button {
+    font-size: 0.8rem;
+  }
+}
+
+/* Snackbar personalizado */
+.success-snackbar {
+  background-color: #4caf50 !important;
+  color: white !important;
 }
 
 .error-snackbar {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .success-snackbar {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .login-button {
-    position: relative;
-  }
-  
-  .login-button[disabled] {
-    background-color: rgba(0, 77, 153, 0.5);
-    cursor: not-allowed;
-  }
-  
-  /* Añade este estilo si quieres mostrar un spinner durante la carga */
-  .loading {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
+  background-color: #f44336 !important;
+  color: white !important;
+}
