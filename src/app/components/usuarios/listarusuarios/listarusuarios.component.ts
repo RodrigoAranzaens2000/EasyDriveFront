@@ -7,11 +7,13 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { UsuariosService } from '../../../services/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-listarusuarios',
   standalone: true,
-  imports: [MatTableModule, MatIconModule, RouterModule, MatPaginatorModule ,  FormsModule , CommonModule],
+  imports: [MatTableModule, MatIconModule, RouterModule, MatPaginatorModule ,  FormsModule , CommonModule , MatFormFieldModule , MatInputModule],
   templateUrl: './listarusuarios.component.html',
   styleUrl: './listarusuarios.component.css'
 })
@@ -35,7 +37,10 @@ export class ListarusuariosComponent {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-
+  aplicarFiltro(event: Event) {
+    const valorFiltro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = valorFiltro.trim().toLowerCase();
+  }
   eliminar(id: number) {
     this.uS.delete(id).subscribe((data) => {
       this.uS.list().subscribe((data) => {

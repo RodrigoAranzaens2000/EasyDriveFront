@@ -1,114 +1,206 @@
-/* Estilo para el contenedor principal */
+/* Contenedor principal */
 .container {
+  padding: 24px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  background-color: #f5f5f5;
 }
 
-/* Estilo para la cabecera de la página */
-.title-container h1 {
+/* Contenedor del título */
+.title-container {
   text-align: center;
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
-/* Estilo para el contenedor de las tarjetas */
+.title-container h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.title-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: #3f51b5;
+  border-radius: 2px;
+}
+
+/* Contenedor de las tarjetas */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 10px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-/* Estilo básico para cada mat-card */
-.mat-card {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Estilos para las tarjetas */
+::ng-deep .mat-mdc-card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
   overflow: hidden;
 }
 
-/* Efecto de hover para las tarjetas */
-.mat-card:hover {
+::ng-deep .mat-mdc-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Estilo para el avatar de la tarjeta */
-.mat-card-avatar {
-  background-color: #ddd;
-  width: 40px;
-  height: 40px;
+/* Header de la tarjeta */
+::ng-deep .mat-mdc-card-header {
+  padding: 16px !important;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+
+::ng-deep .mat-mdc-card-avatar {
+  width: 48px !important;
+  height: 48px !important;
   border-radius: 50%;
-  margin-right: 15px;
+  background-color: #3f51b5;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #3f51b5;
 }
 
-/* Estilo para el título de la tarjeta */
-.mat-card-title {
-  font-size: 1.4rem;
-  color: #333;
+::ng-deep .mat-mdc-card-title {
+  font-size: 1.1rem !important;
+  color: #2c3e50 !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+}
+
+::ng-deep .mat-mdc-card-subtitle {
+  color: #666 !important;
+  font-size: 0.9rem !important;
+  margin-top: 4px !important;
+}
+
+/* Contenido de la tarjeta */
+::ng-deep .mat-mdc-card-content {
+  padding: 20px !important;
+}
+
+::ng-deep .mat-mdc-card-content p {
+  margin: 8px 0;
+  color: #444;
+  line-height: 1.6;
+}
+
+::ng-deep .mat-mdc-card-content strong {
+  color: #2c3e50;
   font-weight: 600;
 }
 
-/* Estilo para el subtítulo de la tarjeta */
-.mat-card-subtitle {
-  font-size: 1rem;
-  color: #666;
+/* Contenedor de imagen */
+.image-container {
+  margin: 16px -20px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Estilo para el contenido de la tarjeta */
-.mat-card-content p {
-  font-size: 1rem;
-  color: #555;
-  margin: 5px 0;
+.image-cell {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-/* Estilo para el bloque de acciones de la tarjeta (botones) */
-.mat-card-actions {
+::ng-deep .mat-mdc-card:hover .image-cell {
+  transform: scale(1.05);
+}
+
+/* Acciones de la tarjeta */
+::ng-deep .mat-mdc-card-actions {
+  padding: 12px !important;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 8px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  margin: 0 !important;
 }
 
-/* Estilos para los botones de acción */
-.mat-icon-button {
-  color: #333;
-  transition: background-color 0.2s ease;
-  padding: 8px;
-  border-radius: 4px;
+/* Botones de acción */
+::ng-deep .mat-mdc-icon-button {
+  --mdc-icon-button-state-layer-size: 40px !important;
+  transition: transform 0.2s ease;
 }
 
-.mat-icon-button:hover {
-  background-color: #f2f2f2;
+::ng-deep .mat-mdc-icon-button:hover {
+  transform: scale(1.1);
 }
 
-/* Estilo para el paginator */
-.custom-paginator {
-  margin-top: 20px;
+/* Iconos de los botones */
+::ng-deep .mat-icon {
+  font-size: 20px;
+  width: 20px !important;
+  height: 20px !important;
 }
 
-/* Estilo para los iconos de las estrellas en la calificación */
-.rating {
-  display: flex;
-  gap: 5px;
-  margin-top: 5px;
+/* Estilo para el botón de eliminar */
+::ng-deep .mat-warn .mat-icon {
+  color: #f44336;
 }
 
-.rating mat-icon {
-  color: #ffd700; /* Dorado para las estrellas */
+/* Estilo para el botón de editar */
+::ng-deep .mat-primary .mat-icon {
+  color: #3f51b5;
 }
 
-/* Estilo para los iconos de acción */
-.action-icon {
-  font-size: 24px;
+/* Paginador personalizado */
+::ng-deep .custom-paginator {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 24px;
 }
 
-/* Estilo para el avatar con la foto de perfil */
-.avatar {
-  background-size: cover;
-  background-position: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+::ng-deep .custom-paginator .mat-mdc-paginator-container {
+  padding: 8px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .title-container h1 {
+    font-size: 2rem;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .image-container {
+    height: 180px;
+  }
+}
+
+/* Animaciones de carga */
+::ng-deep .mat-mdc-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
